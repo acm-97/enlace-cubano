@@ -1,20 +1,22 @@
 import propTypes from 'prop-types'
-import {GluestackUIProvider, Text, Box} from '@gluestack-ui/themed-native-base'
+import {GluestackUIProvider, Text, Box} from '@gluestack-ui/themed'
 import {config} from '@gluestack-ui/config' // Optional if you want to use default theme
 import {SafeAreaView, StatusBar} from 'react-native'
 import {useDeviceContext} from 'twrnc'
-import {tw} from '@/lib/utils/settings'
+import {tw} from '@/lib/settings'
+import BottomTabs from './bottom-tabs'
+import {NavigationContainer} from '@react-navigation/native'
 
 function MainLayout() {
   useDeviceContext(tw)
   return (
     <GluestackUIProvider config={config}>
-      <SafeAreaView style={{flex: 1}}>
-        <StatusBar />
-        <Box width="100%" justifyContent="center" alignItems="center">
-          <Text>Open up App.js to start working on your app</Text>
-        </Box>
-      </SafeAreaView>
+      <NavigationContainer>
+        <SafeAreaView style={{flex: 1}}>
+          <StatusBar />
+          <BottomTabs />
+        </SafeAreaView>
+      </NavigationContainer>
     </GluestackUIProvider>
   )
 }

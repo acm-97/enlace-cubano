@@ -11,12 +11,14 @@
   "dependencies": {
     "@gluestack-style/react": "^1.0.52",
     "@gluestack-ui/config": "^1.1.18",
-    "@gluestack-ui/themed-native-base": "^0.1.107-alpha2",
+    "@gluestack-ui/themed": "^1.1.22",
     "@react-navigation/bottom-tabs": "^6.5.20",
+    "@react-navigation/material-top-tabs": "^6.6.13",
     "@react-navigation/native": "^6.1.17",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "expo": "~50.0.14",
+    "expo-blur": "~12.9.2",
     "expo-dev-client": "~3.3.11",
     "expo-status-bar": "~1.11.1",
     "hex-rgb": "^5.0.0",
@@ -24,9 +26,12 @@
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-native": "0.73.6",
+    "react-native-htmlview": "^0.17.0",
+    "react-native-pager-view": "^6.3.0",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
     "react-native-svg": "13.4.0",
+    "react-native-tab-view": "^3.5.2",
     "twrnc": "^4.2.0"
   },
   "devDependencies": {

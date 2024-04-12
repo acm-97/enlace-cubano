@@ -23,7 +23,6 @@ function BottomTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: config.tokens.colors.orange500,
         tabBarStyle: {
           position: 'absolute',
           flex: 1,

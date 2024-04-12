@@ -4,6 +4,7 @@ import NautaScreen from './nauta/screen'
 import MovilScreen from './movil/screen'
 import {config} from '@gluestack-ui/config'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import {NavigatorTheme} from '@/lib/settings'
 
 const menu = [
   {label: 'Movil', icon: 'smartphone', Component: MovilScreen},
@@ -18,8 +19,7 @@ function RechargesScreen() {
       screenOptions={{
         tabBarItemStyle: {flexDirection: 'row', alignItems: 'center'},
         tabBarLabelStyle: {fontSize: 14, fontWeight: 600},
-        tabBarActiveTintColor: config.tokens.colors.orange500,
-        tabBarIndicatorStyle: {backgroundColor: config.tokens.colors.orange500},
+        tabBarActiveTintColor: NavigatorTheme.colors.primary,
         tabBarPressColor: config.tokens.colors.orange50,
         tabBarPressOpacity: 0.5,
       }}

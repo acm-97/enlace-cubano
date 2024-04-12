@@ -1,10 +1,12 @@
 import {config} from '@gluestack-ui/config'
-import {DefaultTheme} from '@react-navigation/native'
+import {DefaultTheme, DarkTheme} from '@react-navigation/native'
+import {Appearance} from 'react-native'
 
 export const NavigatorTheme = {
-  ...DefaultTheme,
+  ...(Appearance.getColorScheme() === 'dark' ? DarkTheme : DefaultTheme),
+  dark: Appearance.getColorScheme() === 'dark',
   colors: {
-    ...DefaultTheme.colors,
+    ...(Appearance.getColorScheme() === 'dark' ? DarkTheme : DefaultTheme).colors,
     background: '#fff',
     primary: config.tokens.colors.orange500,
   },

@@ -1,4 +1,5 @@
 import {movilRecharges} from '@/constants/recharges-mockup'
+import {useDebounceFn} from '@/hooks'
 import {tw} from '@/lib/settings'
 import {config} from '@gluestack-ui/config'
 import {
@@ -7,26 +8,47 @@ import {
   Box,
   VStack,
   Text,
-  Heading,
   ScrollView,
   HStack,
-  Button,
-  ButtonIcon,
+  Input,
   Pressable,
+  InputField,
 } from '@gluestack-ui/themed'
 import propTypes from 'prop-types'
+import {useEffect, useState} from 'react'
 import HTMLView from 'react-native-htmlview'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 function MovilScreen() {
+  const [filteredList, setFilteredList] = useState()
+
+  useEffect(() => {
+    setFilteredList(movilRecharges)
+  }, [movilRecharges])
+
+  const {run: onSearch} = useDebounceFn(
+    value => {
+      const list = movilRecharges?.filter(
+        ele =>
+          ele.description?.toLowerCase()?.includes(value?.toLowerCase()) ||
+          ele.price?.toString()?.includes(value),
+      )
+      setFilteredList(list)
+    },
+    {wait: 500},
+  )
+
   return (
     <Box style={tw`w-full flex-1 items-center`}>
-      <ScrollView style={tw`w-full p-4 py-6`}>
-        <VStack w="auto" space="lg" reversed={false}>
-          {movilRecharges.map(({description, price, amount}) => (
+      <ScrollView style={tw`w-full px-4 py-6`}>
+        <VStack w="auto" space="lg" reversed={false} $android-px="$1">
+          <Input variant="outline" size="md" borderColor="$borderDark500">
+            <InputField placeholder="Busca por precio, descripción..." onChangeText={onSearch} />
+          </Input>
+          {filteredList?.map(({description, price, amount}) => (
             <Card key={description} size="md" variant="elevated" style={tw`w-full p-4`}>
               <VStack space="md" reversed={false}>
-                <HTMLView value={description + ' asdasda ss adas'} style={tw`w-full`} />
+                <HTMLView value={description} style={tw`w-full`} />
                 <Divider />
                 <HStack space="lg" reversed={false} style={tw`justify-end items-center w-full`}>
                   <Pressable>

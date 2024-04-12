@@ -8,12 +8,14 @@ import {BlurView} from 'expo-blur'
 import {tw} from '@/lib/settings'
 import {Platform} from 'react-native'
 import {config} from '@gluestack-ui/config'
+import {ActivityScreen} from '@/modules/activity/components'
 
 const Tab = createBottomTabNavigator()
 
 const menu = [
   {label: 'Recargas', icon: 'devices', Component: RechargesScreen},
   {label: 'Favoritos', icon: 'favorite-border', Component: FavoritesScreen},
+  {label: 'Actividad', icon: 'receipt', Component: ActivityScreen},
   {label: 'Cuenta', icon: 'settings', Component: AccountScreen},
 ]
 

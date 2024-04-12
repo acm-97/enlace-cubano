@@ -35,7 +35,7 @@ function BottomTabs() {
             {tabBarHeight => (
               <BlurView
                 tint="systemChromeMaterial"
-                intensity={60}
+                intensity={100}
                 experimentalBlurMethod="dimezisBlurView"
                 style={tw.style(`flex-1 overflow-hidden pb-24`)}
               />

@@ -1,21 +1,21 @@
 import propTypes from 'prop-types'
-import {GluestackUIProvider, Text, Box} from '@gluestack-ui/themed'
+import {GluestackUIProvider} from '@gluestack-ui/themed'
 import {config} from '@gluestack-ui/config' // Optional if you want to use default theme
-import {Platform, SafeAreaView, StatusBar, useColorScheme, Linking} from 'react-native'
-import {useDeviceContext} from 'twrnc'
-import {NavigatorTheme, tw} from '@/lib/settings'
+import {Platform, Linking, View} from 'react-native'
 import BottomTabs from './bottom-tabs'
 import {NavigationContainer} from '@react-navigation/native'
 import {useEffect, useState} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {useTheme} from '@/hooks'
+import MyStatusBar from './my-status-bar'
+import {SafeAreaView} from 'react-native-safe-area-context'
 
 const PERSISTENCE_KEY = 'NAVIGATION_STATE'
 
 function MainLayout() {
-  useDeviceContext(tw)
-  const colorScheme = useColorScheme()
   const [isReady, setIsReady] = useState(Platform.OS === 'web') // Don't persist state on web since it's based on URL
   const [initialState, setInitialState] = useState()
+  const {theme, navigatorTheme} = useTheme()
 
   useEffect(() => {
     const restoreState = async () => {
@@ -46,14 +46,14 @@ function MainLayout() {
   }
 
   return (
-    <GluestackUIProvider colorMode={colorScheme} config={config}>
+    <GluestackUIProvider colorMode={theme ?? 'light'} config={config}>
       <NavigationContainer
-        theme={NavigatorTheme}
+        theme={navigatorTheme}
         initialState={initialState}
         onStateChange={state => AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))}
       >
         <SafeAreaView style={{flex: 1}}>
-          <StatusBar />
+          <MyStatusBar />
           <BottomTabs />
         </SafeAreaView>
       </NavigationContainer>

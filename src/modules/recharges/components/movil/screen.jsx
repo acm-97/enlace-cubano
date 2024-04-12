@@ -1,5 +1,5 @@
 import {movilRecharges} from '@/constants/recharges-mockup'
-import {useDebounceFn} from '@/hooks'
+import {useDebounceFn, useTheme} from '@/hooks'
 import {tw} from '@/lib/settings'
 import {config} from '@gluestack-ui/config'
 import {
@@ -16,11 +16,20 @@ import {
 } from '@gluestack-ui/themed'
 import propTypes from 'prop-types'
 import {useEffect, useState} from 'react'
+import {StyleSheet} from 'react-native'
 import HTMLView from 'react-native-htmlview'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 function MovilScreen() {
   const [filteredList, setFilteredList] = useState()
+  const {theme, setTheme} = useTheme()
+  const {red500} = config.tokens.colors
+
+  const styles = StyleSheet.create({
+    div: {
+      color: theme === 'dark' ? 'white' : 'black', // make links coloured pink
+    },
+  })
 
   useEffect(() => {
     setFilteredList(movilRecharges)
@@ -48,11 +57,21 @@ function MovilScreen() {
           {filteredList?.map(({description, price, amount}) => (
             <Card key={description} size="md" variant="elevated" style={tw`w-full p-4`}>
               <VStack space="md" reversed={false}>
-                <HTMLView value={description} style={tw`w-full`} />
+                <HTMLView
+                  value={`<div>${description}</div>`}
+                  style={tw`w-full`}
+                  stylesheet={styles}
+                />
                 <Divider />
                 <HStack space="lg" reversed={false} style={tw`justify-end items-center w-full`}>
-                  <Pressable>
-                    <MaterialIcons name="favorite" color={config.tokens.colors.red500} size={20} />
+                  <Pressable onPress={() => setTheme('light')}>
+                    <MaterialIcons name="favorite" color={red500} size={20} />
+                  </Pressable>
+                  <Pressable onPress={() => setTheme('dark')}>
+                    <MaterialIcons name="favorite" color={red500} size={20} />
+                  </Pressable>
+                  <Pressable onPress={() => setTheme('device')}>
+                    <MaterialIcons name="favorite" color={red500} size={20} />
                   </Pressable>
                   <Box w="auto" style={tw`bg-orange-500/20 py-1.5 px-2 rounded-md`}>
                     <Text size="md" style={tw`text-orange-500 font-semibold `}>
@@ -68,6 +87,7 @@ function MovilScreen() {
     </Box>
   )
 }
+
 MovilScreen.propTypes = {}
 
 MovilScreen.defaultProps = {}

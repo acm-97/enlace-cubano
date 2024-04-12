@@ -7,8 +7,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {BlurView} from 'expo-blur'
 import {tw} from '@/lib/settings'
 import {Platform} from 'react-native'
-import {config} from '@gluestack-ui/config'
 import {ActivityScreen} from '@/modules/activity/components'
+import {useTheme} from '@/hooks'
 
 const Tab = createBottomTabNavigator()
 
@@ -20,29 +20,32 @@ const menu = [
 ]
 
 function BottomTabs() {
+  const {theme} = useTheme()
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
           position: 'absolute',
           flex: 1,
-          paddingBottom: Platform.OS === 'ios' ? 0 : 10,
-          height: Platform.OS === 'ios' ? 60 : 70,
+          ...(Platform.OS === 'android' && {paddingBottom: 10}),
+          height: Platform.OS === 'ios' ? 100 : 80,
           paddingTop: 10,
         },
         tabBarLabelStyle: {fontSize: 12},
-        tabBarBackground: () => (
-          <BottomTabBarHeightContext.Consumer>
-            {tabBarHeight => (
-              <BlurView
-                tint="systemChromeMaterial"
-                intensity={100}
-                experimentalBlurMethod="dimezisBlurView"
-                style={tw.style(`flex-1 overflow-hidden pb-24`)}
-              />
-            )}
-          </BottomTabBarHeightContext.Consumer>
-        ),
+        ...(Platform.OS === 'ios' && {
+          tabBarBackground: () => (
+            <BottomTabBarHeightContext.Consumer>
+              {tabBarHeight => (
+                <BlurView
+                  tint={theme}
+                  intensity={100}
+                  experimentalBlurMethod="dimezisBlurView"
+                  style={tw.style(`flex-1 overflow-hidden`)}
+                />
+              )}
+            </BottomTabBarHeightContext.Consumer>
+          ),
+        }),
       }}
     >
       {menu.map(({label, icon, Component}) => (

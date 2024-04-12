@@ -1,3 +1,7 @@
+export * from './lodash-polyfill'
+export const noop = () => {}
+export const isBrowser = typeof window !== 'undefined'
+
 export function processText(inputText) {
   const output = []
   const json = inputText.split(' ') // Split text by spaces into array

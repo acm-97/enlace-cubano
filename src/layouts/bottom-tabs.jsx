@@ -24,6 +24,7 @@ function BottomTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarStyle: {
           position: 'absolute',
           flex: 1,

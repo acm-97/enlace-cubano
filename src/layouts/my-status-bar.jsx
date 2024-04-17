@@ -3,11 +3,15 @@ import React from 'react'
 import {StyleSheet, View, StatusBar, Platform, SafeAreaView} from 'react-native'
 
 export default function MyStatusBar() {
-  const {navigatorTheme} = useTheme()
+  const {navigatorTheme, theme} = useTheme()
   return (
     <View style={{backgroundColor: navigatorTheme.colors.background}}>
       <SafeAreaView>
-        <StatusBar translucent backgroundColor={navigatorTheme.colors.background} />
+        <StatusBar
+          translucent
+          backgroundColor={navigatorTheme.colors.background}
+          barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
+        />
       </SafeAreaView>
     </View>
   )

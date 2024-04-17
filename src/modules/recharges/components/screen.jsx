@@ -1,45 +1,24 @@
 import propTypes from 'prop-types'
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
-import NautaScreen from './nauta/screen'
-import MovilScreen from './movil/screen'
-import {config} from '@gluestack-ui/config'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import {useTheme} from '@/hooks'
+import RechargeFormScreen from './movil/recharge-form-screen'
+import TopTabsNavigator from './top-tabs-navigator'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
-const menu = [
-  {label: 'Movil', icon: 'smartphone', Component: MovilScreen},
-  {label: 'Nauta', icon: 'router', Component: NautaScreen},
-]
-
-const Tab = createMaterialTopTabNavigator()
+const MovilStack = createNativeStackNavigator()
 
 function RechargesScreen() {
-  const {theme, navigatorTheme} = useTheme()
-  const {orange50, orange200} = config.tokens.colors
-
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarItemStyle: {flexDirection: 'row', alignItems: 'center'},
-        tabBarLabelStyle: {fontSize: 14, fontWeight: 600},
-        tabBarActiveTintColor: navigatorTheme.colors.primary,
-        tabBarPressColor: theme === 'dark' ? orange200 : orange50,
-        tabBarPressOpacity: 0.5,
-      }}
-    >
-      {menu.map(({label, icon, Component}) => (
-        <Tab.Screen
-          key={label}
-          name={label}
-          component={Component}
-          options={{
-            swipeEnabled: false,
-            tabBarLabel: label,
-            tabBarIcon: ({color, size}) => <MaterialIcons name={icon} color={color} size={20} />,
-          }}
-        />
-      ))}
-    </Tab.Navigator>
+    <MovilStack.Navigator>
+      <MovilStack.Screen
+        name="RechargesList"
+        options={{headerShown: false, title: 'Lista de Recargas'}}
+        component={TopTabsNavigator}
+      />
+      <MovilStack.Screen
+        name="RechargeMovilForm"
+        options={{title: ''}}
+        component={RechargeFormScreen}
+      />
+    </MovilStack.Navigator>
   )
 }
 

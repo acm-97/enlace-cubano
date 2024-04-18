@@ -9,8 +9,9 @@ import {
   AvatarImage,
   Box,
 } from '@gluestack-ui/themed'
-import {Pressable, Text} from 'react-native'
+import {Pressable} from 'react-native'
 import {tw} from '@/lib/settings'
+import {Text} from '@/components'
 
 function ContactList({navigation, route: {params}}) {
   return (

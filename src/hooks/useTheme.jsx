@@ -22,10 +22,10 @@ const getNavigatorTheme = theme => {
 const themeStore = create(set => ({
   theme: Appearance.getColorScheme(),
   navigatorTheme: getNavigatorTheme(),
-  setTheme: (theme, setColorScheme, setNavigatorTheme) => {
-    setColorScheme(theme)
-    setNavigatorTheme(getNavigatorTheme(theme))
-    set({theme})
+  setTheme: (mode, setColorScheme, setNavigatorTheme) => {
+    setColorScheme(mode)
+    setNavigatorTheme(getNavigatorTheme(mode))
+    set({theme: mode})
   },
   setNavigatorTheme: navigatorTheme => set({navigatorTheme}),
 }))

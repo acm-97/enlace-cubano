@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import propTypes from 'prop-types'
-import {Box, Text, Card, Input} from '@gluestack-ui/themed'
+import {Box, Card, Input} from '@gluestack-ui/themed'
 import {tw} from '@/lib/settings'
 import {useTheme} from '@/hooks'
 import {StyleSheet} from 'react-native'

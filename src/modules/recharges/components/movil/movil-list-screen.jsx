@@ -1,3 +1,4 @@
+import {Text} from '@/components'
 import {movilRecharges} from '@/constants/recharges-mockup'
 import {useDebounceFn, useTheme} from '@/hooks'
 import {tw} from '@/lib/settings'
@@ -7,7 +8,6 @@ import {
   Card,
   Box,
   VStack,
-  Text,
   ScrollView,
   HStack,
   Input,
@@ -22,7 +22,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 function MovilListScreen({navigation}) {
   const [filteredList, setFilteredList] = useState()
-  const {theme, setTheme} = useTheme()
+  const {theme} = useTheme()
   const {red500} = config.tokens.colors
 
   const styles = StyleSheet.create({
@@ -70,13 +70,7 @@ function MovilListScreen({navigation}) {
                   />
                   <Divider />
                   <HStack space="lg" reversed={false} style={tw`justify-end items-center w-full`}>
-                    <Pressable onPress={() => setTheme('light')}>
-                      <MaterialIcons name="favorite" color={red500} size={20} />
-                    </Pressable>
-                    <Pressable onPress={() => setTheme('dark')}>
-                      <MaterialIcons name="favorite" color={red500} size={20} />
-                    </Pressable>
-                    <Pressable onPress={() => setTheme('device')}>
+                    <Pressable>
                       <MaterialIcons name="favorite" color={red500} size={20} />
                     </Pressable>
                     <Box w="auto" style={tw`bg-orange-500/20 py-1.5 px-2 rounded-md`}>

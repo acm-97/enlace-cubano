@@ -9,7 +9,7 @@ const MovilStack = createNativeStackNavigator()
 
 function RechargesScreen() {
   return (
-    <MovilStack.Navigator>
+    <MovilStack.Navigator initialRouteName="RechargesList">
       <MovilStack.Group>
         <MovilStack.Screen
           name="RechargesList"

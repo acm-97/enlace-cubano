@@ -1,6 +1,4 @@
 import propTypes from 'prop-types'
-import {GluestackUIProvider} from '@gluestack-ui/themed'
-import {config} from '@gluestack-ui/config' // Optional if you want to use default theme
 import {Platform, Linking, View} from 'react-native'
 import BottomTabs from './bottom-tabs'
 import {NavigationContainer} from '@react-navigation/native'
@@ -9,13 +7,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import {useTheme} from '@/hooks'
 import MyStatusBar from './my-status-bar'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {Providers} from '@/contexts'
 
 const PERSISTENCE_KEY = 'NAVIGATION_STATE'
 
 function MainLayout() {
-  const [isReady, setIsReady] = useState(Platform.OS === 'web') // Don't persist state on web since it's based on URL
+  const [isReady, setIsReady] = useState(Platform.OS === 'web')
   const [initialState, setInitialState] = useState()
-  const {theme, navigatorTheme} = useTheme()
+  const {navigatorTheme} = useTheme()
 
   useEffect(() => {
     const restoreState = async () => {
@@ -46,7 +45,7 @@ function MainLayout() {
   }
 
   return (
-    <GluestackUIProvider colorMode={theme ?? 'light'} config={config}>
+    <Providers>
       <NavigationContainer
         theme={navigatorTheme}
         initialState={initialState}
@@ -57,7 +56,7 @@ function MainLayout() {
           <BottomTabs />
         </SafeAreaView>
       </NavigationContainer>
-    </GluestackUIProvider>
+    </Providers>
   )
 }
 

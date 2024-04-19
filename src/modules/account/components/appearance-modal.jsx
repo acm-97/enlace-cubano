@@ -62,8 +62,6 @@ function AppearanceModal({showAppearance, onClose}) {
                   <HStack
                     style={tw`w-full justify-between items-center border-b border-borderDark-100 dark:border-borderDark-800 py-4`}
                     w="$full"
-                    justifyContent="space-between"
-                    alignItems="center"
                     space="md"
                   >
                     <Box>

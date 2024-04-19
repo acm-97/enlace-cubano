@@ -47,6 +47,8 @@ function MovilListScreen({navigation}) {
     {wait: 500},
   )
 
+  if (movilRecharges.length === 0) <ListEmptyComponent />
+
   return (
     <Box style={tw`w-full flex-1 items-center`}>
       <ScrollView style={tw`w-full px-4 py-6`}>
@@ -85,6 +87,14 @@ function MovilListScreen({navigation}) {
           ))}
         </VStack>
       </ScrollView>
+    </Box>
+  )
+}
+
+function ListEmptyComponent() {
+  return (
+    <Box style={tw`w-full h-24 justify-center items-center`}>
+      <Text style={tw`text-lg`}>No se encontraron ofertas</Text>
     </Box>
   )
 }

@@ -57,12 +57,12 @@ function AccountOptionsScreen({navigation}) {
           </Box>
           <Avatar bgColor="$orange500" size="lg" borderRadius="$full">
             <AvatarFallbackText>A C</AvatarFallbackText>
-            <AvatarImage
+            {/* <AvatarImage
               alt={` image`}
               source={{
-                uri: '',
+                uri: undefined,
               }}
-            />
+            /> */}
           </Avatar>
         </HStack>
         {/* <Divider /> */}

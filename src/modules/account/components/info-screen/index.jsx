@@ -96,12 +96,12 @@ function InfoScreen({navigation}) {
             }}
           />}
           <AvatarBadge
-            style={tw`bg-secondary-100 border-borderDark-400 border-[1px] w-6 h-6  items-center justify-center`}
+            style={tw`bg-secondary-100 dark:bg-secondary-500 border-borderDark-400 border-[1px] w-6 h-6  items-center justify-center`}
           >
             <MaterialCommunityIcons
               name="pencil"
               style={tw`text-black dark:text-white`}
-              size={20}
+              size={15}
             />
           </AvatarBadge>
         </Avatar>

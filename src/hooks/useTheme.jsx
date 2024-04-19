@@ -42,7 +42,7 @@ export default function useTheme() {
     // 1️⃣  opt OUT of listening to DEVICE color scheme events
     observeDeviceColorSchemeChanges: false,
     // 2️⃣  and supply an initial color scheme
-    initialColorScheme: 'device', // 'light' | 'dark' | 'device'
+    initialColorScheme: theme, // 'light' | 'dark' | 'device'
   })
 
   // 3️⃣  use the `useAppColorScheme` hook anywhere to get a reference to the current

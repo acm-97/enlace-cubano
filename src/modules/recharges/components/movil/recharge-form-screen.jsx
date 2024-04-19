@@ -6,7 +6,7 @@ import {useTheme} from '@/hooks'
 import {StyleSheet} from 'react-native'
 import HTMLView from 'react-native-htmlview'
 import {useMovilRechargeForm} from '../../hooks'
-import FormFieldControl from '@/components/Form/FormFieldControl'
+import FormFieldControl from '@/components/Form/form-field-control'
 import {Button, InputField} from '@/components'
 import * as Contacts from 'expo-contacts'
 

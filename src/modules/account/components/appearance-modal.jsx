@@ -16,6 +16,7 @@ import {
   VStack,
   HStack,
   Box,
+  Divider,
 } from '@gluestack-ui/themed'
 import propTypes from 'prop-types'
 import {useEffect, useState} from 'react'
@@ -52,13 +53,14 @@ function AppearanceModal({showAppearance, onClose}) {
           {/* <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper> */}
-          <VStack space="md" style={tw`w-full justify-center items-center py-4 px-2`}>
-            <Text style={tw`text-xl font-semibold`}>Apariencia</Text>
+          <Text style={tw`text-xl font-semibold pb-4 pt-3`}>Apariencia</Text>
+          <Divider />
+          <VStack space="md" style={tw`w-full justify-center items-center pb-4 px-4`}>
             <RadioGroup value={value} onChange={setValue}>
               {options.map(({label, description, mode}) => (
                 <Pressable key={label} onPress={() => setValue(mode)} style={tw`w-full`}>
                   <HStack
-                    style={tw`w-full justify-between items-center border-t border-borderDark-100 dark:border-borderDark-800 py-4`}
+                    style={tw`w-full justify-between items-center border-b border-borderDark-100 dark:border-borderDark-800 py-4`}
                     w="$full"
                     justifyContent="space-between"
                     alignItems="center"
@@ -66,7 +68,7 @@ function AppearanceModal({showAppearance, onClose}) {
                   >
                     <Box>
                       <Text style={tw`text-base font-medium`}>{label}</Text>
-                      {description && <Text style={tw`text-sm opacity-50`}>{description}</Text>}
+                      {description && <Text style={tw`text-sm opacity-60`}>{description}</Text>}
                     </Box>
                     <Radio size="sm" value={mode}>
                       <RadioIndicator

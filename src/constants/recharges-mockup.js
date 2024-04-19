@@ -7,6 +7,7 @@ export const movilRecharges = [
     price: 10,
     isFavorite: true,
     date: new Date('2024-04-11'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -14,6 +15,7 @@ export const movilRecharges = [
     price: 50,
     isFavorite: false,
     date: new Date('2024-04-10'),
+    status: "Pendiente"
   },
   {
     id: randomUUID(),
@@ -21,6 +23,7 @@ export const movilRecharges = [
     price: 20,
     isFavorite: false,
     date: new Date('2024-04-09'),
+    status: "Pendiente"
   },
   {
     id: randomUUID(),
@@ -28,6 +31,7 @@ export const movilRecharges = [
     price: 15,
     isFavorite: false,
     date: new Date('2024-04-08'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -35,6 +39,7 @@ export const movilRecharges = [
     price: 30,
     isFavorite: false,
     date: new Date('2024-04-07'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -42,6 +47,7 @@ export const movilRecharges = [
     price: 75,
     isFavorite: false,
     date: new Date('2024-04-06'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -49,6 +55,7 @@ export const movilRecharges = [
     price: 25,
     isFavorite: false,
     date: new Date('2024-04-05'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -56,6 +63,7 @@ export const movilRecharges = [
     price: 12,
     isFavorite: false,
     date: new Date('2024-04-04'),
+    status: "Pendiente"
   },
   {
     id: randomUUID(),
@@ -63,6 +71,7 @@ export const movilRecharges = [
     price: 18,
     isFavorite: false,
     date: new Date('2024-04-03'),
+    status: "Completado"
   },
   {
     id: randomUUID(),
@@ -70,5 +79,6 @@ export const movilRecharges = [
     price: 35,
     isFavorite: false,
     date: new Date('2024-04-02'),
+    status: "Completado"
   },
 ]

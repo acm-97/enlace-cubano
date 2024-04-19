@@ -72,9 +72,9 @@ function MovilListScreen({navigation}) {
                   />
                   <Divider />
                   <HStack space="lg" reversed={false} style={tw`justify-end items-center w-full`}>
-                    <Pressable>
+                    {/* <Pressable>
                       <MaterialIcons name="favorite" color={red500} size={20} />
-                    </Pressable>
+                    </Pressable> */}
                     <Box w="auto" style={tw`bg-orange-500/20 py-1.5 px-2 rounded-md`}>
                       <Text size="md" style={tw`text-orange-500 font-semibold `}>
                         ${price}

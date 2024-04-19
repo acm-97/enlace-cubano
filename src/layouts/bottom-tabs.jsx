@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator()
 
 const menu = [
   {label: 'Recargas', icon: 'devices', Component: RechargesScreen},
-  {label: 'Favoritos', icon: 'favorite-border', Component: FavoritesScreen},
+  // {label: 'Favoritos', icon: 'favorite-border', Component: FavoritesScreen},
   {label: 'Actividad', icon: 'receipt', Component: ActivityScreen},
   {label: 'Cuenta', icon: 'settings', Component: AccountScreen},
 ]

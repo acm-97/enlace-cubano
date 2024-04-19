@@ -56,17 +56,17 @@ function AppearanceModal({showAppearance, onClose}) {
           <Text style={tw`text-xl font-semibold pb-4 pt-3`}>Apariencia</Text>
           <Divider />
           <VStack space="md" style={tw`w-full justify-center items-center pb-4 px-4`}>
-            <RadioGroup value={value} onChange={setValue}>
+            <RadioGroup value={value} onChange={setValue} >
               {options.map(({label, description, mode}) => (
-                <Pressable key={label} onPress={() => setValue(mode)} style={tw`w-full`}>
+                <Pressable key={label} onPress={() => setValue(mode)}>
                   <HStack
                     style={tw`w-full justify-between items-center border-b border-borderDark-100 dark:border-borderDark-800 py-4`}
                     w="$full"
                     space="md"
                   >
-                    <Box>
-                      <Text style={tw`text-base font-medium`}>{label}</Text>
-                      {description && <Text style={tw`text-sm opacity-60`}>{description}</Text>}
+                    <Box  style={tw`flex-1`}>
+                      <Text style={tw`text-base font-medium `}>{label}</Text>
+                      {description && <Text style={tw`text-sm opacity-60`}>{description} as das das</Text>}
                     </Box>
                     <Radio size="sm" value={mode}>
                       <RadioIndicator

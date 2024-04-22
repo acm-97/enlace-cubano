@@ -83,7 +83,7 @@ function ContactList({navigation, route: {params}}) {
           onChange={onSearch}
         />
         <Pressable onPress={() => Contacts.openContactForm({})}>
-          <MaterialIcons name="person-add-alt-1" size={25} />
+          <MaterialIcons style={tw`dark:text-secondary-0`} name="person-add-alt-1" size={25} />
         </Pressable>
       </Box>
       <AlphabetList
@@ -94,7 +94,7 @@ function ContactList({navigation, route: {params}}) {
           fontSize: 12,
         }}
         indexContainerStyle={{
-          backgroundColor: theme === 'dark' ? navigatorTheme.backgroundColor : 'white',
+          backgroundColor: theme === 'dark' ? '#121212' : 'white',
           width: 20,
           paddingLeft: 5,
         }}
@@ -119,7 +119,7 @@ function ContactList({navigation, route: {params}}) {
         renderCustomSectionHeader={section => (
           <Box
             // style={tw`py-1 px-6 bg-warmGray-200 dark:bg-warmGray-700`}
-            style={tw`pt-4 pb-1 px-6 bg-white border-b border-borderDark-100 dark:border-borderDark-800`}
+            style={tw`pt-4 pb-1 px-6 bg-white dark:bg-[#121212] border-b border-borderDark-100 dark:border-borderDark-800`}
           >
             <Text style={tw`font-semibold`}>{section?.title}</Text>
           </Box>

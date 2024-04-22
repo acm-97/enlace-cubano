@@ -7,7 +7,7 @@ import {StyleSheet} from 'react-native'
 import HTMLView from 'react-native-htmlview'
 import {useMovilRechargeForm} from '../../hooks'
 import FormFieldControl from '@/components/Form/form-field-control'
-import {Button, InputField} from '@/components'
+import {Button, InputField, PhoneInputField} from '@/components'
 import * as Contacts from 'expo-contacts'
 
 function RechargeFormScreen({navigation, route: {params}}) {
@@ -60,12 +60,13 @@ function RechargeFormScreen({navigation, route: {params}}) {
       <Box style={tw`w-full mt-10 mb-7`}>
         <FormFieldControl
           control={control}
-          Component={InputField}
+          Component={PhoneInputField}
           label="Número de teléfono"
           name="phoneNumber"
           type="text"
           isRequired
           style={tw`mb-0`}
+          initialCountry="cu"
         />
         <Button
           variant="link"

@@ -43,9 +43,11 @@ function InputField({
 
   return (
     <FormControl size="md" {...formBaseProps}>
-      <FormControlLabel mb="$1" {...labelProps}>
-        <FormControlLabelText>{label}</FormControlLabelText>
-      </FormControlLabel>
+      {label && (
+        <FormControlLabel mb="$1" {...labelProps}>
+          <FormControlLabelText>{label}</FormControlLabelText>
+        </FormControlLabel>
+      )}
       <Input
         {...inputWrapperProps}
         style={tw.style(

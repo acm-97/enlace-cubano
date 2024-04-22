@@ -28,6 +28,7 @@ function RechargesScreen() {
           options={{
             title: 'Contactos',
             // headerRight: ({ }) => <Button label="Listo" variant="link" onPress={()} />
+            headerShadowVisible: false,
           }}
           component={ContactList}
         />

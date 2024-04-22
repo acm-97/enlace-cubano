@@ -89,12 +89,14 @@ function InfoScreen({navigation}) {
       <Pressable onPress={onToggleAppearance}>
         <Avatar bgColor="$orange500" size="lg" borderRadius="$full">
           <AvatarFallbackText>A C</AvatarFallbackText>
-          {image && <AvatarImage
-            alt={` image`}
-            source={{
-              uri: image,
-            }}
-          />}
+          {image && (
+            <AvatarImage
+              alt={` image`}
+              source={{
+                uri: image,
+              }}
+            />
+          )}
           <AvatarBadge
             style={tw`bg-secondary-100 dark:bg-secondary-500 border-borderDark-400 border-[1px] w-6 h-6  items-center justify-center`}
           >

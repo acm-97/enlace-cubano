@@ -4,7 +4,7 @@ import propTypes from 'prop-types'
 
 function Text({style, children, ...props}) {
   return (
-    <TextUi {...props} style={tw.style(`text-dark dark:text-white`, style)}>
+    <TextUi {...props} style={tw.style(`text-dark dark:text-white text-base`, style)}>
       {children}
     </TextUi>
   )

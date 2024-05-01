@@ -43,6 +43,8 @@ function PhoneNumberForm({navigation}) {
           Component={PhoneInputField}
           label="Numero Telefónico"
           name="phoneNumber"
+          initialCountry="us"
+          keyboardType="number-pad"
         />
         <Button label="Actualizar" onPress={handleSubmit(onSubmit)} w="$full" mt="$10" />
         <Button variant="link" label="Cancelar" onPress={() => navigation.goBack()} />

@@ -67,11 +67,11 @@ function MovilListScreen({navigation}) {
                 <VStack space="md" reversed={false}>
                   <HTMLView
                     value={`<div>${description}</div>`}
-                    style={tw`w-full`}
+                    style={tw`w-full text-base`}
                     stylesheet={styles}
                   />
                   <Divider />
-                  <HStack space="lg" reversed={false} style={tw`justify-end items-center w-full`}>
+                  <HStack space="lg" reversed={false} style={tw`justify-start items-center w-full`}>
                     {/* <Pressable>
                       <MaterialIcons name="favorite" color={red500} size={20} />
                     </Pressable> */}

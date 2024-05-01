@@ -12,7 +12,7 @@ import * as Contacts from 'expo-contacts'
 
 function RechargeFormScreen({navigation, route: {params}}) {
   const {theme} = useTheme()
-  const {control, setValue, handleSubmit} = useMovilRechargeForm(params?.recharge)
+  const {control, setValue, handleSubmit, watch} = useMovilRechargeForm(params?.recharge)
   const [contacts, setContacts] = useState([])
 
   const styles = StyleSheet.create({
@@ -60,13 +60,14 @@ function RechargeFormScreen({navigation, route: {params}}) {
       <Box style={tw`w-full mt-10 mb-7`}>
         <FormFieldControl
           control={control}
-          Component={PhoneInputField}
+          Component={InputField}
           label="Número de teléfono"
           name="phoneNumber"
           type="text"
           isRequired
           style={tw`mb-0`}
-          initialCountry="cu"
+          placeholder="+53 ########"
+          keyboardType="number-pad"
         />
         <Button
           variant="link"

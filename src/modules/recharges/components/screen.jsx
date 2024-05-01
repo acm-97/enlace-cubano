@@ -13,7 +13,7 @@ function RechargesScreen() {
       <MovilStack.Group>
         <MovilStack.Screen
           name="RechargesList"
-          options={{headerShown: false, title: 'Lista de Recargas'}}
+          options={{headerShown: false, title: 'Lista de Ofertas'}}
           component={TopTabsNavigator}
         />
         <MovilStack.Screen

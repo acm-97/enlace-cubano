@@ -21,7 +21,6 @@ import Contacts from 'react-native-contacts'
 function ContactList({navigation, route: {params}}) {
   const {theme, navigatorTheme} = useTheme()
   const [filtered, setFiltered] = useState([])
-  console.log('🚀 ~ ContactList ~ filtered:', filtered)
 
   // const contacts = useMemo(() => {
   //   let result = []
@@ -82,7 +81,7 @@ function ContactList({navigation, route: {params}}) {
           placeholder="Buscar contacto ..."
           onChange={onSearch}
         />
-        <Pressable onPress={() => Contacts.openContactForm({})}>
+        <Pressable onPress={() => Contacts?.openContactForm?.({})}>
           <MaterialIcons style={tw`dark:text-secondary-0`} name="person-add-alt-1" size={25} />
         </Pressable>
       </Box>
@@ -162,7 +161,7 @@ function ListEmptyComponent() {
 
 function ListItem({item, setValue, navigation}) {
   const onPress = () => {
-    setValue?.('phoneNumber', item.phoneNumber?.number)
+    setValue?.('phoneNumber', item.phoneNumber.number)
     navigation.goBack()
   }
   const name = item.name
@@ -175,6 +174,8 @@ function ListItem({item, setValue, navigation}) {
   //     </Box>
   //   )
   // }
+
+  if (!item?.phoneNumber) return
 
   return (
     <Pressable onPress={onPress}>

@@ -5,7 +5,7 @@ import CountryPicker from 'react-native-country-picker-modal'
 import {tw} from '@/lib/settings'
 import propTypes from 'prop-types'
 
-function PhoneInputField({style, countryPickerProps, ...props}) {
+function PhoneInputField({style, onChange, countryPickerProps, ...props}) {
   const [countryCode, setCountryCode] = useState('')
   const [selectedCountry, setSelectedCountry] = useState(null)
   const [countryPickerVisible, setCountryPickerVisible] = useState(false)
@@ -24,9 +24,9 @@ function PhoneInputField({style, countryPickerProps, ...props}) {
     <>
       <PhoneInput
         onPressFlag={toggleCountryPicker}
-        initialCountry="us"
         autoFormat
         {...props}
+        onChangePhoneNumber={onChange}
         style={tw.style('h-10 bg-secondary-100 dark:bg-warmGray-700 px-3 rounded-md', style)}
       />
       {countryPickerVisible && (

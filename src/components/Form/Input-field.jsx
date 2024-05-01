@@ -30,6 +30,7 @@ function InputField({
   labelProps,
   type,
   onChange,
+  startIcon,
   ...props
 }) {
   const [isFocused, setIsFocused] = useState(false)
@@ -57,6 +58,12 @@ function InputField({
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
       >
+        {startIcon && (
+          <InputSlot pr="$3" onPress={handleState}>
+            {/* EyeIcon, EyeOffIcon are both imported from 'lucide-react-native' */}
+            <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="$orange500" />
+          </InputSlot>
+        )}
         <InputFieldUI
           {...props}
           type={type === 'password' ? (showPassword ? 'text' : 'password') : type}
@@ -96,6 +103,7 @@ InputField.propTypes = {
   size: propTypes.string,
   type: propTypes.string,
   onChange: propTypes.func,
+  startIcon: propTypes.any,
 }
 
 InputField.defaultProps = {}

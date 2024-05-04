@@ -102,7 +102,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
       {error && (
         <Text
           testID={testID ? `${testID}-error` : undefined}
-          className="text-sm text-danger-400 dark:text-danger-600"
+          className="ml-2 mt-1 text-sm text-danger-400 dark:text-danger-600"
         >
           {error}
         </Text>

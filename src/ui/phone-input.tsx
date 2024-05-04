@@ -111,7 +111,9 @@ export const PhoneInput = React.forwardRef<CPhoneInput, NInputProps>((props, ref
         countryPickerProps={{theme: selectedTheme === 'dark' && DARK_THEME}}
         {...inputProps}
       />
-      {error && <Text className="text-sm text-danger-400 dark:text-danger-600">{error}</Text>}
+      {error && (
+        <Text className="ml-2 mt-1.5 text-sm text-danger-400 dark:text-danger-600">{error}</Text>
+      )}
     </View>
   )
 })

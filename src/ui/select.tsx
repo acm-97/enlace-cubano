@@ -204,7 +204,10 @@ export const Select = (props: SelectProps) => {
           <CaretDown />
         </TouchableOpacity>
         {error && (
-          <Text testID={`${testID}-error`} className="text-sm text-danger-300 dark:text-danger-600">
+          <Text
+            testID={`${testID}-error`}
+            className="ml-2 mt-1.5 text-sm text-danger-300 dark:text-danger-600"
+          >
             {error}
           </Text>
         )}

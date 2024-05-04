@@ -21,7 +21,8 @@ export default function Login() {
         signIn(token)
         push('/')
       },
-      onError: e => showErrorMessage('Error while sign in user.'),
+      // @ts-ignore
+      onError: e => showErrorMessage(e.response?.data?.message),
     })
   }
   return (

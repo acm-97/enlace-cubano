@@ -23,7 +23,7 @@ export default function Settings() {
           <Text className="text-xl font-bold">{translate('settings.title')}</Text>
           <ItemsContainer title="settings.generale">
             <Item
-              text="settings.account"
+              text="settings.account.title"
               value={user?.email}
               icon={<Icon as="MaterialCommunityIcons" name="account-cog-outline" size={22} />}
               onPress={() => push('/account/')}

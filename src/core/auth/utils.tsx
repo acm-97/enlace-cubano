@@ -7,10 +7,17 @@ export type TokenType = {
   // refreshToken: string
 }
 
+export type PhoneNumber = {
+  number: string
+  code: string
+  country: string
+}
+
 export type UserType = {
+  id: string
   firstName: string
   lastName: string
-  phoneNumber: string
+  phoneNumber: PhoneNumber
   email: string
 }
 

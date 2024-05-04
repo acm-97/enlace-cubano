@@ -3,7 +3,7 @@ import React from 'react'
 import type {ColorSchemeType} from '@/core'
 import {translate, useSelectedTheme} from '@/core'
 import type {Option} from '@/ui'
-import {Options, useModal} from '@/ui'
+import {Icon, Options, useModal} from '@/ui'
 
 import {Item} from '../item'
 
@@ -35,7 +35,12 @@ export const ThemeItem = () => {
 
   return (
     <>
-      <Item text="settings.theme.title" value={theme?.label} onPress={modal.present} />
+      <Item
+        text="settings.theme.title"
+        value={theme?.label}
+        icon={<Icon as="MaterialIcons" name="invert-colors" size={20} />}
+        onPress={modal.present}
+      />
       <Options
         ref={modal.ref}
         options={themes}

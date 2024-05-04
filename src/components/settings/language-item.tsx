@@ -4,7 +4,7 @@ import {useSelectedLanguage} from '@/core'
 import {translate} from '@/core'
 import type {Language} from '@/core/i18n/resources'
 import type {Option} from '@/ui'
-import {Options, useModal} from '@/ui'
+import {Icon, Options, useModal} from '@/ui'
 
 import {Item} from '../item'
 
@@ -34,7 +34,12 @@ export const LanguageItem = () => {
 
   return (
     <>
-      <Item text="settings.language" value={selectedLanguage?.label} onPress={modal.present} />
+      <Item
+        text="settings.language"
+        value={selectedLanguage?.label}
+        icon={<Icon as="MaterialIcons" name="language" size={20} />}
+        onPress={modal.present}
+      />
       <Options
         ref={modal.ref}
         options={langs}

@@ -1,4 +1,5 @@
 import {FlashList} from '@shopify/flash-list'
+import {Stack} from 'expo-router'
 import debounce from 'lodash.debounce'
 import React, {useCallback, useEffect, useMemo, useState} from 'react'
 
@@ -41,6 +42,9 @@ export default function MovilOffers() {
   }
   return (
     <View className="flex-1 ">
+      <Stack.Screen
+        options={{title: translate('offers.mobile.title'), headerBackTitleVisible: false}}
+      />
       <FocusAwareStatusBar />
       <Input
         value={search}

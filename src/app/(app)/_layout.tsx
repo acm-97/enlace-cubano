@@ -3,16 +3,22 @@ import {Link, Redirect, SplashScreen, Tabs} from 'expo-router'
 import React, {useCallback, useEffect} from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
-import {useAuth, useIsFirstTime} from '@/core'
+import {useCurrentUser} from '@/api/users'
+import {translate, useAuth, useIsFirstTime} from '@/core'
 import {Pressable, Text} from '@/ui'
 import {Feed as FeedIcon, Settings as SettingsIcon, Style as StyleIcon} from '@/ui/icons'
 
 export default function TabLayout() {
   const status = useAuth.use.status()
+  const saveUser = useAuth.use.saveUser()
+  const user = useAuth.use.user()
   const [isFirstTime] = useIsFirstTime()
+  const {data} = useCurrentUser()
+
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync()
   }, [])
+
   useEffect(() => {
     if (status !== 'idle') {
       setTimeout(() => {
@@ -21,16 +27,23 @@ export default function TabLayout() {
     }
   }, [hideSplash, status])
 
+  useEffect(() => {
+    if (status === 'signIn' && data && !user) {
+      saveUser(data)
+    }
+  }, [data, saveUser, status, user])
+
   if (status === 'signOut') {
     return <Redirect href="/login" />
   }
+
   return (
     <Tabs>
       <Tabs.Screen
-        name="(offers)"
+        name="index"
         options={{
-          title: 'Ofertas',
-          headerShown: false,
+          title: translate('offers.index-title'),
+          // headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialIcons color={color} size={size} name="featured-play-list" />
           ),

@@ -20,7 +20,7 @@ const button = tv({
       },
       secondary: {
         container: 'bg-primary-600',
-        label: 'text-secondary-600',
+        label: 'text-white',
         indicator: 'text-white',
       },
       outline: {
@@ -100,6 +100,7 @@ export const Button = React.forwardRef<View, Props>(
       variant = 'default',
       disabled = false,
       size = 'default',
+      fullWidth = true,
       className = '',
       testID,
       textClassName = '',
@@ -107,7 +108,10 @@ export const Button = React.forwardRef<View, Props>(
     },
     ref,
   ) => {
-    const styles = React.useMemo(() => button({variant, disabled, size}), [variant, disabled, size])
+    const styles = React.useMemo(
+      () => button({variant, disabled, size, fullWidth}),
+      [variant, disabled, size, fullWidth],
+    )
 
     return (
       <Pressable

@@ -4,7 +4,6 @@ import {useController} from 'react-hook-form'
 import type {TextInput, TextInputProps} from 'react-native'
 import {I18nManager, StyleSheet, View} from 'react-native'
 import {TextInput as NTextInput} from 'react-native'
-import {twMerge} from 'tailwind-merge'
 import {tv} from 'tailwind-variants'
 
 import colors from './colors'
@@ -81,7 +80,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
   )
 
   return (
-    <View className={twMerge(styles.container(), classNames?.container)}>
+    <View className={styles.container({className: classNames?.container})}>
       {label && (
         <Text testID={testID ? `${testID}-label` : undefined} className={styles.label()}>
           {label}
@@ -91,7 +90,7 @@ export const Input = React.forwardRef<TextInput, NInputProps>((props, ref) => {
         testID={testID}
         ref={ref}
         placeholderTextColor={colors.neutral[400]}
-        className={twMerge(styles.input(), classNames?.input)}
+        className={styles.input({className: classNames?.input})}
         onBlur={onBlur}
         onFocus={onFocus}
         {...inputProps}

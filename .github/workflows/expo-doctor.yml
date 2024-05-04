@@ -49,12 +49,12 @@ jobs:
 
       - name: Set environment variables based on deployment environment
         run: |
-        
-            echo "API_URL=https://dummyjson.com/" >> .env.production
 
-            echo "API_URL=https://dummyjson.com/" >> .env.staging
-            
-            echo "API_URL=https://dummyjson.com/" >> .env.development
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.production
+
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.staging
+
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.development
 
       - name: Run prebuild
         run: pnpm run prebuild ## we only need to run this to generate the badged icon in `.expo` folder

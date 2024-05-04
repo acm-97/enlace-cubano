@@ -1,7 +1,25 @@
 {
+  "email": "Phone Number",
+  "error-data": "Error loading data",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "login": {
+    "form": {
+      "error-email": "Invalid email format",
+      "error-password": "Password is required",
+      "required-email": "Email is required",
+      "required-password": "Password must be at least 8 characters"
+    },
+    "title": "Sign In"
+  },
   "offers": {
     "index-title": "Offers",
     "mobile": {
+      "forms": {
+        "error-phone": "Ingrese un numero de teléfono",
+        "refine-error-phone": "Type a valid number (+53 XXXXXXXX)"
+      },
+      "open-contacts": "Open Contacts",
       "search": "Search ...",
       "title": "Mobile Offers"
     },
@@ -15,8 +33,12 @@
   "onboarding": {
     "message": "Welcome to obytes app site"
   },
+  "password": "Password",
+  "pay": "Pay",
+  "phone": "Phone Number",
   "settings": {
     "about": "About",
+    "account": "Account",
     "app_name": "App Name",
     "arabic": "Arabic",
     "english": "English",

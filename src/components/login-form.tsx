@@ -4,20 +4,20 @@ import type {SubmitHandler} from 'react-hook-form'
 import {useForm} from 'react-hook-form'
 import * as z from 'zod'
 
+import {translate} from '@/core'
 import {Button, ControlledInput, Text, View} from '@/ui'
 
 const schema = z.object({
-  name: z.string().optional(),
   email: z
     .string({
-      required_error: 'Email is required',
+      required_error: translate('login.form.required-email'),
     })
-    .email('Invalid email format'),
+    .email(translate('login.form.error-email')),
   password: z
     .string({
-      required_error: 'Password is required',
+      required_error: translate('login.form.required-password'),
     })
-    .min(6, 'Password must be at least 6 characters'),
+    .min(8, translate('login.form.error-password')),
 })
 
 export type FormType = z.infer<typeof schema>
@@ -32,22 +32,30 @@ export const LoginForm = ({onSubmit = () => {}}: LoginFormProps) => {
   })
   return (
     <View className="flex-1 justify-center p-4">
-      <Text testID="form-title" className="pb-6 text-center text-2xl">
-        Sign In
-      </Text>
+      <Text testID="form-title" tx="login.title" className="pb-6 text-center text-2xl" />
 
-      <ControlledInput testID="name" control={control} name="name" label="Name" />
-
-      <ControlledInput testID="email-input" control={control} name="email" label="Email" />
+      <ControlledInput
+        testID="email-input"
+        control={control}
+        name="email"
+        label={translate('email')}
+        keyboardType="email-address"
+      />
       <ControlledInput
         testID="password-input"
         control={control}
         name="password"
-        label="Password"
+        label={translate('password')}
         placeholder="***"
         secureTextEntry={true}
       />
-      <Button testID="login-button" label="Login" onPress={handleSubmit(onSubmit)} />
+      <Button
+        testID="login-button"
+        label="Login"
+        onPress={handleSubmit(onSubmit)}
+        className="mt-8"
+        size="lg"
+      />
     </View>
   )
 }

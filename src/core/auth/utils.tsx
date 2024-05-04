@@ -3,8 +3,15 @@ import {getItem, removeItem, setItem} from '@/core/storage'
 const TOKEN = 'token'
 
 export type TokenType = {
-  access: string
-  refresh: string
+  accessToken: string
+  // refreshToken: string
+}
+
+export type UserType = {
+  firstName: string
+  lastName: string
+  phoneNumber: string
+  email: string
 }
 
 export const getToken = () => getItem<TokenType>(TOKEN)

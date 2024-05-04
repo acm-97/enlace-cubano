@@ -38,7 +38,8 @@
       "env": {
         "APP_ENV": "staging",
         "EXPO_NO_DOTENV": "1",
-        "FLIPPER_DISABLE": "1"
+        "FLIPPER_DISABLE": "1",
+        "API_URL": "https://enlace-cubano-api.vercel.app/"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",
@@ -58,7 +59,8 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1"
+        "EXPO_NO_DOTENV": "1",
+        "API_URL": "https://enlace-cubano-api.vercel.app/"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",
@@ -76,7 +78,8 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1"
+        "EXPO_NO_DOTENV": "1",
+        "API_URL": "https://enlace-cubano-api.vercel.app/"
       },
       "pnpm": "8.15.4",
       "prebuildCommand": "prebuild --skip-dependency-update react",

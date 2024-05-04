@@ -8,9 +8,7 @@ type Response = {accessToken: string}
 
 export const useLoginUser = createMutation<Response, Variables, AxiosError>({
   mutationFn: async variables =>
-    client({
-      url: 'users/login',
-      method: 'POST',
+    client.post('users/login', {
       data: variables,
-    }).then(response => response.data),
+    }),
 })

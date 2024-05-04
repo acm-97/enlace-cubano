@@ -1,7 +1,7 @@
 import type {AxiosError} from 'axios'
 import {createQuery} from 'react-query-kit'
 
-import {client} from '../common'
+import {api} from '../common'
 import type {MobileOffer} from './types'
 
 type Response = MobileOffer[]
@@ -10,6 +10,6 @@ type Variables = void // as react-query-kit is strongly typed, we need to specif
 export const useMobileOffers = createQuery<Response, Variables, AxiosError>({
   queryKey: ['products'],
   fetcher: () => {
-    return client.get(`products`).then(response => response.data.products)
+    return api.get(`https://dummyjson.com/products`).then(response => response.data.products)
   },
 })

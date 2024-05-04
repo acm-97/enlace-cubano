@@ -19,9 +19,7 @@ type Response = {
 
 export const useSignupUser = createMutation<Response, Variables, AxiosError>({
   mutationFn: async variables =>
-    client({
-      url: 'users/register',
-      method: 'POST',
+    client.post('users/register', {
       data: variables,
-    }).then(response => response.data),
+    }),
 })

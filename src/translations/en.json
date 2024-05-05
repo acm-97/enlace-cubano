@@ -1,0 +1,104 @@
+{
+  "back": "Back",
+  "cancel": "Cancel",
+  "currentPassword": "Current Password",
+  "email": "Email",
+  "error-data": "Error loading data",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "login": {
+    "form": {
+      "error-email": "Invalid email format",
+      "error-password": "Password is required",
+      "required-email": "Email is required",
+      "required-password": "Password must be at least 8 characters",
+      "submit": "Login"
+    },
+    "signup": "Dont have an account?",
+    "title": "Sign in"
+  },
+  "next": "Next",
+  "offers": {
+    "index-title": "Offers",
+    "mobile": {
+      "forms": {
+        "error-phone": "Ingrese un numero de teléfono",
+        "refine-error-phone": "Type a valid number (+53 XXXXXXXX)"
+      },
+      "open-contacts": "Open Contacts",
+      "search": "Search ...",
+      "title": "Mobile Offers"
+    },
+    "mobile-option": "Mobile",
+    "nauta": {
+      "title": "Nauta Offers"
+    },
+    "nauta-option": "Nauta",
+    "recharges": "Recharges"
+  },
+  "onboarding": {
+    "message": "Welcome to obytes app site"
+  },
+  "password": "Password",
+  "pay": "Pay",
+  "phone": "Phone Number",
+  "save": "Save",
+  "settings": {
+    "about": "About",
+    "account": {
+      "confirm-password": "Confirm New Password",
+      "email-description": "Su correo electrónico puede utilizarse para ayudarle a iniciar sesión y a recuperar su cuenta",
+      "email-helper": "Se enviará un código de verificación a este correo electrónico",
+      "email-success": "Su correo electrónico ha sido modificado",
+      "new-password": "New Password",
+      "password-description": "Utilice una contraseña de al menos 8 caracteres que empiece por una letra mayúscula y contenga al menos un número y un carácter especial",
+      "password-success": "Su contraseña a sido actualizada",
+      "phone-description": "Su número de teléfono puede utilizarse para ayudarle a iniciar sesión y a recuperar su cuenta",
+      "phone-success": "Su número de teléfono ha sido modificado",
+      "required-phone": "Provide a valid phone number",
+      "title": "Account"
+    },
+    "app_name": "App Name",
+    "english": "English",
+    "generale": "General",
+    "github": "Github",
+    "language": "Language",
+    "links": "Links",
+    "logout": "Logout",
+    "more": "More",
+    "privacy": "Privacy Policy",
+    "rate": "Rate",
+    "share": "Share",
+    "spanish": "Spanish",
+    "support": "Support",
+    "support_us": "Support Us",
+    "terms": "Terms of Service",
+    "theme": {
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System",
+      "title": "Theme"
+    },
+    "title": "Settings",
+    "version": "Version",
+    "website": "Website"
+  },
+  "signup": {
+    "form": {
+      "error-confirm-password": "Las contraseñas deben coincidir",
+      "error-email": "Invalid email format",
+      "error-password": "La contraseña no es válida",
+      "error-phone": "Use a valid US phone number",
+      "required-email": "Email is required",
+      "required-firstName": "First name is required",
+      "required-lastName": "Last name is required",
+      "required-password": "Password must be at least 8 characters",
+      "required-phoneNumber": "Phone number is required",
+      "submit": "Sign up"
+    },
+    "login": "Already have an account",
+    "title": "Sign up"
+  },
+  "update": "Update",
+  "welcome": "Welcome to obytes app site"
+}

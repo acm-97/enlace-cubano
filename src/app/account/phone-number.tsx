@@ -12,11 +12,14 @@ import {Button, FocusAwareStatusBar, PhoneInput, Text, View} from '@/ui'
 
 const Schema = z
   .object({
-    phoneNumber: z.object({
-      code: z.string(),
-      country: z.string(),
-      number: z.string().min(1, translate('settings.account.required-phone')),
-    }),
+    phoneNumber: z.object(
+      {
+        code: z.string(),
+        country: z.string(),
+        number: z.string().min(1, translate('settings.account.required-phone')),
+      },
+      {required_error: translate('settings.account.required-phone')},
+    ),
   })
   .refine(
     schema => {
@@ -24,7 +27,7 @@ const Schema = z
       return /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/.test(n)
     },
     {
-      message: translate('signup.form.error-phone'),
+      message: translate('settings.account.required-phone'),
       path: ['phoneNumber'],
     },
   )

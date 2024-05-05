@@ -55,7 +55,7 @@
       "password-success": "Su contraseña a sido actualizada",
       "phone-description": "Su número de teléfono puede utilizarse para ayudarle a iniciar sesión y a recuperar su cuenta",
       "phone-success": "Su número de teléfono ha sido modificado",
-      "required-phone": "Provide a phone",
+      "required-phone": "Provide a valid phone number",
       "title": "Account"
     },
     "app_name": "App Name",

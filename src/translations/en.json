@@ -1,4 +1,5 @@
 {
+  "back": "Back",
   "cancel": "Cancel",
   "currentPassword": "Current Password",
   "email": "Email",
@@ -10,10 +11,13 @@
       "error-email": "Invalid email format",
       "error-password": "Password is required",
       "required-email": "Email is required",
-      "required-password": "Password must be at least 8 characters"
+      "required-password": "Password must be at least 8 characters",
+      "submit": "Login"
     },
+    "signup": "Dont have an account?",
     "title": "Sign In"
   },
+  "next": "Next",
   "offers": {
     "index-title": "Offers",
     "mobile": {
@@ -86,8 +90,13 @@
       "error-password": "La contraseña no es válida",
       "error-phone": "Use a valid US phone number",
       "required-email": "Email is required",
-      "required-password": "Password must be at least 8 characters"
+      "required-firstName": "First name is required",
+      "required-lastName": "Last name is required",
+      "required-password": "Password must be at least 8 characters",
+      "required-phoneNumber": "Phone number is required",
+      "submit": "Sign up"
     },
+    "login": "Already have an account",
     "title": "Sign Up"
   },
   "update": "Update",

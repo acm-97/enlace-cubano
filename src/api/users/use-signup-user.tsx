@@ -5,13 +5,7 @@ import type {UserType} from '@/core/auth/utils'
 
 import {client} from '../common'
 
-type Variables = {
-  firstName: string
-  lastName: string
-  phoneNumber: string
-  email: string
-  password: string
-}
+type Variables = Omit<UserType, 'id'>
 type Response = {
   _id: string
   email: string

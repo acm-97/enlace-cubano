@@ -274,6 +274,9 @@ devDependencies:
   lint-staged:
     specifier: ^13.3.0
     version: 13.3.0
+  lodash.isequal:
+    specifier: ^4.5.0
+    version: 4.5.0
   metro-babel-register:
     specifier: ^0.73.10
     version: 0.73.10

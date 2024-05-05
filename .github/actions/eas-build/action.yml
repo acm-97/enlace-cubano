@@ -35,7 +35,7 @@ inputs:
   AUTO_SUBMIT: ## TODO: we need to handle this too
     description: 'AUTO_SUBMIT (one of): true, false'
     required: true
-    default: 'false'
+    default: 'true'
   ANDROID:
     description: 'run for ANDROID (one of): true, false'
     required: true

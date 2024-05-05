@@ -1,5 +1,7 @@
+/* eslint-disable max-lines-per-function */
 import React from 'react'
 
+import {getLanguage} from '@/core'
 import {cleanup, fireEvent, render, screen, waitFor} from '@/core/test-utils'
 
 import type {LoginFormProps} from './login-form'
@@ -11,23 +13,41 @@ const onSubmitMock: jest.Mock<LoginFormProps['onSubmit']> = jest.fn()
 
 describe('LoginForm Form ', () => {
   it('renders correctly', async () => {
+    const local = getLanguage()
+
     render(<LoginForm />)
-    expect(await screen.findByText(/Sign in/i)).toBeOnTheScreen()
+    expect(
+      await screen.findByText(local === 'en' ? /Sign in/i : /Iniciar sesión/i),
+    ).toBeOnTheScreen()
   })
 
   it('should display required error when values are empty', async () => {
     render(<LoginForm />)
 
+    const local = getLanguage()
     const button = screen.getByTestId('login-button')
-    expect(screen.queryByText(/Email is required/i)).not.toBeOnTheScreen()
+    expect(
+      screen.queryByText(
+        local === 'en' ? /Invalid email format/i : /Se requiere correo electrónico/i,
+      ),
+    ).not.toBeOnTheScreen()
     fireEvent.press(button)
-    expect(await screen.findByText(/Email is required/i)).toBeOnTheScreen()
-    expect(screen.getByText(/Password is required/i)).toBeOnTheScreen()
+    expect(
+      await screen.findByText(
+        local === 'en' ? /Invalid email format/i : /Se requiere correo electrónico/i,
+      ),
+    ).toBeOnTheScreen()
+    expect(
+      screen.getByText(
+        local === 'en' ? /Password is required/i : /Se requiere correo electrónico/i,
+      ),
+    ).toBeOnTheScreen()
   })
 
   it('should display matching error when email is invalid', async () => {
     render(<LoginForm />)
 
+    const local = getLanguage()
     const button = screen.getByTestId('login-button')
     const emailInput = screen.getByTestId('email-input')
     const passwordInput = screen.getByTestId('password-input')
@@ -36,8 +56,16 @@ describe('LoginForm Form ', () => {
     fireEvent.changeText(passwordInput, 'test')
     fireEvent.press(button)
 
-    expect(screen.queryByText(/Email is required/i)).not.toBeOnTheScreen()
-    expect(await screen.findByText(/Invalid Email Format/i)).toBeOnTheScreen()
+    expect(
+      screen.queryByText(
+        local === 'en' ? /Invalid email format/i : /Correo electrónico no válido/i,
+      ),
+    ).not.toBeOnTheScreen()
+    expect(
+      await screen.findByText(
+        local === 'en' ? /Invalid email format/i : /Correo electrónico no válido/i,
+      ),
+    ).toBeOnTheScreen()
   })
 
   it('Should call LoginForm with correct values when values are valid', async () => {

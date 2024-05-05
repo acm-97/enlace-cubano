@@ -5,7 +5,7 @@ export const resources = {
   en: {
     translation: en,
   },
-  ar: {
+  es: {
     translation: es,
   },
 }

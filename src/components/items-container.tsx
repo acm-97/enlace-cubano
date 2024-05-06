@@ -13,7 +13,7 @@ export const ItemsContainer = ({children, title}: Props) => {
     <>
       {title && <Text className="pb-2 pt-4 text-lg" tx={title} />}
       {
-        <View className=" rounded-md border-DEFAULT border-neutral-200 dark:border-neutral-700 dark:bg-neutral-800">
+        <View className=" rounded-md border-DEFAULT border-neutral-200 bg-neutral-50 dark:border-neutral-700 dark:bg-neutral-800">
           {children}
         </View>
       }

@@ -1,9 +1,7 @@
 import {HeaderBackButton} from '@react-navigation/elements'
-import {Stack, useLocalSearchParams, useRouter} from 'expo-router'
-import * as React from 'react'
+import {Stack, useFocusEffect, useLocalSearchParams, useRouter} from 'expo-router'
+import React, {useEffect} from 'react'
 import type {FieldError} from 'react-hook-form'
-import {PermissionsAndroid} from 'react-native'
-import Contacts from 'react-native-contacts'
 
 import {useMobileOffer} from '@/api'
 import useMobileOfferForm from '@/components/mobile-offers/use-mobile-offer-form'
@@ -12,34 +10,17 @@ import {ActivityIndicator, Button, FocusAwareStatusBar, PhoneInput, Text, View} 
 
 type Props = {}
 export default function MobileOffer({}: Props) {
-  const params = useLocalSearchParams<{id: string}>()
+  const params = useLocalSearchParams<{id: string; phoneNumber?: string}>()
   const {data, isLoading, isError} = useMobileOffer({variables: {id: params.id}})
-  const {handleSubmit, formState, watch, setValue} = useMobileOfferForm(data)
+  const {handleSubmit, formState, watch, setValue} = useMobileOfferForm(data, params)
+  const {replace} = useRouter()
 
-  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-    title: 'Contacts',
-    message: 'This app would like to view your contacts.',
-    buttonPositive: 'Please accept bare mortal',
-  })
-    .then(res => {
-      console.log('Permission: ', res)
-      Contacts.getAll()
-        .then(contacts => {
-          // work with contacts
-          console.log(contacts)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    })
-    .catch(error => {
-      console.error('Permission error: ', error)
-    })
+  const header = () => <HeaderBackButton labelVisible={false} onPress={() => replace('/mobile/')} />
 
   if (isLoading) {
     return (
       <View className="flex-1 justify-center  p-3">
-        <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: CustomHeader}} />
+        <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: header}} />
         <FocusAwareStatusBar />
         <ActivityIndicator />
       </View>
@@ -48,7 +29,7 @@ export default function MobileOffer({}: Props) {
   if (isError) {
     return (
       <View className="flex-1 justify-center p-3">
-        <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: CustomHeader}} />
+        <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: header}} />
         <FocusAwareStatusBar />
         <Text tx="error-data" className="text-center" />
       </View>
@@ -57,19 +38,24 @@ export default function MobileOffer({}: Props) {
 
   return (
     <View className="flex-1 p-3 pt-8">
-      <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: CustomHeader}} />
+      <Stack.Screen options={{title: 'Pagar Oferta', headerLeft: header}} />
       <FocusAwareStatusBar />
 
       <View className="mb-10 overflow-hidden rounded-lg border border-neutral-300  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900">
         <Text className="text-lg ">{data?.description}</Text>
       </View>
       <PhoneInput
+        defaultValue={params.phoneNumber ?? ''}
         value={watch('phoneNumber')}
         onChangeFormattedText={value => setValue('phoneNumber', value)}
         error={formState.errors.phoneNumber?.message}
         defaultCode="CU"
       />
-      <Button label={translate('offers.mobile.open-contacts')} variant="ghost" onPress={() => {}} />
+      <Button
+        label={translate('offers.mobile.open-contacts')}
+        variant="ghost"
+        onPress={() => replace({pathname: '/mobile-contacts', params: {id: params.id}})}
+      />
       <Button
         label={translate('pay') + ` $${data?.price}`}
         variant="secondary"
@@ -79,9 +65,4 @@ export default function MobileOffer({}: Props) {
       />
     </View>
   )
-}
-
-function CustomHeader() {
-  const {replace} = useRouter()
-  return <HeaderBackButton labelVisible={false} onPress={() => replace('/mobile/')} />
 }

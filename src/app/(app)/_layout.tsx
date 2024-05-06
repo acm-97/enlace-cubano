@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {Link, Redirect, SplashScreen, Tabs} from 'expo-router'
 import React, {useCallback, useEffect} from 'react'
+import {Platform} from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import {useCurrentUser} from '@/api/users'
@@ -39,7 +40,16 @@ export default function TabLayout() {
   }
 
   return (
-    <Tabs>
+    <Tabs
+      screenOptions={{
+        tabBarStyle: {
+          ...(Platform.OS === 'android' && {paddingBottom: 10}),
+          height: Platform.OS === 'ios' ? 90 : 70,
+          paddingTop: 10,
+        },
+        tabBarLabelStyle: {fontSize: 14},
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
@@ -53,12 +63,12 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="style"
+        name="activity"
         options={{
-          title: 'Style',
-          headerShown: false,
-          tabBarIcon: ({color}) => <StyleIcon color={color} />,
-          tabBarTestID: 'style-tab',
+          title: 'Activity',
+          // headerShown: false,
+          tabBarIcon: ({color, size}) => <MaterialIcons color={color} size={size} name="receipt" />,
+          tabBarTestID: 'activity-tab',
         }}
       />
       <Tabs.Screen
@@ -66,7 +76,9 @@ export default function TabLayout() {
         options={{
           title: 'Settings',
           headerShown: false,
-          tabBarIcon: ({color}) => <SettingsIcon color={color} />,
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons color={color} size={size} name="settings" />
+          ),
           tabBarTestID: 'settings-tab',
         }}
       />

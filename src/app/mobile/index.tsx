@@ -23,8 +23,27 @@ export default function MobileOffersList() {
   const debounced = debounce(value => {
     const filter = data?.filter(
       (ele: MobileOffer) =>
-        ele.description?.toLowerCase()?.includes(value?.toLowerCase()) ||
-        ele.price?.toString()?.includes(value),
+        ele.description
+          ?.normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          ?.includes(
+            value
+              ?.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .toLowerCase(),
+          ) ||
+        ele.price
+          ?.toString()
+          ?.normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .toLowerCase()
+          ?.includes(
+            value
+              ?.normalize('NFD')
+              .replace(/[\u0300-\u036f]/g, '')
+              .toLowerCase(),
+          ),
     )
     setItems(filter)
   }, 500)
@@ -33,6 +52,7 @@ export default function MobileOffersList() {
     setSearch(value)
     debounced(value)
   }
+
   if (isError) {
     return (
       <View>

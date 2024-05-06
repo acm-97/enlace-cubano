@@ -63,12 +63,12 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="style"
+        name="activity"
         options={{
-          title: 'Style',
-          headerShown: false,
+          title: 'Activity',
+          // headerShown: false,
           tabBarIcon: ({color, size}) => <MaterialIcons color={color} size={size} name="receipt" />,
-          tabBarTestID: 'style-tab',
+          tabBarTestID: 'activity-tab',
         }}
       />
       <Tabs.Screen

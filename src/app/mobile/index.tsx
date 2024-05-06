@@ -9,7 +9,7 @@ import {Card} from '@/components/mobile-offers/card'
 import {translate} from '@/core'
 import {EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
 
-export default function MovilOffers() {
+export default function MobileOffersList() {
   const {data, isLoading, isError} = useMobileOffers()
   const [search, setSearch] = useState<string>()
   const [items, setItems] = useState<MobileOffer[]>()
@@ -41,7 +41,7 @@ export default function MovilOffers() {
     )
   }
   return (
-    <View className="flex-1 ">
+    <View className="flex-1">
       <Stack.Screen
         options={{title: translate('offers.mobile.title'), headerBackTitleVisible: false}}
       />

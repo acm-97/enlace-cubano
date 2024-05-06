@@ -26,6 +26,12 @@ export default ({config}: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: true,
     bundleIdentifier: Env.BUNDLE_ID,
+    entitlements: {
+      'com.apple.developer.contacts.notes': true,
+    },
+    infoPlist: {
+      NSContactsUsageDescription: 'Allow $(PRODUCT_NAME) to access your contacts.',
+    },
   },
   experiments: {
     typedRoutes: true,
@@ -36,6 +42,11 @@ export default ({config}: ConfigContext): ExpoConfig => ({
       backgroundColor: '#2E3C4B',
     },
     package: Env.PACKAGE,
+    permissions: [
+      'android.permission.WRITE_CONTACTS',
+      'android.permission.READ_PROFILE',
+      'android.permission.READ_CONTACTS',
+    ],
   },
   web: {
     favicon: './assets/favicon.png',

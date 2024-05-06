@@ -2,6 +2,8 @@ import {HeaderBackButton} from '@react-navigation/elements'
 import {Stack, useLocalSearchParams, useRouter} from 'expo-router'
 import * as React from 'react'
 import type {FieldError} from 'react-hook-form'
+import {PermissionsAndroid} from 'react-native'
+import Contacts from 'react-native-contacts'
 
 import {useMobileOffer} from '@/api'
 import useMobileOfferForm from '@/components/mobile-offers/use-mobile-offer-form'
@@ -9,10 +11,30 @@ import {translate} from '@/core'
 import {ActivityIndicator, Button, FocusAwareStatusBar, PhoneInput, Text, View} from '@/ui'
 
 type Props = {}
-export default function CompName({}: Props) {
+export default function MobileOffer({}: Props) {
   const params = useLocalSearchParams<{id: string}>()
   const {data, isLoading, isError} = useMobileOffer({variables: {id: params.id}})
   const {handleSubmit, formState, watch, setValue} = useMobileOfferForm(data)
+
+  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
+    title: 'Contacts',
+    message: 'This app would like to view your contacts.',
+    buttonPositive: 'Please accept bare mortal',
+  })
+    .then(res => {
+      console.log('Permission: ', res)
+      Contacts.getAll()
+        .then(contacts => {
+          // work with contacts
+          console.log(contacts)
+        })
+        .catch(e => {
+          console.log(e)
+        })
+    })
+    .catch(error => {
+      console.error('Permission error: ', error)
+    })
 
   if (isLoading) {
     return (

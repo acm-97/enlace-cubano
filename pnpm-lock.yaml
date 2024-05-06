@@ -86,6 +86,9 @@ dependencies:
   lodash.memoize:
     specifier: ^4.1.2
     version: 4.1.2
+  metro-cache:
+    specifier: ^0.80.9
+    version: 0.80.9
   moti:
     specifier: ^0.28.1
     version: 0.28.1(react-dom@18.2.0)(react-native-reanimated@3.6.3)(react@18.2.0)
@@ -113,6 +116,9 @@ dependencies:
   react-native-avoid-softinput:
     specifier: ^4.0.2
     version: 4.0.2(react-native@0.73.6)(react@18.2.0)
+  react-native-contacts:
+    specifier: ^7.0.8
+    version: 7.0.8(react-native@0.73.6)
   react-native-flash-message:
     specifier: ^0.4.2
     version: 0.4.2(prop-types@15.8.1)(react-native@0.73.6)(react@18.2.0)
@@ -11563,6 +11569,14 @@ packages:
       react-native: '>=0.65.0'
     dependencies:
       react: 18.2.0
+      react-native: 0.73.6(@babel/core@7.24.5)(@babel/preset-env@7.24.5)(react@18.2.0)
+    dev: false
+
+  /react-native-contacts@7.0.8(react-native@0.73.6):
+    resolution: {integrity: sha512-Zfkdpw1uQVRb8v1m+ogknzjyfEs9k63o2sPAYvxZ8ZJff31D45G8+uZb6VcM4tIe3ELH9EDvh93nd515kFvRYQ==}
+    peerDependencies:
+      react-native: '>=0.64.0'
+    dependencies:
       react-native: 0.73.6(@babel/core@7.24.5)(@babel/preset-env@7.24.5)(react@18.2.0)
     dev: false
 

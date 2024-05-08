@@ -1,6 +1,9 @@
 import {useReactNavigationDevTools} from '@dev-plugins/react-navigation'
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet'
 import {ThemeProvider} from '@react-navigation/native'
+import {StripeProvider} from '@stripe/stripe-react-native'
+import Constants from 'expo-constants'
+import * as Linking from 'expo-linking'
 import {SplashScreen, Stack, useNavigationContainerRef} from 'expo-router'
 import {StyleSheet} from 'react-native'
 import FlashMessage from 'react-native-flash-message'
@@ -37,6 +40,7 @@ function RootLayoutNav() {
         <Stack.Screen name="(app)" options={{headerShown: false}} />
         <Stack.Screen name="login" options={{headerShown: false}} />
         <Stack.Screen name="signup" options={{headerShown: false}} />
+        <Stack.Screen name="verify" options={{headerShown: false}} />
         <Stack.Screen
           name="mobile-contacts"
           options={{title: 'Contacts', presentation: 'formSheet'}}
@@ -52,10 +56,18 @@ function Providers({children}: {children: React.ReactNode}) {
     <GestureHandlerRootView style={styles.container} className={theme.dark ? `dark` : undefined}>
       <ThemeProvider value={theme}>
         <APIProvider>
-          <BottomSheetModalProvider>
-            {children}
-            <FlashMessage position="top" />
-          </BottomSheetModalProvider>
+          <StripeProvider
+            publishableKey=""
+            urlScheme={
+              Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL('')
+            } // required for 3D Secure and bank redirects
+            merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
+          >
+            <BottomSheetModalProvider>
+              {children}
+              <FlashMessage position="top" />
+            </BottomSheetModalProvider>
+          </StripeProvider>
         </APIProvider>
       </ThemeProvider>
     </GestureHandlerRootView>

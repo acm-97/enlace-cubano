@@ -13,4 +13,5 @@ export const useCurrentUser = createQuery<Response, Variables, AxiosError>({
   fetcher: () => {
     return client.get(`users/current`)
   },
+  enabled: !!getToken()?.accessToken,
 })

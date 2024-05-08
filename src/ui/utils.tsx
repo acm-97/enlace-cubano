@@ -1,5 +1,6 @@
 import type {AxiosError} from 'axios'
 import {Dimensions, Platform} from 'react-native'
+import {StatusBar} from 'react-native'
 import {showMessage} from 'react-native-flash-message'
 
 export const IS_IOS = Platform.OS === 'ios'
@@ -27,6 +28,7 @@ export const showErrorMessage = (message: string = 'Something went wrong ') => {
     message,
     type: 'danger',
     duration: 4000,
+    statusBarHeight: StatusBar.currentHeight,
   })
 }
 

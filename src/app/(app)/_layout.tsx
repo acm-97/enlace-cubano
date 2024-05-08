@@ -6,9 +6,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import {useCurrentUser} from '@/api/users'
 import {translate, useAuth, useIsFirstTime} from '@/core'
-import {getToken} from '@/core/auth/utils'
-import {Pressable, Text} from '@/ui'
-import {Feed as FeedIcon, Settings as SettingsIcon, Style as StyleIcon} from '@/ui/icons'
 
 export default function TabLayout() {
   const status = useAuth.use.status()

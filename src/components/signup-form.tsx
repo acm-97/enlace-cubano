@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useRouter} from 'expo-router'
 import React, {createRef, useEffect, useState} from 'react'
@@ -55,9 +54,10 @@ type FormTypes = FormType & FormType1
 
 export type SignupFormProps = {
   onSubmit?: SubmitHandler<FormTypes>
+  isLoading?: boolean
 }
 
-export const SignupForm = ({onSubmit = () => {}}: SignupFormProps) => {
+export const SignupForm = ({onSubmit = () => {}, isLoading = false}: SignupFormProps) => {
   const viewPager = createRef<PagerView>()
   const {replace} = useRouter()
   const [values, setValues] = useState<FormType>()
@@ -170,6 +170,7 @@ export const SignupForm = ({onSubmit = () => {}}: SignupFormProps) => {
           onPress={handleSubmit1(data => onSubmit({...values, ...data}))}
           className="mt-8"
           size="lg"
+          loading={isLoading}
         />
 
         <Button
@@ -178,6 +179,7 @@ export const SignupForm = ({onSubmit = () => {}}: SignupFormProps) => {
           onPress={() => viewPager.current?.setPage(0)}
           className="mt-8"
           size="lg"
+          variant="outline"
         />
 
         <Button

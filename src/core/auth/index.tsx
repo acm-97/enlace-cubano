@@ -9,7 +9,7 @@ interface AuthState {
   user: UserType | null
   status: 'idle' | 'signOut' | 'signIn'
   saveUser: (user: UserType) => void
-  signIn: (data: TokenType) => void
+  signIn: (data: UserType) => void
   signOut: () => void
   hydrate: () => void
 }
@@ -21,22 +21,22 @@ const _useAuth = create<AuthState>((set, get) => ({
   saveUser: user => {
     set({user})
   },
-  signIn: token => {
-    setToken(token)
-    set({status: 'signIn', token})
+  signIn: user => {
+    setToken({accessToken: user.accessToken})
+    set({status: 'signIn', token: {accessToken: user.accessToken}, user})
   },
   signOut: () => {
     removeToken()
-    set({status: 'signOut', token: null})
+    set({status: 'signOut', token: null, user: null})
   },
   hydrate: () => {
     try {
       const userToken = getToken()
       if (userToken !== null) {
-        get().signIn(userToken)
+        setToken(userToken)
+        set({status: 'signIn', token: userToken})
       } else {
         get().signOut()
-        set({user: null})
       }
     } catch (e) {
       // catch error here
@@ -48,6 +48,6 @@ const _useAuth = create<AuthState>((set, get) => ({
 export const useAuth = createSelectors(_useAuth)
 
 export const signOut = () => _useAuth.getState().signOut()
-export const signIn = (token: TokenType) => _useAuth.getState().signIn(token)
+export const signIn = (token: UserType) => _useAuth.getState().signIn(token)
 export const hydrateAuth = () => _useAuth.getState().hydrate()
 export const saveUser = (user: UserType) => _useAuth.getState().saveUser(user)

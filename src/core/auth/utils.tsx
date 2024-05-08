@@ -19,6 +19,9 @@ export type UserType = {
   lastName: string
   phoneNumber: PhoneNumber
   email: string
+  customerId: string
+  verified: boolean
+  accessToken: string
 }
 
 export const getToken = () => getItem<TokenType>(TOKEN)

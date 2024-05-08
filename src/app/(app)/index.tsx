@@ -1,8 +1,9 @@
-import {useRouter} from 'expo-router'
+import {Redirect, useRouter} from 'expo-router'
 import * as React from 'react'
 
 import {Item} from '@/components/item'
 import {ItemsContainer} from '@/components/items-container'
+import {useAuth} from '@/core'
 import {FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
 
 const menu = [
@@ -21,6 +22,18 @@ const menu = [
 type Props = {}
 export default function Offers({}: Props) {
   const {push} = useRouter()
+  const user = useAuth.use.user()
+
+  if (user && !user?.verified) {
+    return (
+      <Redirect
+        href={{
+          pathname: '/verify',
+          params: {phone: JSON.stringify(user?.phoneNumber), userId: user?.id},
+        }}
+      />
+    )
+  }
 
   return (
     <>

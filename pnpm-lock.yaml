@@ -32,9 +32,15 @@ dependencies:
   '@shopify/flash-list':
     specifier: 1.6.3
     version: 1.6.3(@babel/runtime@7.24.5)(react-native@0.73.6)(react@18.2.0)
+  '@stripe/stripe-react-native':
+    specifier: ^0.35.1
+    version: 0.35.1(expo@50.0.17)(react-native@0.73.6)(react@18.2.0)
   '@tanstack/react-query':
     specifier: ^4.36.1
     version: 4.36.1(react-dom@18.2.0)(react-native@0.73.6)(react@18.2.0)
+  add:
+    specifier: ^2.0.6
+    version: 2.0.6
   app-icon-badge:
     specifier: ^0.0.15
     version: 0.0.15
@@ -119,6 +125,9 @@ dependencies:
   react-native-avoid-softinput:
     specifier: ^4.0.2
     version: 4.0.2(react-native@0.73.6)(react@18.2.0)
+  react-native-confirmation-code-field:
+    specifier: ^7.4.0
+    version: 7.4.0(react-native@0.73.6)(react@18.2.0)
   react-native-contacts:
     specifier: ^7.0.8
     version: 7.0.8(react-native@0.73.6)
@@ -3923,6 +3932,21 @@ packages:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
+  /@stripe/stripe-react-native@0.35.1(expo@50.0.17)(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-F6sewQYO0/wS1LDsjH9mE6qvyhfU3BAfz81oBSzntH8HdGon/TablGYsGTXrpmok+c4qzbXCQcPmVOdisZMQ0A==}
+    peerDependencies:
+      expo: '>=46.0.9'
+      react: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      expo:
+        optional: true
+    dependencies:
+      expo: 50.0.17(@babel/core@7.24.5)(@react-native/babel-preset@0.74.83)
+      react: 18.2.0
+      react-native: 0.73.6(@babel/core@7.24.5)(@babel/preset-env@7.24.5)(react@18.2.0)
+    dev: false
+
   /@szmarczak/http-timer@1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
     engines: {node: '>=6'}
@@ -4441,6 +4465,10 @@ packages:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  /add@2.0.6:
+    resolution: {integrity: sha512-j5QzrmsokwWWp6kUcJQySpbG+xfOBqqKnup3OIk1pz+kB/80SLorZ9V8zHFLO92Lcd+hbvq8bT+zOGoPkmBV0Q==}
+    dev: false
 
   /agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -11574,6 +11602,21 @@ packages:
     peerDependencies:
       react: '>=17.0.0'
       react-native: '>=0.65.0'
+    dependencies:
+      react: 18.2.0
+      react-native: 0.73.6(@babel/core@7.24.5)(@babel/preset-env@7.24.5)(react@18.2.0)
+    dev: false
+
+  /react-native-confirmation-code-field@7.4.0(react-native@0.73.6)(react@18.2.0):
+    resolution: {integrity: sha512-Kw7rD0RXi6vZnt0Y67nkSW2wYmZFdnxJ23yxkKm3jqwvSxAvaA1NP3h3MHSPmJd25l0WK/+fjXOeCliDqWZ9rw==}
+    peerDependencies:
+      react: '>=16.4.0'
+      react-native: '>=0.64.0'
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-native:
+        optional: true
     dependencies:
       react: 18.2.0
       react-native: 0.73.6(@babel/core@7.24.5)(@babel/preset-env@7.24.5)(react@18.2.0)

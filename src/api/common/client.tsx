@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import {signOut} from '@/core'
 import {getToken} from '@/core/auth/utils'
+import {showErrorMessage} from '@/ui'
 
 type Request = {
   data: any
@@ -39,6 +40,9 @@ api.interceptors.response.use(
     return config
   },
   e => {
+    if (e.response?.status === 400) {
+      showErrorMessage(e.response?.data.message)
+    }
     if (e.response?.status === 401) {
       signOut()
     }

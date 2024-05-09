@@ -40,7 +40,7 @@ export const PendingCard = ({
   const queryClient = useQueryClient()
 
   const onSaveNote: SubmitHandler<FormProps> = data => {
-    console.log('🚀 ~ data:', data)
+    // console.log('🚀 ~ data:', data)
     mutate(
       {id, status: 'rejected', ...data},
       {

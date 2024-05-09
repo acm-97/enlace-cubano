@@ -62,7 +62,7 @@ export default function CardPayButton({
   }
 
   const openPaymentSheet: SubmitHandler<OfferType> = async payload => {
-    console.log('🚀 ~ openPaymentSheet ~ payload:', payload)
+    // console.log('🚀 ~ openPaymentSheet ~ payload:', payload)
     const {error} = await presentPaymentSheet()
 
     if (error) {

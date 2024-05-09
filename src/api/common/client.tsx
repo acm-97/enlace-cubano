@@ -1,5 +1,4 @@
 import {Env} from '@env'
-console.log('🚀 ~ Env:', Env)
 import type {AxiosRequestConfig} from 'axios'
 import axios from 'axios'
 

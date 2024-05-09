@@ -77,7 +77,7 @@ export default function MobileContacts({}: Props) {
         setIsError(false)
       })
       .catch(e => {
-        console.log(e)
+        // console.log(e)
         setIsError(true)
       })
   }

@@ -96,7 +96,7 @@ export const SignupForm = ({onSubmit = () => {}, isLoading = false}: SignupFormP
   }, [isNext, viewPager])
 
   const onNext: SubmitHandler<FormType> = data => {
-    console.log('🚀 ~ SignupForm ~ data:', data)
+    // console.log('🚀 ~ SignupForm ~ data:', data)
     setValues(data)
     setIsNext(true)
   }

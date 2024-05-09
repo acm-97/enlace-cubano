@@ -16,7 +16,7 @@ export default function Login() {
   const {push} = useRouter()
 
   const onSubmit: LoginFormProps['onSubmit'] = data => {
-    console.log(data)
+    // console.log(data)
     mutate(data, {
       onSuccess: user => {
         signIn(user)

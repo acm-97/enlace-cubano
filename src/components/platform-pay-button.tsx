@@ -71,7 +71,6 @@ export default function PlatformPayButton({
     })
   }
 
-  console.log('🚀 ~ GooglePayButton ~ isSupported:', isSupported)
   // if (!isSupported) {
   //   return
   // }

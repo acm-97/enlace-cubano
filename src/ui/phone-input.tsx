@@ -127,7 +127,6 @@ export function ControlledPhoneInput<T extends FieldValues>(props: ControlledInp
     fieldState,
     formState,
   } = useController({control, name, rules})
-  console.log('🚀 ~ fieldState:', fieldState)
   return (
     <PhoneInput
       ref={ref}

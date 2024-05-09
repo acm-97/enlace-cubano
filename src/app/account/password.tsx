@@ -46,7 +46,7 @@ export default function PasswordForm() {
   })
 
   const onSubmit: SubmitHandler<FormProps> = data => {
-    console.log('🚀 ~ onSubmit ~ data:', data)
+    // console.log('🚀 ~ onSubmit ~ data:', data)
     const {confirmPassword, ...rest} = data
     mutate(
       {...rest, id: user?.id},

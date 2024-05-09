@@ -23,7 +23,6 @@ export default function MobileOffer({}: Props) {
   const params = useLocalSearchParams<{id: string; phoneNumber?: string}>()
   const {data, isLoading, isError} = useMobileOffer({variables: {id: params.id}})
   const {handleSubmit, formState, watch, setValue} = useMobileOfferForm(data, params)
-  console.log('🚀 ~ MobileOffer ~ formState:', formState)
   const {replace} = useRouter()
 
   const {data: intent, mutate} = usePaymentSheet()

@@ -11,7 +11,6 @@ export default function TabLayout() {
   const status = useAuth.use.status()
   const saveUser = useAuth.use.saveUser()
   const user = useAuth.use.user()
-  console.log('🚀 ~ TabLayout ~ user:', user)
   // const [isFirstTime] = useIsFirstTime()
   const {data} = useCurrentUser()
 

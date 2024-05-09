@@ -23,7 +23,6 @@ type FormProps = z.infer<typeof Schema>
 export default function PaymentMethods() {
   const user = useAuth.use.user()
   const {data, isLoading, isError} = usePaymentMethods()
-  console.log('🚀 ~ PaymentMethods ~ data:', data)
 
   const {control, handleSubmit, reset} = useForm<FormProps>({
     mode: 'onSubmit',
@@ -38,7 +37,7 @@ export default function PaymentMethods() {
   }, [reset, user?.email])
 
   const onSubmit: SubmitHandler<FormProps> = data => {
-    console.log('🚀 ~ onSubmit ~ data:', data)
+    // console.log('🚀 ~ onSubmit ~ data:', data)
   }
 
   if (isLoading || !data || data?.length === 0) {

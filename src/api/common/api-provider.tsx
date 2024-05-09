@@ -1,4 +1,4 @@
-import {useReactQueryDevTools} from '@dev-plugins/react-query'
+// import {useReactQueryDevTools} from '@dev-plugins/react-query
 import {focusManager, QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import * as React from 'react'
 import type {AppStateStatus} from 'react-native'
@@ -18,7 +18,7 @@ export const queryClient = new QueryClient()
 export function APIProvider({children}: {children: React.ReactNode}) {
   useOnlineManager()
   useAppState(onAppStateChange)
-  useReactQueryDevTools(queryClient)
+  // useReactQueryDevTools(queryClient)
 
   return (
     // Provide the client to your App

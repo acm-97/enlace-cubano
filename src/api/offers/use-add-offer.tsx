@@ -12,9 +12,10 @@ export type OfferType = {
   phoneNumber: string
   offerId: string
   updatedAt: string
+  note: string
 }
 
-type Variables = Omit<OfferType, 'status, updatedAt, id'>
+type Variables = Omit<OfferType, 'status, updatedAt, id, note'>
 
 type Response = OfferType
 

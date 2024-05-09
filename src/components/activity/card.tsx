@@ -5,6 +5,7 @@ import {twMerge} from 'tailwind-merge'
 import {tv} from 'tailwind-variants'
 
 import type {MobileOffer} from '@/api'
+import type {OfferType} from '@/api/offers'
 import {Divider, Image, Pressable, Text, View} from '@/ui'
 
 const card = tv({
@@ -20,6 +21,9 @@ const card = tv({
       pending: {
         statusLabel: '!text-warning-500',
       },
+      processing: {
+        statusLabel: '!text-warning-500',
+      },
       completed: {
         statusLabel: '!text-success-500',
       },
@@ -33,9 +37,16 @@ const card = tv({
   },
 })
 
-type Props = any
+type Props = OfferType
 
-export const ActivityCard = ({description, amount, status, colored_parts, updatedAt}: Props) => {
+export const ActivityCard = ({
+  description,
+  amount,
+  status,
+  colored_parts,
+  updatedAt,
+  note,
+}: Props) => {
   const styles = card({status})
   return (
     <View className={styles.container()}>
@@ -68,6 +79,8 @@ export const ActivityCard = ({description, amount, status, colored_parts, update
           <Text className="text-sm opacity-70">Date</Text>
         </View>
       </View>
+      <Divider className="my-4" />
+      <Text className="font-semibold ">{note}</Text>
     </View>
   )
 }

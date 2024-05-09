@@ -1,8 +1,7 @@
 import * as React from 'react'
+import {View} from 'react-native'
 import type {VariantProps} from 'tailwind-variants'
 import {tv} from 'tailwind-variants'
-
-import {View} from '@/ui'
 
 const divider = tv({
   slots: {

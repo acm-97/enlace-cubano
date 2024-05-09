@@ -1,14 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {Link, Redirect, SplashScreen, Tabs} from 'expo-router'
-import React, {useCallback, useEffect} from 'react'
+import React, {useCallback, useEffect, useMemo} from 'react'
 import {Platform} from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import {useCurrentUser} from '@/api/users'
 import {translate, useAuth, useIsFirstTime} from '@/core'
-import {getToken} from '@/core/auth/utils'
-import {Pressable, Text} from '@/ui'
-import {Feed as FeedIcon, Settings as SettingsIcon, Style as StyleIcon} from '@/ui/icons'
 
 export default function TabLayout() {
   const status = useAuth.use.status()
@@ -35,8 +32,14 @@ export default function TabLayout() {
     }
   }, [data, saveUser, status, user])
 
+  const isClient = useMemo(() => user?.role === 'client', [user])
+
   if (status === 'signOut') {
     return <Redirect href="/login" />
+  }
+
+  if (isClient) {
+    return <Redirect href="/(client)" />
   }
 
   return (
@@ -51,30 +54,33 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="available"
         options={{
-          title: translate('offers.index-title'),
+          title: translate('available'),
           // headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialIcons color={color} size={size} name="featured-play-list" />
           ),
-          tabBarTestID: 'offer-tab',
+          tabBarTestID: 'available',
         }}
       />
 
       <Tabs.Screen
-        name="activity"
+        name="pending"
         options={{
-          title: 'Activity',
+          title: translate('pending.title'),
           // headerShown: false,
-          tabBarIcon: ({color, size}) => <MaterialIcons color={color} size={size} name="receipt" />,
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons color={color} size={size} name="pending-actions" />
+          ),
           tabBarTestID: 'activity-tab',
         }}
       />
+
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: translate('settings.title'),
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialIcons color={color} size={size} name="settings" />

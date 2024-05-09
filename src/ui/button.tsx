@@ -49,6 +49,10 @@ const button = tv({
         container: 'h-10 px-4',
         label: 'text-base',
       },
+      xl: {
+        container: 'h-14 px-8',
+        label: 'text-[1.4rem]',
+      },
       lg: {
         container: 'h-12 px-8',
         label: 'text-xl',

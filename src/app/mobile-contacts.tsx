@@ -1,4 +1,6 @@
-import {Link, useLocalSearchParams, useRouter} from 'expo-router'
+import {HeaderBackButton} from '@react-navigation/elements'
+import {TransitionPresets} from '@react-navigation/stack'
+import {Link, Stack, useLocalSearchParams, useRouter} from 'expo-router'
 import debounce from 'lodash.debounce'
 import React, {useEffect, useState} from 'react'
 import {PermissionsAndroid, Platform, Pressable} from 'react-native'
@@ -6,16 +8,31 @@ import Contacts from 'react-native-contacts'
 import {AlphabetList} from 'react-native-section-alphabet-list'
 
 import {translate, useSelectedTheme} from '@/core'
-import {ActivityIndicator, Divider, FocusAwareStatusBar, Icon, Input, Text, View} from '@/ui'
+import {
+  ActivityIndicator,
+  Divider,
+  EmptyList,
+  FocusAwareStatusBar,
+  Icon,
+  Input,
+  Text,
+  View,
+} from '@/ui'
 
 type Props = {}
 export default function MobileContacts({}: Props) {
-  const [isLoading, setIsLoading] = useState<boolean>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState<boolean>()
   const [search, setSearch] = useState<string>()
   const [contacts, setContacts] = useState<any[]>([])
   const [items, setItems] = useState<any[]>([])
   const {selectedTheme: theme} = useSelectedTheme()
+
+  const {replace} = useRouter()
+  const params = useLocalSearchParams()
+  const headerLeft = () => (
+    <HeaderBackButton labelVisible={false} onPress={() => replace(`/mobile/${params.id}`)} />
+  )
 
   useEffect(() => {
     setIsLoading(true)
@@ -60,7 +77,7 @@ export default function MobileContacts({}: Props) {
         setIsError(false)
       })
       .catch(e => {
-        console.log(e)
+        // console.log(e)
         setIsError(true)
       })
   }
@@ -94,12 +111,22 @@ export default function MobileContacts({}: Props) {
     debounced(value)
   }
 
-  if (isLoading) {
+  if (isLoading || items?.length === 0) {
     return (
-      <View className="flex-1 justify-center  p-3">
+      <>
         <FocusAwareStatusBar />
-        <ActivityIndicator />
-      </View>
+
+        {Platform.OS === 'android' && (
+          <Stack.Screen
+            options={{
+              title: 'Contacts',
+              presentation: 'modal',
+              headerLeft,
+            }}
+          />
+        )}
+        <EmptyList isLoading={isLoading} />
+      </>
     )
   }
 
@@ -107,6 +134,16 @@ export default function MobileContacts({}: Props) {
     return (
       <View className="flex-1 justify-center p-3">
         <FocusAwareStatusBar />
+
+        {Platform.OS === 'android' && (
+          <Stack.Screen
+            options={{
+              title: 'Contacts',
+              presentation: 'modal',
+              headerLeft,
+            }}
+          />
+        )}
         <Text tx="error-data" className="text-center" />
       </View>
     )
@@ -116,6 +153,15 @@ export default function MobileContacts({}: Props) {
     <View className="flex-1 p-3 pt-8">
       <FocusAwareStatusBar />
 
+      {Platform.OS === 'android' && (
+        <Stack.Screen
+          options={{
+            title: 'Contacts',
+            presentation: 'modal',
+            headerLeft,
+          }}
+        />
+      )}
       <View className="w-full flex-row items-center justify-between gap-8 ">
         <Input
           value={search}
@@ -159,9 +205,9 @@ function ListItem({item}: any) {
 
   if (!item?.phoneNumbers || item?.phoneNumbers?.length === 0) return
 
-  return item?.phoneNumbers.map(({label, number}: any) => (
+  return item?.phoneNumbers.map(({label, number}: any, i: number) => (
     <Link
-      key={number}
+      key={i}
       replace
       href={{
         pathname: `/mobile/[id]`,

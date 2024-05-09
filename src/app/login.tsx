@@ -1,24 +1,25 @@
 import {useRouter} from 'expo-router'
 import React from 'react'
 
-import {useLoginUser} from '@/api/users'
+import {useCurrentUser, useLoginUser} from '@/api/users'
 import type {LoginFormProps} from '@/components/login-form'
 import {LoginForm} from '@/components/login-form'
 import {useAuth} from '@/core'
+import {getToken} from '@/core/auth/utils'
 import {useSoftKeyboardEffect} from '@/core/keyboard'
 import {FocusAwareStatusBar, showErrorMessage} from '@/ui'
 
 export default function Login() {
   useSoftKeyboardEffect()
-  const {mutate} = useLoginUser()
+  const {mutate, isLoading} = useLoginUser()
   const signIn = useAuth.use.signIn()
   const {push} = useRouter()
 
   const onSubmit: LoginFormProps['onSubmit'] = data => {
-    console.log(data)
+    // console.log(data)
     mutate(data, {
-      onSuccess: token => {
-        signIn(token)
+      onSuccess: user => {
+        signIn(user)
         push('/')
       },
       // @ts-ignore
@@ -28,7 +29,7 @@ export default function Login() {
   return (
     <>
       <FocusAwareStatusBar />
-      <LoginForm onSubmit={onSubmit} />
+      <LoginForm onSubmit={onSubmit} isLoading={isLoading} />
     </>
   )
 }

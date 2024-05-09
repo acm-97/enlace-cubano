@@ -1,104 +1,122 @@
 {
-  "back": "Back",
-  "cancel": "Cancel",
-  "currentPassword": "Current Password",
-  "email": "Email",
-  "error-data": "Error loading data",
-  "firstName": "First Name",
-  "lastName": "Last Name",
+  "activity": "Actividad",
+  "available": "Disponible",
+  "back": "Volver",
+  "cancel": "Cancelar",
+  "currentPassword": "Contraseña Actual",
+  "email": "Correo Electrónico",
+  "empty-data": "Lo sentimos. No se han encontrado datos",
+  "error-data": "Error al cargar los datos",
+  "firstName": "Nombre",
+  "lastName": "Apellido",
   "login": {
     "form": {
-      "error-email": "Correo electrónico no válido",
+      "error-email": "Formato de correo electrónico no válido",
       "error-password": "Se requiere contraseña",
       "required-email": "Se requiere correo electrónico",
-      "required-password": "Password must be at least 8 characters",
-      "submit": "Iniciar"
+      "required-password": "La contraseña debe tener al menos 8 caracteres",
+      "submit": "Iniciar sesión"
     },
-    "signup": "Dont have an account?",
-    "title": "Iniciar sesión"
+    "signup": "¿No tiene cuenta?",
+    "title": "Inicio de sesión"
   },
-  "next": "Next",
+  "next": "Siguiente",
   "offers": {
-    "index-title": "Offers",
+    "index-title": "Ofertas",
     "mobile": {
       "forms": {
         "error-phone": "Ingrese un numero de teléfono",
-        "refine-error-phone": "Type a valid number (+53 XXXXXXXX)"
+        "refine-error-phone": "Escriba un número válido (+53 XXXXXXXX)"
       },
-      "open-contacts": "Open Contacts",
-      "search": "Search ...",
-      "title": "Mobile Offers"
+      "open-contacts": "Abrir Contactos",
+      "search": "Buscar ...",
+      "title": "Ofertas para Móviles"
     },
-    "mobile-option": "Mobile",
+    "mobile-option": "Móvil",
     "nauta": {
-      "title": "Nauta Offers"
+      "title": "Ofertas para Nauta"
     },
     "nauta-option": "Nauta",
-    "recharges": "Recharges"
+    "recharges": "Recargas"
   },
   "onboarding": {
     "message": "Welcome to obytes app site"
   },
-  "password": "Password",
-  "pay": "Pay",
-  "phone": "Phone Number",
-  "save": "Save",
+  "password": "Contraseña",
+  "payCard": "Pay with card",
+  "payments": "Formas de Pago",
+  "pending": {
+    "complete": "Finalizar",
+    "completed-notification": "a recibido la transferencia",
+    "note-required": "Por favor, escriba una nota para este rechazo",
+    "reject": "Rechazar",
+    "reject-note": "Describa por qué se rechaza",
+    "rejected-notification": "Transferencia rechazada para",
+    "title": "Pendiente"
+  },
+  "phone": "Número de Teléfono",
+  "process": "Procesar",
+  "save": "Guardar",
   "settings": {
-    "about": "About",
+    "about": "Acerca de",
     "account": {
-      "confirm-password": "Confirm New Password",
+      "confirm-password": "Confirmar Nueva Contraseña",
       "email-description": "Su correo electrónico puede utilizarse para ayudarle a iniciar sesión y a recuperar su cuenta",
       "email-helper": "Se enviará un código de verificación a este correo electrónico",
       "email-success": "Su correo electrónico ha sido modificado",
-      "new-password": "New Password",
+      "new-password": "Nueva Contraseña",
       "password-description": "Utilice una contraseña de al menos 8 caracteres que empiece por una letra mayúscula y contenga al menos un número y un carácter especial",
       "password-success": "Su contraseña a sido actualizada",
       "phone-description": "Su número de teléfono puede utilizarse para ayudarle a iniciar sesión y a recuperar su cuenta",
       "phone-success": "Su número de teléfono ha sido modificado",
-      "required-phone": "Provide a valid phone number",
-      "title": "Account"
+      "required-phone": "Indique un número de teléfono válidor",
+      "title": "Cuenta"
     },
-    "app_name": "App Name",
-    "english": "English",
+    "app_name": "Nombre de la app",
+    "english": "Inglés",
     "generale": "General",
     "github": "Github",
-    "language": "Language",
+    "language": "Idioma",
     "links": "Links",
-    "logout": "Logout",
-    "more": "More",
-    "privacy": "Privacy Policy",
+    "logout": "Cerrar sesión",
+    "more": "Más",
+    "privacy": "Política de privacidad",
     "rate": "Rate",
     "share": "Share",
-    "spanish": "Spanish",
+    "spanish": "Español",
     "support": "Support",
     "support_us": "Support Us",
-    "terms": "Terms of Service",
+    "terms": "Condiciones de uso",
     "theme": {
-      "dark": "Dark",
-      "light": "Light",
-      "system": "System",
-      "title": "Theme"
+      "dark": "Oscuro",
+      "light": "Claro",
+      "system": "Sistema",
+      "title": "Tema"
     },
-    "title": "Settings",
-    "version": "Version",
+    "title": "Ajustes",
+    "version": "Versión",
     "website": "Website"
   },
   "signup": {
     "form": {
       "error-confirm-password": "Las contraseñas deben coincidir",
-      "error-email": "Invalid email format",
+      "error-email": "Formato de correo electrónico no válido",
       "error-password": "La contraseña no es válida",
-      "error-phone": "Use a valid US phone number",
-      "required-email": "Email is required",
-      "required-firstName": "First name is required",
-      "required-lastName": "Last name is required",
-      "required-password": "Password must be at least 8 characters",
-      "required-phoneNumber": "Phone number is required",
-      "submit": "Registrarse"
+      "error-phone": "Utilice un número de teléfono válido en EE.UU.",
+      "required-email": "Correo electrónico obligatorio",
+      "required-firstName": "El nombre es obligatorio",
+      "required-lastName": "Apellido obligatorio",
+      "required-password": "La contraseña debe tener al menos 8 caracteres",
+      "required-phoneNumber": "Número de teléfono obligatorio",
+      "submit": "Inscríbete"
     },
-    "login": "Already have an account",
-    "title": "Regístrese"
+    "login": "Ya tengo una cuenta",
+    "title": "Regístrate"
   },
-  "update": "Update",
+  "update": "Actualizar",
+  "verify": {
+    "description": "Introduzca el código de verificación que le enviamos a su número de teléfono",
+    "title": "Verificación"
+  },
   "welcome": "Welcome to obytes app site"
 }

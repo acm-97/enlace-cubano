@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type {ConfigContext, ExpoConfig} from '@expo/config'
 
 import {ClientEnv, Env} from './env'
@@ -28,6 +27,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     bundleIdentifier: Env.BUNDLE_ID,
     entitlements: {
       'com.apple.developer.contacts.notes': true,
+      'com.apple.developer.networking.wifi-info': true,
     },
     infoPlist: {
       NSContactsUsageDescription: 'Allow $(PRODUCT_NAME) to access your contacts.',
@@ -53,6 +53,13 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     bundler: 'metro',
   },
   plugins: [
+    [
+      '@stripe/stripe-react-native',
+      {
+        merchantIdentifier: [],
+        enableGooglePay: true,
+      },
+    ],
     [
       'expo-font',
       {

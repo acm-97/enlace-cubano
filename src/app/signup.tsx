@@ -10,14 +10,14 @@ import {FocusAwareStatusBar, SafeAreaView, showErrorMessage} from '@/ui'
 
 export default function Signup() {
   useSoftKeyboardEffect()
-  const {mutate} = useSignupUser()
+  const {mutate, isLoading} = useSignupUser()
   const {push} = useRouter()
 
   const onSubmit: SignupFormProps['onSubmit'] = data => {
     console.log(data)
     mutate(data, {
-      onSuccess: () => {
-        push('/login')
+      onSuccess: ({_id}) => {
+        push({pathname: '/verify', params: {phone: JSON.stringify(data.phoneNumber), userId: _id}})
       },
       // @ts-ignore
       onError: e => showErrorMessage(e.response?.data?.message),
@@ -27,7 +27,7 @@ export default function Signup() {
     <>
       <FocusAwareStatusBar />
       <SafeAreaView style={tw`flex-1`}>
-        <SignupForm onSubmit={onSubmit} />
+        <SignupForm onSubmit={onSubmit} isLoading={isLoading} />
       </SafeAreaView>
     </>
   )

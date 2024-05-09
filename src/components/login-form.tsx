@@ -25,9 +25,10 @@ export type FormType = z.infer<typeof Schema>
 
 export type LoginFormProps = {
   onSubmit?: SubmitHandler<FormType>
+  isLoading?: boolean
 }
 
-export const LoginForm = ({onSubmit = () => {}}: LoginFormProps) => {
+export const LoginForm = ({onSubmit = () => {}, isLoading = false}: LoginFormProps) => {
   const {replace} = useRouter()
 
   const {handleSubmit, control} = useForm<FormType>({
@@ -59,6 +60,7 @@ export const LoginForm = ({onSubmit = () => {}}: LoginFormProps) => {
         onPress={handleSubmit(onSubmit)}
         className="mt-8"
         size="lg"
+        loading={isLoading}
       />
 
       <Button
@@ -67,6 +69,7 @@ export const LoginForm = ({onSubmit = () => {}}: LoginFormProps) => {
         variant="ghost"
         className="mt-4"
         onPress={() => replace('/signup')}
+        fullWidth={false}
       />
     </View>
   )

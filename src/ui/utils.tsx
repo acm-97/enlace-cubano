@@ -1,5 +1,6 @@
 import type {AxiosError} from 'axios'
 import {Dimensions, Platform} from 'react-native'
+import {StatusBar} from 'react-native'
 import {showMessage} from 'react-native-flash-message'
 
 export const IS_IOS = Platform.OS === 'ios'
@@ -10,7 +11,6 @@ export const HEIGHT = height
 
 // for onError react queries and mutations
 export const z = (error: AxiosError) => {
-  console.log(JSON.stringify(error?.response?.data))
   const description = extractError(error?.response?.data).trimEnd()
 
   showMessage({
@@ -27,6 +27,7 @@ export const showErrorMessage = (message: string = 'Something went wrong ') => {
     message,
     type: 'danger',
     duration: 4000,
+    statusBarHeight: StatusBar.currentHeight,
   })
 }
 

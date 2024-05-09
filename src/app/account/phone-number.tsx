@@ -56,7 +56,7 @@ export default function PhoneNumberForm() {
   }, [reset, user?.phoneNumber])
 
   const onSubmit: SubmitHandler<FormProps> = data => {
-    console.log('🚀 ~ onSubmit ~ data:', data)
+    // console.log('🚀 ~ onSubmit ~ data:', data)
     mutate(
       {...data, id: user?.id},
       {

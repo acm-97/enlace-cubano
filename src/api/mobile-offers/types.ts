@@ -1,6 +1,20 @@
 export type MobileOffer = {
-  offerId: number
-  id: number
+  active: boolean
+  id: string
   description: string
-  price: string
+  description_parts: string[]
+  amount: number
+  name: string
+  metadata: {
+    colored: string
+  }
+  colored_parts: string[]
+  marketing_features: {
+    name: string
+  }[]
+  default_price: {
+    id: string
+    active: boolean
+    unit_amount: number
+  }
 }

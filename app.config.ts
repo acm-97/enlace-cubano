@@ -27,6 +27,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     bundleIdentifier: Env.BUNDLE_ID,
     entitlements: {
       'com.apple.developer.contacts.notes': true,
+      'com.apple.developer.networking.wifi-info': true,
     },
     infoPlist: {
       NSContactsUsageDescription: 'Allow $(PRODUCT_NAME) to access your contacts.',

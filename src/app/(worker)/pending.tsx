@@ -5,17 +5,16 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react'
 
 import {useGetOffers} from '@/api/offers'
 import {ActivityCard} from '@/components/activity/card'
+import {PendingCard} from '@/components/pending/card'
 import {translate} from '@/core'
 import {EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
 
-export default function ActivityList() {
+export default function PendingList() {
   const {data, isLoading, isError} = useGetOffers()
-  console.log('🚀 ~ ActivityList ~ data:', data)
 
-  const renderItem = useCallback(
-    ({item}: {item: any}) => <ActivityCard {...item} status="pending" />,
-    [],
-  )
+  const renderItem = useCallback(({item}: {item: any}) => <PendingCard {...item} />, [])
+
+  const items = useMemo(() => data?.filter(item => item.status === 'processing'), [data])
 
   if (isLoading || !data || data?.length === 0) {
     return (
@@ -39,7 +38,7 @@ export default function ActivityList() {
     <View className="flex-1">
       <FocusAwareStatusBar />
       <FlashList
-        data={data}
+        data={items}
         renderItem={renderItem}
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading={isLoading} />}

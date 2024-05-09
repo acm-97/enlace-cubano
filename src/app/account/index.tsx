@@ -26,7 +26,7 @@ export default function Account({}: Props) {
               <Text className="!text-4xl font-semibold">{user?.lastName}</Text>
             </View>
             <Image
-              className="h-20 w-20 rounded-full bg-neutral-300"
+              className="h-20 w-20 rounded-full border border-neutral-300 bg-neutral-300 dark:border-neutral-700"
               contentFit="contain"
               alt="user"
               source={{
@@ -46,12 +46,14 @@ export default function Account({}: Props) {
               value="********"
               onPress={() => push('/account/password')}
             />
-            <AccountItem
-              text="payments"
-              value="#### #### #### ####"
-              onPress={() => push('/account/payement-methods')}
-              className="border-0"
-            />
+            {user?.role === 'client' && (
+              <AccountItem
+                text="payments"
+                value="#### #### #### ####"
+                onPress={() => push('/account/payement-methods')}
+                className="border-0"
+              />
+            )}
           </ItemsContainer>
         </View>
       </ScrollView>

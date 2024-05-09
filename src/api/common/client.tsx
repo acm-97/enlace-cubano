@@ -3,7 +3,7 @@ console.log('🚀 ~ Env:', Env)
 import type {AxiosRequestConfig} from 'axios'
 import axios from 'axios'
 
-import {signOut} from '@/core'
+import {hydrateAuth, signOut} from '@/core'
 import {getToken} from '@/core/auth/utils'
 import {showErrorMessage} from '@/ui'
 
@@ -46,6 +46,7 @@ api.interceptors.response.use(
     }
     if (e.response?.status === 401) {
       signOut()
+      hydrateAuth()
     }
 
     return Promise.reject(e)

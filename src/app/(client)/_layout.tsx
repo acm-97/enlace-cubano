@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 import {Link, Redirect, SplashScreen, Tabs} from 'expo-router'
-import React, {useCallback, useEffect} from 'react'
+import React, {useCallback, useEffect, useMemo} from 'react'
 import {Platform} from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
@@ -11,6 +11,7 @@ export default function TabLayout() {
   const status = useAuth.use.status()
   const saveUser = useAuth.use.saveUser()
   const user = useAuth.use.user()
+  console.log('🚀 ~ TabLayout ~ user:', user)
   // const [isFirstTime] = useIsFirstTime()
   const {data} = useCurrentUser()
 
@@ -32,8 +33,14 @@ export default function TabLayout() {
     }
   }, [data, saveUser, status, user])
 
+  const isClient = useMemo(() => user?.role === 'client', [user])
+
   if (status === 'signOut') {
     return <Redirect href="/login" />
+  }
+
+  if (!isClient) {
+    return <Redirect href="/(worker)/available" />
   }
 
   return (
@@ -62,16 +69,17 @@ export default function TabLayout() {
       <Tabs.Screen
         name="activity"
         options={{
-          title: 'Activity',
+          title: translate('activity'),
           // headerShown: false,
           tabBarIcon: ({color, size}) => <MaterialIcons color={color} size={size} name="receipt" />,
           tabBarTestID: 'activity-tab',
         }}
       />
+
       <Tabs.Screen
         name="settings"
         options={{
-          title: 'Settings',
+          title: translate('settings.title'),
           headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialIcons color={color} size={size} name="settings" />

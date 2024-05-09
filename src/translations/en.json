@@ -1,4 +1,6 @@
 {
+  "activity": "Activity",
+  "available": "Available",
   "back": "Back",
   "cancel": "Cancel",
   "currentPassword": "Current Password",
@@ -44,7 +46,15 @@
   "payCard": "Pay with card",
   "payGoogle": "Pay with GooglePay",
   "payments": "Payment Methods",
+  "pending": {
+    "complete": "Complete",
+    "note-required": "Please write a note for this rejection",
+    "reject": "Reject",
+    "reject-note": "Write a description of why is rejected",
+    "title": "Pending"
+  },
   "phone": "Phone Number",
+  "process": "Process",
   "save": "Save",
   "settings": {
     "about": "About",

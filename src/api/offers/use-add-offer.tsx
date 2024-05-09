@@ -4,16 +4,17 @@ import {createMutation} from 'react-query-kit'
 import {client} from '../common'
 
 export type OfferType = {
+  id: string
   description: string[]
   amount: number
-  status: number
+  status: 'pending' | 'completed' | 'rejected' | 'processing'
   colored_parts: string[]
   phoneNumber: string
   offerId: string
   updatedAt: string
 }
 
-type Variables = Omit<OfferType, 'status, updatedAt'>
+type Variables = Omit<OfferType, 'status, updatedAt, id'>
 
 type Response = OfferType
 

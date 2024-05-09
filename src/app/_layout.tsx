@@ -27,7 +27,7 @@ import '../../global.css'
 import {Platform} from 'react-native'
 
 export const unstable_settings = {
-  initialRouteName: '(app)',
+  initialRouteName: '(client)',
 }
 
 hydrateAuth()
@@ -45,7 +45,8 @@ function RootLayoutNav() {
   return (
     <Providers>
       <Stack>
-        <Stack.Screen name="(app)" options={{headerShown: false}} />
+        <Stack.Screen name="(client)" options={{headerShown: false}} />
+        <Stack.Screen name="(worker)" options={{headerShown: false}} />
         <Stack.Screen name="login" options={{headerShown: false}} />
         <Stack.Screen name="signup" options={{headerShown: false}} />
         <Stack.Screen name="verify" options={{headerShown: false}} />

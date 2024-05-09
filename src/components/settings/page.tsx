@@ -9,7 +9,7 @@ import {translate, useAuth} from '@/core'
 import {colors, FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
 // import {Github, Rate, Share, Support, Website} from '@/ui/icons'
 
-export default function Settings() {
+export default function SettingsPage() {
   const signOut = useAuth.use.signOut()
   const {push} = useRouter()
   const user = useAuth.use.user()

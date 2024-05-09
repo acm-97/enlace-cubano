@@ -46,7 +46,7 @@ export default function VerifyUser() {
               push('/login')
             } else {
               user && saveUser({...user, verified})
-              push('/(app)')
+              push('/(client)')
             }
           },
           // @ts-ignore
@@ -105,7 +105,7 @@ export default function VerifyUser() {
             onPress={() => {
               signOut()
               hydrateAuth()
-              push('/(app)')
+              push('/(client)')
             }}
             className="mt-10"
           />

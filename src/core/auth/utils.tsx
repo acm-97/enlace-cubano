@@ -22,6 +22,7 @@ export type UserType = {
   customerId: string
   verified: boolean
   accessToken: string
+  role: 'client' | 'worker'
 }
 
 export const getToken = () => getItem<TokenType>(TOKEN)

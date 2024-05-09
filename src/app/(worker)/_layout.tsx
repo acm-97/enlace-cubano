@@ -71,12 +71,7 @@ export default function TabLayout() {
           title: translate('pending.title'),
           // headerShown: false,
           tabBarIcon: ({color, size}) => (
-            <MaterialIcons
-              color={color}
-              size={size}
-              name="pending-actions
-          "
-            />
+            <MaterialIcons color={color} size={size} name="pending-actions" />
           ),
           tabBarTestID: 'activity-tab',
         }}

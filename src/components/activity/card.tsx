@@ -79,8 +79,12 @@ export const ActivityCard = ({
           <Text className="text-sm opacity-70">Date</Text>
         </View>
       </View>
-      <Divider className="my-4" />
-      <Text className="font-semibold ">{note}</Text>
+      {note && (
+        <>
+          <Divider className="my-4" />
+          <Text className="font-semibold ">{note}</Text>
+        </>
+      )}
     </View>
   )
 }

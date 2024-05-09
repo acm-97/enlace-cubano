@@ -65,10 +65,11 @@ export default function VerifyUser() {
       <FocusAwareStatusBar />
       <SafeAreaView className="flex-1 items-center justify-center p-4">
         <View>
-          <Text className="mb-2 text-center text-4xl font-semibold">Verification</Text>
-          <Text className="mb-6 max-w-[25rem] text-center text-sm opacity-70">
-            Please enter de verification code we send you to your phone number
-          </Text>
+          <Text tx="verify.title" className="mb-2 text-center text-4xl font-semibold" />
+          <Text
+            tx="verify.description"
+            className="mb-6 max-w-[25rem] text-center text-sm opacity-70"
+          />
           <CodeField
             ref={ref}
             {...props}

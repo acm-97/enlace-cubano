@@ -44,6 +44,7 @@ export default function PaymentMethods() {
     return (
       <>
         <FocusAwareStatusBar />
+        <Stack.Screen options={{title: translate('payments'), headerBackTitleVisible: false}} />
         <EmptyList isLoading={isLoading} />
       </>
     )
@@ -53,6 +54,7 @@ export default function PaymentMethods() {
     return (
       <View className="flex-1 justify-center p-3">
         <FocusAwareStatusBar />
+        <Stack.Screen options={{title: translate('payments'), headerBackTitleVisible: false}} />
         <Text tx="error-data" className="text-center" />
       </View>
     )

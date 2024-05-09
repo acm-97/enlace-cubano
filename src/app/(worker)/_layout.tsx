@@ -70,7 +70,14 @@ export default function TabLayout() {
         options={{
           title: translate('pending.title'),
           // headerShown: false,
-          tabBarIcon: ({color, size}) => <MaterialIcons color={color} size={size} name="receipt" />,
+          tabBarIcon: ({color, size}) => (
+            <MaterialIcons
+              color={color}
+              size={size}
+              name="pending-actions
+          "
+            />
+          ),
           tabBarTestID: 'activity-tab',
         }}
       />

@@ -83,9 +83,6 @@ dependencies:
   expo-localization:
     specifier: ~14.8.4
     version: 14.8.4(expo@50.0.18)
-  expo-modules-autolinking:
-    specifier: ~1.10.0
-    version: 1.10.3
   expo-network:
     specifier: ~5.8.0
     version: 5.8.0(expo@50.0.18)

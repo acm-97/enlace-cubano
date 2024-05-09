@@ -13,7 +13,7 @@
     "form": {
       "error-email": "Formato de correo electrónico no válido",
       "error-password": "Se requiere contraseña",
-      "required-email": "Correo electrónico obligatorio",
+      "required-email": "Se requiere correo electrónico",
       "required-password": "La contraseña debe tener al menos 8 caracteres",
       "submit": "Iniciar sesión"
     },

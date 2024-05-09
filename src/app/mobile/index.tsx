@@ -23,7 +23,8 @@ export default function MobileOffersList() {
   const debounced = debounce(value => {
     const filter = data?.filter(
       (ele: MobileOffer) =>
-        ele.description
+        ele.marketing_features
+          .join()
           ?.normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')
           .toLowerCase()
@@ -33,7 +34,7 @@ export default function MobileOffersList() {
               .replace(/[\u0300-\u036f]/g, '')
               .toLowerCase(),
           ) ||
-        ele.price
+        ele.amount
           ?.toString()
           ?.normalize('NFD')
           .replace(/[\u0300-\u036f]/g, '')

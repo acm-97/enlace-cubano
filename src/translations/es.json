@@ -8,14 +8,14 @@
   "lastName": "Last Name",
   "login": {
     "form": {
-      "error-email": "Correo electrónico no válido",
-      "error-password": "Se requiere contraseña",
-      "required-email": "Se requiere correo electrónico",
+      "error-email": "Invalid email format",
+      "error-password": "Password is required",
+      "required-email": "Email is required",
       "required-password": "Password must be at least 8 characters",
-      "submit": "Iniciar"
+      "submit": "Login"
     },
     "signup": "Dont have an account?",
-    "title": "Iniciar sesión"
+    "title": "Sign in"
   },
   "next": "Next",
   "offers": {
@@ -40,7 +40,9 @@
     "message": "Welcome to obytes app site"
   },
   "password": "Password",
-  "pay": "Pay",
+  "payApple": "Pay with ApplePay",
+  "payCard": "Pay with card",
+  "payGoogle": "Pay with GooglePay",
   "phone": "Phone Number",
   "save": "Save",
   "settings": {
@@ -94,10 +96,10 @@
       "required-lastName": "Last name is required",
       "required-password": "Password must be at least 8 characters",
       "required-phoneNumber": "Phone number is required",
-      "submit": "Registrarse"
+      "submit": "Sign up"
     },
     "login": "Already have an account",
-    "title": "Regístrese"
+    "title": "Sign up"
   },
   "update": "Update",
   "welcome": "Welcome to obytes app site"

@@ -79,6 +79,7 @@ const client = z.object({
 
   // ADD YOUR CLIENT ENV VARS HERE
   API_URL: z.string(),
+  STRIPE_PUBLISHABLE_KEY: z.string(),
 })
 
 const buildTime = z.object({
@@ -100,6 +101,7 @@ const _clientEnv = {
 
   // ADD YOUR ENV VARS HERE TOO
   API_URL: process.env.API_URL,
+  STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
 }
 
 /**

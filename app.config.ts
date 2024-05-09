@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type {ConfigContext, ExpoConfig} from '@expo/config'
 
 import {ClientEnv, Env} from './env'
@@ -53,6 +52,13 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     bundler: 'metro',
   },
   plugins: [
+    [
+      '@stripe/stripe-react-native',
+      {
+        merchantIdentifier: [],
+        enableGooglePay: true,
+      },
+    ],
     [
       'expo-font',
       {

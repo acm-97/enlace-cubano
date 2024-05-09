@@ -188,6 +188,7 @@ export const SignupForm = ({onSubmit = () => {}, isLoading = false}: SignupFormP
           variant="ghost"
           className="mt-4"
           onPress={() => replace('/login')}
+          fullWidth={false}
         />
       </View>
     </PagerView>

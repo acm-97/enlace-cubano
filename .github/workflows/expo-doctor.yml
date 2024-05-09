@@ -49,12 +49,14 @@ jobs:
 
       - name: Set environment variables based on deployment environment
         run: |
+          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.production
+          echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.production
 
-          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.production
+          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.staging
+          echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.staging
 
-          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.staging
-
-          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.development
+          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.development
+          echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.development
 
       - name: Run prebuild
         run: pnpm run prebuild ## we only need to run this to generate the badged icon in `.expo` folder

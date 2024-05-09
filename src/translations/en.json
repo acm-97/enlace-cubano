@@ -40,7 +40,9 @@
     "message": "Welcome to obytes app site"
   },
   "password": "Password",
-  "pay": "Pay",
+  "payApple": "Pay with ApplePay",
+  "payCard": "Pay with card",
+  "payGoogle": "Pay with GooglePay",
   "phone": "Phone Number",
   "save": "Save",
   "settings": {

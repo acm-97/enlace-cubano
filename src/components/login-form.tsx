@@ -69,6 +69,7 @@ export const LoginForm = ({onSubmit = () => {}, isLoading = false}: LoginFormPro
         variant="ghost"
         className="mt-4"
         onPress={() => replace('/signup')}
+        fullWidth={false}
       />
     </View>
   )

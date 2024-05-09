@@ -1,10 +1,17 @@
 import {useReactNavigationDevTools} from '@dev-plugins/react-navigation'
+import {Env} from '@env'
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet'
 import {ThemeProvider} from '@react-navigation/native'
 import {StripeProvider} from '@stripe/stripe-react-native'
 import Constants from 'expo-constants'
 import * as Linking from 'expo-linking'
-import {SplashScreen, Stack, useNavigationContainerRef} from 'expo-router'
+import {
+  SplashScreen,
+  Stack,
+  useLocalSearchParams,
+  useNavigationContainerRef,
+  useRouter,
+} from 'expo-router'
 import {StyleSheet} from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
@@ -12,11 +19,12 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler'
 import {APIProvider} from '@/api'
 import {hydrateAuth, loadSelectedTheme} from '@/core'
 import {useThemeConfig} from '@/core/use-theme-config'
-
 export {ErrorBoundary} from 'expo-router'
 
 // Import  global CSS file
 import '../../global.css'
+
+import {Platform} from 'react-native'
 
 export const unstable_settings = {
   initialRouteName: '(app)',
@@ -41,10 +49,12 @@ function RootLayoutNav() {
         <Stack.Screen name="login" options={{headerShown: false}} />
         <Stack.Screen name="signup" options={{headerShown: false}} />
         <Stack.Screen name="verify" options={{headerShown: false}} />
-        <Stack.Screen
-          name="mobile-contacts"
-          options={{title: 'Contacts', presentation: 'formSheet'}}
-        />
+        {Platform.OS === 'ios' && (
+          <Stack.Screen
+            name="mobile-contacts"
+            options={{title: 'Contacts', presentation: 'modal'}}
+          />
+        )}
       </Stack>
     </Providers>
   )
@@ -57,7 +67,7 @@ function Providers({children}: {children: React.ReactNode}) {
       <ThemeProvider value={theme}>
         <APIProvider>
           <StripeProvider
-            publishableKey=""
+            publishableKey={Env.STRIPE_PUBLISHABLE_KEY}
             urlScheme={
               Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL('')
             } // required for 3D Secure and bank redirects

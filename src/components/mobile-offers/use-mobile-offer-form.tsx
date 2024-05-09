@@ -24,7 +24,7 @@ const Schema = z
 type FormProps = z.infer<typeof Schema>
 
 export default function useMobileOfferForm(offer: MobileOffer | undefined, params: any) {
-  const {reset, handleSubmit, ...form} = useForm<FormProps>({
+  const {reset, ...form} = useForm<FormProps>({
     mode: 'onSubmit',
     reValidateMode: 'onChange',
     resolver: zodResolver(Schema),
@@ -32,15 +32,14 @@ export default function useMobileOfferForm(offer: MobileOffer | undefined, param
 
   useEffect(() => {
     reset({
-      price: offer?.price ? +offer?.price : 0,
-      offerId: '' + offer?.id,
+      price: offer?.amount ?? 0,
+      offerId: offer?.id,
       phoneNumber: params.phoneNumber ?? '',
     })
   }, [offer, reset, params.phoneNumber])
 
   return {
     ...form,
-    handleSubmit: handleSubmit(data => console.log(data)),
     reset,
   }
 }

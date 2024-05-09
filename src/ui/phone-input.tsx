@@ -96,7 +96,7 @@ export const PhoneInput = React.forwardRef<CPhoneInput, NInputProps>((props, ref
       <CPhoneInput
         defaultValue={inputProps?.value}
         ref={ref}
-        containerStyle={tw.style(styles.inputWrapper(), classNames?.inputWrapper)}
+        containerStyle={tw.style('android:h-12', styles.inputWrapper(), classNames?.inputWrapper)}
         // textInputStyle={tw.style(styles.input(), classNames?.input)}
         textContainerStyle={tw.style(styles.input(), classNames?.input)}
         textInputStyle={tw.style(styles.input(), classNames?.input)}

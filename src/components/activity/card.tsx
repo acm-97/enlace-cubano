@@ -52,11 +52,10 @@ export const ActivityCard = ({description, amount, status, colored_parts, update
           </Text>
         ))}
       </View>
-      <Text className="text-lg ">{description}</Text>
       <Divider className="my-4" />
       <View className={styles.itemContainer()}>
         <View className="items-center">
-          <Text className="font-semibold ">{amount}</Text>
+          <Text className="font-semibold ">${amount}</Text>
           <Text className="text-sm opacity-70">Price</Text>
         </View>
         <View className="items-center">

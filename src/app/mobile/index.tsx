@@ -2,17 +2,21 @@ import {FlashList} from '@shopify/flash-list'
 import {Stack} from 'expo-router'
 import debounce from 'lodash.debounce'
 import React, {useCallback, useEffect, useMemo, useState} from 'react'
+import {RefreshControl} from 'react-native'
 
 import type {MobileOffer} from '@/api'
 import {useMobileOffers} from '@/api'
 import {Card} from '@/components/mobile-offers/card'
 import {translate} from '@/core'
+import {useRefreshByUser, useRefreshOnFocus} from '@/core/hooks/react-query'
 import {EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
 
 export default function MobileOffersList() {
-  const {data, isLoading, isError} = useMobileOffers()
+  const {data, isLoading, isError, refetch} = useMobileOffers()
   const [search, setSearch] = useState<string>()
   const [items, setItems] = useState<MobileOffer[]>()
+  const {isRefetchingByUser, refetchByUser} = useRefreshByUser(refetch)
+  useRefreshOnFocus(refetch)
 
   useEffect(() => {
     setItems(data)
@@ -90,6 +94,9 @@ export default function MobileOffersList() {
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading={isLoading} />}
         estimatedItemSize={300}
+        refreshControl={
+          <RefreshControl refreshing={isRefetchingByUser} onRefresh={refetchByUser} />
+        }
       />
     </View>
   )

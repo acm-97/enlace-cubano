@@ -54,13 +54,24 @@ export default function MobileOffersList() {
     debounced(value)
   }
 
+  if (isLoading || !data || data?.length === 0) {
+    return (
+      <>
+        <FocusAwareStatusBar />
+        <EmptyList isLoading={isLoading} />
+      </>
+    )
+  }
+
   if (isError) {
     return (
-      <View>
-        <Text> Error Loading data </Text>
+      <View className="flex-1 justify-center p-3">
+        <FocusAwareStatusBar />
+        <Text tx="error-data" className="text-center" />
       </View>
     )
   }
+
   return (
     <View className="flex-1">
       <Stack.Screen

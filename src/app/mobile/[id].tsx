@@ -8,7 +8,15 @@ import CardPayButton from '@/components/card-pay-button'
 import GooglePayButton from '@/components/google-pay-button'
 import useMobileOfferForm from '@/components/mobile-offers/use-mobile-offer-form'
 import {translate} from '@/core'
-import {ActivityIndicator, Button, FocusAwareStatusBar, PhoneInput, Text, View} from '@/ui'
+import {
+  ActivityIndicator,
+  Button,
+  EmptyList,
+  FocusAwareStatusBar,
+  PhoneInput,
+  Text,
+  View,
+} from '@/ui'
 
 type Props = {}
 export default function MobileOffer({}: Props) {
@@ -27,15 +35,15 @@ export default function MobileOffer({}: Props) {
     data && mutate({amount: data.default_price.unit_amount})
   }, [data, mutate])
 
-  if (isLoading) {
+  if (isLoading || !data) {
     return (
-      <View className="flex-1 justify-center  p-3">
-        <Stack.Screen options={{title: 'Pagar Oferta', headerLeft}} />
+      <>
         <FocusAwareStatusBar />
-        <ActivityIndicator />
-      </View>
+        <EmptyList isLoading={isLoading} />
+      </>
     )
   }
+
   if (isError) {
     return (
       <View className="flex-1 justify-center p-3">

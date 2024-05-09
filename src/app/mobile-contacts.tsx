@@ -8,11 +8,20 @@ import Contacts from 'react-native-contacts'
 import {AlphabetList} from 'react-native-section-alphabet-list'
 
 import {translate, useSelectedTheme} from '@/core'
-import {ActivityIndicator, Divider, FocusAwareStatusBar, Icon, Input, Text, View} from '@/ui'
+import {
+  ActivityIndicator,
+  Divider,
+  EmptyList,
+  FocusAwareStatusBar,
+  Icon,
+  Input,
+  Text,
+  View,
+} from '@/ui'
 
 type Props = {}
 export default function MobileContacts({}: Props) {
-  const [isLoading, setIsLoading] = useState<boolean>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState<boolean>()
   const [search, setSearch] = useState<string>()
   const [contacts, setContacts] = useState<any[]>([])
@@ -102,9 +111,9 @@ export default function MobileContacts({}: Props) {
     debounced(value)
   }
 
-  if (isLoading) {
+  if (isLoading || items?.length === 0) {
     return (
-      <View className="flex-1 justify-center  p-3">
+      <>
         <FocusAwareStatusBar />
 
         {Platform.OS === 'android' && (
@@ -116,8 +125,8 @@ export default function MobileContacts({}: Props) {
             }}
           />
         )}
-        <ActivityIndicator />
-      </View>
+        <EmptyList isLoading={isLoading} />
+      </>
     )
   }
 

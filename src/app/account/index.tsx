@@ -45,6 +45,11 @@ export default function Account({}: Props) {
               text="password"
               value="********"
               onPress={() => push('/account/password')}
+            />
+            <AccountItem
+              text="payments"
+              value="#### #### #### ####"
+              onPress={() => push('/account/payement-methods')}
               className="border-0"
             />
           </ItemsContainer>

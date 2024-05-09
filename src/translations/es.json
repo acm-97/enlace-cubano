@@ -47,9 +47,11 @@
   "payments": "Formas de Pago",
   "pending": {
     "complete": "Finalizar",
+    "completed-notification": "a recibido la transferencia",
     "note-required": "Por favor, escriba una nota para este rechazo",
     "reject": "Rechazar",
     "reject-note": "Describa por qué se rechaza",
+    "rejected-notification": "Transferencia rechazada para",
     "title": "Pendiente"
   },
   "phone": "Número de Teléfono",

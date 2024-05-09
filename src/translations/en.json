@@ -47,9 +47,11 @@
   "payments": "Payment Methods",
   "pending": {
     "complete": "Complete",
+    "completed-notification": "has received the transfer",
     "note-required": "Please write a note for this rejection",
     "reject": "Reject",
     "reject-note": "Write a description of why is rejected",
+    "rejected-notification": "transfer rejected for",
     "title": "Pending"
   },
   "phone": "Phone Number",

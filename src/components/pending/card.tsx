@@ -1,3 +1,4 @@
+import {Env} from '@env'
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useQueryClient} from '@tanstack/react-query'
 import React, {useState} from 'react'
@@ -7,6 +8,7 @@ import {twMerge} from 'tailwind-merge'
 import {z} from 'zod'
 
 import {type OfferType, useUpdateOffer} from '@/api/offers'
+import {useSendPushNotifications} from '@/api/push-notifications'
 import {translate} from '@/core'
 import {Button, ControlledInput, Divider, Image, Input, Pressable, Text, View} from '@/ui'
 
@@ -27,6 +29,7 @@ export const PendingCard = ({
   status,
   colored_parts,
   updatedAt,
+  userId,
 }: Props) => {
   const styles = cardWorker({status})
   const [isReject, setIsReject] = useState<boolean>(false)
@@ -37,6 +40,7 @@ export const PendingCard = ({
     resolver: zodResolver(Schema),
   })
   const {mutate} = useUpdateOffer()
+  const {mutate: sendPush} = useSendPushNotifications()
   const queryClient = useQueryClient()
 
   const onSaveNote: SubmitHandler<FormProps> = data => {
@@ -46,6 +50,11 @@ export const PendingCard = ({
       {
         onSuccess: () => {
           queryClient.invalidateQueries({queryKey: ['offers-history']})
+          sendPush({
+            userId,
+            title: Env.NAME,
+            body: `${translate('pending.rejected-notification')} ${phoneNumber}`,
+          })
         },
       },
     )
@@ -57,6 +66,11 @@ export const PendingCard = ({
       {
         onSuccess: () => {
           queryClient.invalidateQueries({queryKey: ['offers-history']})
+          sendPush({
+            userId,
+            title: Env.NAME,
+            body: `${translate('pending.completed-notification')} ${phoneNumber}`,
+          })
         },
       },
     )

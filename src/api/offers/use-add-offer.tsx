@@ -11,11 +11,12 @@ export type OfferType = {
   colored_parts: string[]
   phoneNumber: string
   offerId: string
+  userId: string
   updatedAt: string
   note: string
 }
 
-type Variables = Omit<OfferType, 'status, updatedAt, id, note'>
+type Variables = Omit<OfferType, 'status, updatedAt, id, note, userId'>
 
 type Response = OfferType
 

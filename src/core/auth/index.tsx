@@ -1,5 +1,6 @@
 import {create} from 'zustand'
 
+import {removeExpoToken} from '../hooks/use-expo-notifications'
 import {createSelectors} from '../utils'
 import type {TokenType, UserType} from './utils'
 import {getToken, removeToken, setToken} from './utils'
@@ -27,6 +28,7 @@ const _useAuth = create<AuthState>((set, get) => ({
   },
   signOut: () => {
     removeToken()
+    removeExpoToken()
     set({status: 'signOut', token: null, user: null})
   },
   hydrate: () => {

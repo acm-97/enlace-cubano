@@ -5,13 +5,7 @@ import {ThemeProvider} from '@react-navigation/native'
 import {StripeProvider} from '@stripe/stripe-react-native'
 import Constants from 'expo-constants'
 import * as Linking from 'expo-linking'
-import {
-  SplashScreen,
-  Stack,
-  useLocalSearchParams,
-  useNavigationContainerRef,
-  useRouter,
-} from 'expo-router'
+import {SplashScreen, Stack, useNavigationContainerRef} from 'expo-router'
 import {StyleSheet} from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
@@ -38,6 +32,7 @@ SplashScreen.preventAutoHideAsync()
 export default function RootLayout() {
   const navigationRef = useNavigationContainerRef()
   useReactNavigationDevTools(navigationRef)
+
   return <RootLayoutNav />
 }
 

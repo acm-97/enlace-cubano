@@ -9,7 +9,6 @@ import {translate} from '@/core'
 
 const Schema = z
   .object({
-    price: z.number(),
     offerId: z.string(),
     phoneNumber: z.string().min(1, translate('offers.mobile.forms.error-phone')),
   })
@@ -32,7 +31,6 @@ export default function useMobileOfferForm(offer: MobileOffer | undefined, param
 
   useEffect(() => {
     reset({
-      price: offer?.amount ?? 0,
       offerId: offer?.id,
       phoneNumber: params.phoneNumber ?? '',
     })

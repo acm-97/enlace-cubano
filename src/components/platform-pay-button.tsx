@@ -1,16 +1,33 @@
-import {PlatformPay, PlatformPayButton, usePlatformPay} from '@stripe/stripe-react-native'
+import {
+  PlatformPay,
+  PlatformPayButton as PlatformPayButtonN,
+  usePlatformPay,
+} from '@stripe/stripe-react-native'
+import {useRouter} from 'expo-router'
 import {useEffect, useState} from 'react'
+import type {SubmitHandler} from 'react-hook-form'
 
 import {useAddPaymentIntent} from '@/api/mobile-offers/use-add-payment-intent'
+import type {OfferType} from '@/api/offers'
+import {useAddOffer} from '@/api/offers'
 import {useSelectedTheme} from '@/core'
 import {colors, showErrorMessage} from '@/ui'
 
 type Props = any
 
-export default function GooglePayButton({handleSubmit, intent, ...props}: Props) {
+export default function PlatformPayButton({
+  handleSubmit,
+  intent,
+  amount,
+  description,
+  colored_parts,
+  ...props
+}: Props) {
   const {isPlatformPaySupported, confirmPlatformPayPayment} = usePlatformPay()
   const [isSupported, setIsSupported] = useState(false)
   const {selectedTheme} = useSelectedTheme()
+  const {mutate} = useAddOffer()
+  const {replace} = useRouter()
 
   useEffect(() => {
     ;(async function () {
@@ -20,7 +37,7 @@ export default function GooglePayButton({handleSubmit, intent, ...props}: Props)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const pay = async () => {
+  const pay: SubmitHandler<OfferType> = async payload => {
     const {error} = await confirmPlatformPayPayment(intent.clientSecret, {
       googlePay: {
         testEnv: true,
@@ -40,7 +57,18 @@ export default function GooglePayButton({handleSubmit, intent, ...props}: Props)
       // Update UI to prompt user to retry payment (and possibly another payment method)
       return
     }
-    showErrorMessage('The payment was confirmed successfully.')
+    showErrorMessage('Your payment was confirmed!.')
+    const _payload = {
+      ...payload,
+      amount,
+      description,
+      colored_parts: colored_parts ?? [],
+    }
+    mutate(_payload, {
+      onSuccess: () => {
+        replace('/mobile/')
+      },
+    })
   }
 
   console.log('🚀 ~ GooglePayButton ~ isSupported:', isSupported)
@@ -49,7 +77,7 @@ export default function GooglePayButton({handleSubmit, intent, ...props}: Props)
   // }
 
   return (
-    <PlatformPayButton
+    <PlatformPayButtonN
       type={PlatformPay.ButtonType.Pay}
       appearance={selectedTheme === 'dark' ? 0 : 2}
       onPress={handleSubmit(pay)}
@@ -57,6 +85,7 @@ export default function GooglePayButton({handleSubmit, intent, ...props}: Props)
         width: '100%',
         height: 42,
       }}
+      {...props}
     />
   )
 }

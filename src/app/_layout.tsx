@@ -68,9 +68,9 @@ function Providers({children}: {children: React.ReactNode}) {
         <APIProvider>
           <StripeProvider
             publishableKey={Env.STRIPE_PUBLISHABLE_KEY}
-            urlScheme={
-              Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL('')
-            } // required for 3D Secure and bank redirects
+            urlScheme={`${Env.SCHEME}://${
+              Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL('/')
+            }`} // required for 3D Secure and bank redirects
             merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
           >
             <BottomSheetModalProvider>

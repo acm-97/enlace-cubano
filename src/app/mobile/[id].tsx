@@ -5,8 +5,8 @@ import {twMerge} from 'tailwind-merge'
 
 import {useMobileOffer, usePaymentSheet} from '@/api'
 import CardPayButton from '@/components/card-pay-button'
-import GooglePayButton from '@/components/google-pay-button'
 import useMobileOfferForm from '@/components/mobile-offers/use-mobile-offer-form'
+import PlatformPayButton from '@/components/platform-pay-button'
 import {translate} from '@/core'
 import {
   ActivityIndicator,
@@ -23,6 +23,7 @@ export default function MobileOffer({}: Props) {
   const params = useLocalSearchParams<{id: string; phoneNumber?: string}>()
   const {data, isLoading, isError} = useMobileOffer({variables: {id: params.id}})
   const {handleSubmit, formState, watch, setValue} = useMobileOfferForm(data, params)
+  console.log('🚀 ~ MobileOffer ~ formState:', formState)
   const {replace} = useRouter()
 
   const {data: intent, mutate} = usePaymentSheet()
@@ -92,11 +93,22 @@ export default function MobileOffer({}: Props) {
         // variant="outline"
         // fullWidth={false}
         className="!mt-24 mb-4 !text-[14rem] !font-semibold"
+        size="lg"
         handleSubmit={handleSubmit}
         intent={intent}
-        size="lg"
+        amount={data.amount}
+        description={data.description_parts}
+        colored_parts={data.colored_parts}
+        disabled={!watch('phoneNumber')}
       />
-      <GooglePayButton handleSubmit={handleSubmit} intent={intent} />
+      <PlatformPayButton
+        handleSubmit={handleSubmit}
+        intent={intent}
+        amount={data.amount}
+        description={data.description_parts}
+        colored_parts={data.colored_parts}
+        disabled={!watch('phoneNumber')}
+      />
     </View>
   )
 }

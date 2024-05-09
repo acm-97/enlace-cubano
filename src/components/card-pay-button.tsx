@@ -1,21 +1,34 @@
+import {Env} from '@env'
 import {useStripe} from '@stripe/stripe-react-native'
 import Constants from 'expo-constants'
 import * as Linking from 'expo-linking'
+import {useRouter} from 'expo-router'
 import {useEffect, useState} from 'react'
 import type {SubmitHandler} from 'react-hook-form'
 import {showMessage} from 'react-native-flash-message'
 
 import type {MobileOffer} from '@/api'
-import {usePaymentSheet} from '@/api'
+import type {OfferType} from '@/api/offers'
+import {useAddOffer} from '@/api/offers'
 import {useAuth} from '@/core'
 import {Button, colors, showErrorMessage} from '@/ui'
 
 type Props = any
 
-export default function CardPayButton({handleSubmit, intent, ...props}: Props) {
+export default function CardPayButton({
+  handleSubmit,
+  intent,
+  amount,
+  description,
+  colored_parts,
+  disabled,
+  ...props
+}: Props) {
   const user = useAuth.use.user()
   const {initPaymentSheet, presentPaymentSheet} = useStripe()
   const [loading, setLoading] = useState(false)
+  const {mutate} = useAddOffer()
+  const {replace} = useRouter()
 
   const initializePaymentSheet = async () => {
     setLoading(true)
@@ -31,8 +44,9 @@ export default function CardPayButton({handleSubmit, intent, ...props}: Props) {
         defaultBillingDetails: {
           name: `${user?.firstName} ${user?.lastName}`,
         },
-        returnURL:
-          Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL(''),
+        returnURL: `${Env.SCHEME}://${
+          Constants.appOwnership === 'expo' ? Linking.createURL('/--/') : Linking.createURL('/')
+        }`,
         appearance: {
           colors: {
             primary: colors.primary[500],
@@ -47,14 +61,25 @@ export default function CardPayButton({handleSubmit, intent, ...props}: Props) {
     setLoading(false)
   }
 
-  const openPaymentSheet: SubmitHandler<MobileOffer> = async payload => {
+  const openPaymentSheet: SubmitHandler<OfferType> = async payload => {
     console.log('🚀 ~ openPaymentSheet ~ payload:', payload)
     const {error} = await presentPaymentSheet()
 
     if (error) {
       showErrorMessage(error.message)
     } else {
-      showMessage({message: 'Your order is confirmed!', type: 'success'})
+      showMessage({message: 'Your payment was confirmed!', type: 'success'})
+      const _payload = {
+        ...payload,
+        amount,
+        description,
+        colored_parts: colored_parts ?? [],
+      }
+      mutate(_payload, {
+        onSuccess: () => {
+          replace('/mobile/')
+        },
+      })
     }
   }
 
@@ -64,6 +89,10 @@ export default function CardPayButton({handleSubmit, intent, ...props}: Props) {
   }, [intent, user])
 
   return (
-    <Button disabled={loading || !intent} onPress={handleSubmit(openPaymentSheet)} {...props} />
+    <Button
+      disabled={loading || !intent || disabled}
+      onPress={handleSubmit(openPaymentSheet)}
+      {...props}
+    />
   )
 }

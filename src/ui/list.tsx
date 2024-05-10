@@ -16,7 +16,7 @@ export const EmptyList = React.memo(({isLoading}: Props) => {
   return (
     <View className="min-h-[400px] flex-1 items-center justify-center">
       {!isLoading ? (
-        <View>
+        <View className="items-center justify-center">
           <NoData />
           <Text className="pt-4 text-center">{translate('empty-data')}</Text>
         </View>

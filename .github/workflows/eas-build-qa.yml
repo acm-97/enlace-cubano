@@ -39,13 +39,13 @@ jobs:
 
       - name: Set environment variables based on deployment environment
         run: |
-          echo ${{secrets.GOOGLE_SERVICES}} >> google-services.json
+          echo ${{ secrets.GOOGLE_SERVICES }} >> google-services.json
 
-          echo ${{secrets.ENV_DEVELOPMENT}} >> .env.production
+          echo ${{ secrets.ENV_DEVELOPMENT }} >> .env.production
 
-          echo  ${{secrets.ENV_DEVELOPMENT}}>> .env.staging
+          echo ${{ secrets.ENV_DEVELOPMENT }} >> .env.staging
 
-          echo  ${{secrets.ENV_DEVELOPMENT}}>> .env.development
+          echo ${{ secrets.ENV_DEVELOPMENT }} >> .env.development
 
       - name: ⏱️ EAS Build
         uses: ./.github/actions/eas-build

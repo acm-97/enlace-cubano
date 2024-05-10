@@ -39,13 +39,16 @@ jobs:
 
       - name: Set environment variables based on deployment environment
         run: |
-          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.production
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.production
+          echo "EXPO_PROJECT_ID=df0c80c7-b30f-4200-9df4-ce2d3453174f" >> .env.production
           echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.production
 
-          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.staging
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.staging
+          echo "EXPO_PROJECT_ID=df0c80c7-b30f-4200-9df4-ce2d3453174f" >> .env.staging
           echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.staging
 
-          echo "API_URL=https://staging-enlace-cubano-api.vercel.app/" >> .env.development
+          echo "API_URL=https://enlace-cubano-api.vercel.app/" >> .env.development
+          echo "EXPO_PROJECT_ID=df0c80c7-b30f-4200-9df4-ce2d3453174f" >> .env.development
           echo "STRIPE_PUBLISHABLE_KEY=pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP" >> .env.development
 
       - name: ⏱️ EAS Build

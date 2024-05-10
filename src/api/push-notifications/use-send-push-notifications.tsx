@@ -1,5 +1,4 @@
 import type {AxiosError} from 'axios'
-import type {ExpoPushToken} from 'expo-notifications'
 import {createMutation} from 'react-query-kit'
 
 import {client} from '../common'

@@ -1,12 +1,13 @@
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useRouter} from 'expo-router'
-import React from 'react'
+import React, {useState} from 'react'
 import type {SubmitHandler} from 'react-hook-form'
 import {useForm} from 'react-hook-form'
 import * as z from 'zod'
 
 import {translate} from '@/core'
-import {Button, ControlledInput, Text, View} from '@/ui'
+import useToggle from '@/core/hooks/use-toggle'
+import {Button, ControlledInput, Icon, Pressable, Text, View} from '@/ui'
 
 const Schema = z.object({
   email: z
@@ -30,6 +31,7 @@ export type LoginFormProps = {
 
 export const LoginForm = ({onSubmit = () => {}, isLoading = false}: LoginFormProps) => {
   const {replace} = useRouter()
+  const {isOpen: isSecureTextEntry, onToggle} = useToggle(true)
 
   const {handleSubmit, control} = useForm<FormType>({
     resolver: zodResolver(Schema),
@@ -52,7 +54,8 @@ export const LoginForm = ({onSubmit = () => {}, isLoading = false}: LoginFormPro
         name="password"
         label={translate('password')}
         placeholder="***"
-        secureTextEntry={true}
+        secureTextEntry={isSecureTextEntry}
+        endContent={<SecureTextIcon isSecureTextEntry={isSecureTextEntry} onToggle={onToggle} />}
       />
       <Button
         testID="login-button"
@@ -72,5 +75,23 @@ export const LoginForm = ({onSubmit = () => {}, isLoading = false}: LoginFormPro
         fullWidth={false}
       />
     </View>
+  )
+}
+
+export function SecureTextIcon({
+  isSecureTextEntry,
+  onToggle,
+}: {
+  isSecureTextEntry: boolean
+  onToggle: () => void
+}) {
+  return (
+    <Pressable onPress={onToggle}>
+      {isSecureTextEntry ? (
+        <Icon as="MaterialCommunityIcons" name="eye-off-outline" />
+      ) : (
+        <Icon as="MaterialCommunityIcons" name="eye-outline" />
+      )}
+    </Pressable>
   )
 }

@@ -1,5 +1,4 @@
 import type {AxiosError} from 'axios'
-import type {ExpoPushToken} from 'expo-notifications'
 import {createMutation} from 'react-query-kit'
 
 import {client} from '../common'
@@ -7,10 +6,10 @@ import {client} from '../common'
 export type PushNotification = {
   id: string
   userId: string[]
-  token: ExpoPushToken
+  token: String
 }
 
-type Variables = {token: ExpoPushToken}
+type Variables = {token: String}
 type Response = PushNotification
 
 export const useAddPushNotifications = createMutation<Response, Variables, AxiosError>({

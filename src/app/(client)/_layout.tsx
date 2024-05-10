@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import {useCurrentUser} from '@/api/users'
 import {translate, useAuth, useIsFirstTime} from '@/core'
+import {useContacts} from '@/core/hooks/use-contacts'
 import {useExpoNotifications} from '@/core/hooks/use-expo-notifications'
 
 export default function TabLayout() {
@@ -14,7 +15,8 @@ export default function TabLayout() {
   const user = useAuth.use.user()
   // const [isFirstTime] = useIsFirstTime()
   const {data} = useCurrentUser()
-  useExpoNotifications()
+  useExpoNotifications(status === 'signIn')
+  useContacts(status === 'signIn')
 
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync()

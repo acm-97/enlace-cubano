@@ -69,7 +69,7 @@ export const PendingCard = ({
           sendPush({
             userId,
             title: Env.NAME,
-            body: `${translate('pending.completed-notification')} ${phoneNumber}`,
+            body: `${phoneNumber} ${translate('pending.completed-notification')}`,
           })
         },
       },

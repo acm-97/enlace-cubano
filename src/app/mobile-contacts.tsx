@@ -4,10 +4,12 @@ import {Link, Stack, useLocalSearchParams, useRouter} from 'expo-router'
 import debounce from 'lodash.debounce'
 import React, {useEffect, useState} from 'react'
 import {PermissionsAndroid, Platform, Pressable} from 'react-native'
+import type {Contact} from 'react-native-contacts'
 import Contacts from 'react-native-contacts'
 import {AlphabetList} from 'react-native-section-alphabet-list'
 
 import {translate, useSelectedTheme} from '@/core'
+import {contactsState} from '@/core/hooks/use-contacts'
 import {
   ActivityIndicator,
   Divider,
@@ -21,12 +23,12 @@ import {
 
 type Props = {}
 export default function MobileContacts({}: Props) {
-  const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [isError, setIsError] = useState<boolean>()
   const [search, setSearch] = useState<string>()
-  const [contacts, setContacts] = useState<any[]>([])
   const [items, setItems] = useState<any[]>([])
   const {selectedTheme: theme} = useSelectedTheme()
+  const isLoading = contactsState(state => state.isLoading)
+  const isError = contactsState(state => state.isError)
+  const contacts = contactsState(state => state.contacts)
 
   const {replace} = useRouter()
   const params = useLocalSearchParams()
@@ -35,52 +37,10 @@ export default function MobileContacts({}: Props) {
   )
 
   useEffect(() => {
-    setIsLoading(true)
-    if (Platform.OS === 'android') {
-      PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
-        title: 'Contacts',
-        message: 'This app would like to view your contacts.',
-        buttonPositive: 'Please accept',
-      })
-        .then(res => {
-          console.log('Permission: ', res)
-          getContacts()
-          setIsError(false)
-        })
-        .catch(error => {
-          console.error('Permission error: ', error)
-          setIsError(true)
-        })
-    } else {
-      getContacts()
+    if (contacts.length > 0) {
+      setItems(contacts)
     }
-    setIsLoading(false)
-  }, [])
-
-  const getContacts = () => {
-    Contacts.getAll()
-      .then(_contacts => {
-        // work with contacts
-        // console.log(contacts)
-        const newContacts = _contacts
-          ?.map((item, index) => {
-            return {
-              ...item,
-              value: item?.givenName ?? item?.familyName ?? '#',
-              key: index,
-            }
-          })
-          ?.sort((a, b) => a?.value?.localeCompare(b?.value))
-
-        setContacts(newContacts)
-        setItems(newContacts)
-        setIsError(false)
-      })
-      .catch(e => {
-        // console.log(e)
-        setIsError(true)
-      })
-  }
+  }, [contacts])
 
   const debounced = debounce(value => {
     const filter = contacts?.filter(

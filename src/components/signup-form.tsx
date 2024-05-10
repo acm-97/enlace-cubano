@@ -7,7 +7,10 @@ import PagerView from 'react-native-pager-view'
 import * as z from 'zod'
 
 import {translate, tw} from '@/core'
+import useToggle from '@/core/hooks/use-toggle'
 import {Button, ControlledInput, PhoneInput, Text, View} from '@/ui'
+
+import {SecureTextIcon} from './login-form'
 
 const Schema = z
   .object({
@@ -62,6 +65,7 @@ export const SignupForm = ({onSubmit = () => {}, isLoading = false}: SignupFormP
   const {replace} = useRouter()
   const [values, setValues] = useState<FormType>()
   const [isNext, setIsNext] = useState<boolean>()
+  const {isOpen: isSecureTextEntry, onToggle} = useToggle(true)
 
   const {watch, setValue, handleSubmit, formState, control} = useForm<FormType>({
     mode: 'onSubmit',
@@ -161,7 +165,8 @@ export const SignupForm = ({onSubmit = () => {}, isLoading = false}: SignupFormP
           name="password"
           label={translate('password')}
           placeholder="***"
-          secureTextEntry={true}
+          secureTextEntry={isSecureTextEntry}
+          endContent={<SecureTextIcon isSecureTextEntry={isSecureTextEntry} onToggle={onToggle} />}
         />
 
         <Button

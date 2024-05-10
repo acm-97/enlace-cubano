@@ -13,7 +13,7 @@ export const getExpoToken = () => getItem<string>(EXPO_TOKEN)
 export const removeExpoToken = () => removeItem(EXPO_TOKEN)
 export const setExpoToken = (value: string) => setItem<string>(EXPO_TOKEN, value)
 
-export function useExpoNotifications() {
+export function useExpoNotifications(enabled: boolean) {
   const [expoPushToken, setExpoPushToken] = useState('')
   const [notification, setNotification] = useState<Notifications.Notification>()
   const notificationListener = useRef<Notifications.Subscription>()
@@ -80,22 +80,24 @@ export function useExpoNotifications() {
   }
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token!))
+    if (enabled) {
+      registerForPushNotificationsAsync().then(token => setExpoPushToken(token!))
 
-    notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
-      setNotification(notification)
-    })
+      notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
+        setNotification(notification)
+      })
 
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response)
-    })
+      responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
+        console.log(response)
+      })
 
-    return () => {
-      Notifications.removeNotificationSubscription(notificationListener.current!)
-      Notifications.removeNotificationSubscription(responseListener.current!)
+      return () => {
+        Notifications.removeNotificationSubscription(notificationListener.current!)
+        Notifications.removeNotificationSubscription(responseListener.current!)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [enabled])
 
   return {
     expoPushToken,

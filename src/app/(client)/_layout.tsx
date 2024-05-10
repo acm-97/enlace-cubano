@@ -14,7 +14,7 @@ export default function TabLayout() {
   const user = useAuth.use.user()
   // const [isFirstTime] = useIsFirstTime()
   const {data} = useCurrentUser()
-  useExpoNotifications()
+  useExpoNotifications(status === 'signIn')
 
   const hideSplash = useCallback(async () => {
     await SplashScreen.hideAsync()

@@ -7,13 +7,11 @@ import {Platform} from 'react-native'
 import {useAddPushNotifications} from '@/api/push-notifications'
 
 import {getItem, removeItem, setItem} from '../storage'
-
 export const EXPO_TOKEN = 'expo-token'
 
-export const getExpoToken = () => getItem<Notifications.ExpoPushToken>(EXPO_TOKEN)
+export const getExpoToken = () => getItem<string>(EXPO_TOKEN)
 export const removeExpoToken = () => removeItem(EXPO_TOKEN)
-export const setExpoToken = (value: Notifications.ExpoPushToken) =>
-  setItem<Notifications.ExpoPushToken>(EXPO_TOKEN, value)
+export const setExpoToken = (value: string) => setItem<string>(EXPO_TOKEN, value)
 
 export function useExpoNotifications() {
   const [expoPushToken, setExpoPushToken] = useState('')
@@ -30,9 +28,12 @@ export function useExpoNotifications() {
     }),
   })
 
-  const registerForPushNotificationsAsync = async () => {
-    let token
+  function handleRegistrationError(errorMessage: string) {
+    alert(errorMessage)
+    throw new Error(errorMessage)
+  }
 
+  const registerForPushNotificationsAsync = async () => {
     if (Platform.OS === 'android') {
       Notifications.setNotificationChannelAsync('default', {
         name: 'default',
@@ -50,20 +51,32 @@ export function useExpoNotifications() {
         finalStatus = status
       }
       if (finalStatus !== 'granted') {
-        alert('Failed to get push token for push notification!')
+        handleRegistrationError('Permission not granted to get push token for push notification!')
         return
       }
-      token = await Notifications.getExpoPushTokenAsync({
-        projectId: Constants.expoConfig?.extra?.eas.projectId,
-      })
-      // await AysncStorage.setItem('pushToken', token.data)
-      setExpoToken(token)
-      mutate({token})
-    } else {
-      alert('Must use physical device for Push Notifications')
-    }
 
-    return token?.data
+      const projectId =
+        Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId
+      if (!projectId) {
+        handleRegistrationError('Project ID not found')
+      }
+
+      try {
+        const token = (
+          await Notifications.getExpoPushTokenAsync({
+            projectId,
+          })
+        ).data
+        setExpoToken(token)
+        mutate({token})
+        console.log(token)
+        return token
+      } catch (e: unknown) {
+        handleRegistrationError(`${e}`)
+      }
+    } else {
+      handleRegistrationError('Must use physical device for push notifications')
+    }
   }
 
   useEffect(() => {

@@ -70,12 +70,13 @@ export default function PaymentMethods() {
             <Input
               label="Card number"
               startContent={<IconCard type={type} />}
-              classNames={{input: 'w-[12rem]'}}
+              classNames={{container: 'flex-grow'}}
               placeholder={`#### #### #### ${last4}`}
             />
             <Input
               label="Expiry date"
               placeholder="MM/YY"
+              classNames={{container: 'w-[7rem]'}}
               value={`${exp_month < 10 ? '0' + exp_month : exp_month}/${exp_year}`}
             />
           </View>

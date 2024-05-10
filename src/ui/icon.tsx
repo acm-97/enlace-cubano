@@ -9,7 +9,7 @@ import {tw, useSelectedTheme} from '@/core'
 type Props = {
   as: 'AntDesign' | 'FontAwesome' | 'MaterialIcons' | 'MaterialCommunityIcons'
   name: string
-  size: number
+  size?: number
   className?: any
 }
 export default function Icon({as, size, className, ...props}: Props) {

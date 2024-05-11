@@ -56,6 +56,9 @@ jobs:
           echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.development
 
       - name: Run eas build pre install
+        env:
+          GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
+          GOOGLE_SERVICES_PLIST_BASE64: ${{ secrets.GOOGLE_SERVICES_PLIST_BASE64 }}
         run: pnpm pnpm run eas-build-pre-install ## for create google searvices files
 
       - name: Run prebuild

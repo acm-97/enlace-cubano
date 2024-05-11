@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "285500267028",
+    "project_id": "enlace-cubano",
+    "storage_bucket": "enlace-cubano.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285500267028:android:06dc40789a67d0c66be501",
+        "android_client_info": {
+          "package_name": "com.enlace_cubano"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxMskGdf8SqGORvhRnxV5HcelkcaQkKAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:285500267028:android:b7b7351b06d941c66be501",
+        "android_client_info": {
+          "package_name": "com.enlace_cubano.development"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxMskGdf8SqGORvhRnxV5HcelkcaQkKAM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -37,7 +37,7 @@ const BUNDLE_ID = 'com.enlace-cubano' // ios bundle id
 const PACKAGE = 'com.enlace_cubano' // android package name
 const NAME = 'Enlace Cubano' // app name
 const EXPO_ACCOUNT_OWNER = 'acm-97' // expo account owner
-const EAS_PROJECT_ID = process.env.EXPO_PROJECT_ID // eas project id
+const EAS_PROJECT_ID = 'df0c80c7-b30f-4200-9df4-ce2d3453174f' // eas project id
 const SCHEME = 'enlace-cubano' // app scheme
 
 /**
@@ -100,8 +100,14 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
-  STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+  API_URL:
+    APP_ENV === 'development' && process.env.DEV_API_URL
+      ? process.env.DEV_API_URL
+      : process.env.API_URL,
+  STRIPE_PUBLISHABLE_KEY:
+    APP_ENV === 'development' && process.env.DEV_STRIPE_PUBLISHABLE_KEY
+      ? process.env.DEV_STRIPE_PUBLISHABLE_KEY
+      : process.env.STRIPE_PUBLISHABLE_KEY,
 }
 
 /**

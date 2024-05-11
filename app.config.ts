@@ -23,6 +23,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    googleServicesFile: './googleServices/GoogleService-Info.plist',
     supportsTablet: true,
     bundleIdentifier: Env.BUNDLE_ID,
     entitlements: {
@@ -37,7 +38,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     typedRoutes: true,
   },
   android: {
-    googleServicesFile: 'google-services.json',
+    googleServicesFile: './googleServices/google-services.json',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#2E3C4B',

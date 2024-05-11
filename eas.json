@@ -17,10 +17,7 @@
       "env": {
         "EXPO_NO_DOTENV": "1",
         "APP_ENV": "production",
-        "FLIPPER_DISABLE": "1",
-        "API_URL": "https://enlace-cubano-api.vercel.app/",
-        "STRIPE_PUBLISHABLE_KEY": "pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP",
-        "EXPO_PROJECT_ID": "df0c80c7-b30f-4200-9df4-ce2d3453174fP"
+        "FLIPPER_DISABLE": "1"
       },
       "prebuildCommand": "prebuild --skip-dependency-update react",
       "cache": {
@@ -41,10 +38,7 @@
       "env": {
         "APP_ENV": "staging",
         "EXPO_NO_DOTENV": "1",
-        "FLIPPER_DISABLE": "1",
-        "API_URL": "https://staging-enlace-cubano-api.vercel.app/",
-        "STRIPE_PUBLISHABLE_KEY": "pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP",
-        "EXPO_PROJECT_ID": "df0c80c7-b30f-4200-9df4-ce2d3453174fP"
+        "FLIPPER_DISABLE": "1"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",
@@ -64,10 +58,7 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1",
-        "API_URL": "https://staging-enlace-cubano-api.vercel.app/",
-        "STRIPE_PUBLISHABLE_KEY": "pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP",
-        "EXPO_PROJECT_ID": "df0c80c7-b30f-4200-9df4-ce2d3453174fP"
+        "EXPO_NO_DOTENV": "1"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",
@@ -85,10 +76,7 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1",
-        "API_URL": "https://staging-enlace-cubano-api.vercel.app/",
-        "STRIPE_PUBLISHABLE_KEY": "pk_test_51PDbpjP8EH9HLCz08byzRCtARKQs1o7tA3LtjYcNs9z7yLMmztuB1bTtBwaC366N3yIrLURJPJixuCakDdpet11600C1AsIvQP",
-        "EXPO_PROJECT_ID": "df0c80c7-b30f-4200-9df4-ce2d3453174fP"
+        "EXPO_NO_DOTENV": "1"
       },
       "pnpm": "8.15.4",
       "prebuildCommand": "prebuild --skip-dependency-update react",

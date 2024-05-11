@@ -10,6 +10,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
   scheme: Env.SCHEME,
   slug: 'enlace-cubano',
   version: Env.VERSION.toString(),
+  runtimeVersion: Env.VERSION.toString(),
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
@@ -20,6 +21,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
   },
   updates: {
     fallbackToCacheTimeout: 0,
+    url: 'https://u.expo.dev/df0c80c7-b30f-4200-9df4-ce2d3453174f',
   },
   assetBundlePatterns: ['**/*'],
   ios: {

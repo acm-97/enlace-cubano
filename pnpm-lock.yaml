@@ -101,6 +101,9 @@ dependencies:
   expo-system-ui:
     specifier: ~2.9.4
     version: 2.9.4(expo@50.0.18)
+  expo-updates:
+    specifier: ~0.24.12
+    version: 0.24.12(expo@50.0.18)
   i18next:
     specifier: ~22.5.1
     version: 22.5.1
@@ -2139,6 +2142,30 @@ packages:
     dependencies:
       node-forge: 1.3.1
       nullthrows: 1.1.1
+
+  /@expo/config-plugins@7.8.4:
+    resolution: {integrity: sha512-hv03HYxb/5kX8Gxv/BTI8TLc9L06WzqAfHRRXdbar4zkLcP2oTzvsLEF4/L/TIpD3rsnYa0KU42d0gWRxzPCJg==}
+    dependencies:
+      '@expo/config-types': 50.0.1
+      '@expo/fingerprint': 0.6.1
+      '@expo/json-file': 8.3.3
+      '@expo/plist': 0.1.3
+      '@expo/sdk-runtime-versions': 1.0.0
+      '@react-native/normalize-color': 2.1.0
+      chalk: 4.1.2
+      debug: 4.3.4
+      find-up: 5.0.0
+      getenv: 1.0.0
+      glob: 7.1.6
+      resolve-from: 5.0.0
+      semver: 7.6.2
+      slash: 3.0.0
+      slugify: 1.6.6
+      xcode: 3.0.1
+      xml2js: 0.6.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@expo/config-plugins@7.9.2:
     resolution: {integrity: sha512-sRU/OAp7kJxrCUiCTUZqvPMKPdiN1oTmNfnbkG4oPdfWQTpid3jyCH7ZxJEN5SI6jrY/ZsK5B/JPgjDUhuWLBQ==}
@@ -4727,6 +4754,10 @@ packages:
   /application-config-path@0.1.1:
     resolution: {integrity: sha512-zy9cHePtMP0YhwG+CfHm0bgwdnga2X3gZexpdCwEj//dpb+TKajtiC8REEUJUSq6Ab4f9cgNy2l8ObXzCXFkEw==}
 
+  /arg@4.1.0:
+    resolution: {integrity: sha512-ZWc51jO3qegGkVh8Hwpv636EkbesNV5ZNQPCtRa+0qytRYPEs9IYT9qITY9buezqUH5uqyzlWLcufrzU2rffdg==}
+    dev: false
+
   /arg@4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
 
@@ -7088,6 +7119,10 @@ packages:
       ua-parser-js: 0.7.37
     dev: false
 
+  /expo-eas-client@0.11.2:
+    resolution: {integrity: sha512-SY7rVFxb4ut/OMTgR7A39Jg+8+hXwQNRpZd+RBpB+B5XV2STj/pWXHnGFhBayEF4umI4SxrOvisY90rlPWVO9Q==}
+    dev: false
+
   /expo-file-system@16.0.9(expo@50.0.18):
     resolution: {integrity: sha512-3gRPvKVv7/Y7AdD9eHMIdfg5YbUn2zbwKofjsloTI5sEC57SLUFJtbLvUCz9Pk63DaSQ7WIE1JM0EASyvuPbuw==}
     peerDependencies:
@@ -7260,6 +7295,10 @@ packages:
     resolution: {integrity: sha512-ddQEtCOgYHTLlFUe/yH67dDBIoct5VIULthyT3LRJbEwdpzAgueKsX2FYK02ldh440V87PWKCamh7R9evk1rrg==}
     dev: false
 
+  /expo-structured-headers@3.7.2:
+    resolution: {integrity: sha512-/nGOyeWUXSUy4aIYKJTwQOznRNs0yKqKPAyEE6jtwvOl9qvfDWx9xskNtShioggBhFAssFkV6RBbPn+xZMQtvw==}
+    dev: false
+
   /expo-system-ui@2.9.4(expo@50.0.18):
     resolution: {integrity: sha512-ExJ8AzEZjb/zbg6nRLrN/mqxWr6e4fAcT0LBN/YvPZljbMo23HU+/lPy0/YctF1tRRvQ3Z95ABSNjnx9ajQBjg==}
     peerDependencies:
@@ -7278,6 +7317,29 @@ packages:
       expo: '*'
     dependencies:
       expo: 50.0.18(@babel/core@7.23.9)(@react-native/babel-preset@0.74.83)
+    dev: false
+
+  /expo-updates@0.24.12(expo@50.0.18):
+    resolution: {integrity: sha512-35ZpAMSqHIyVGT5mEptaZJBxytu0mv4PIG28i3BQe+GG4ifQtY94aCOCrUwZe8Myzaf4dNVGEUXWTPo+JPCgcw==}
+    hasBin: true
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      '@expo/code-signing-certificates': 0.0.5
+      '@expo/config': 8.5.6
+      '@expo/config-plugins': 7.8.4
+      arg: 4.1.0
+      chalk: 4.1.2
+      expo: 50.0.18(@babel/core@7.23.9)(@react-native/babel-preset@0.74.83)
+      expo-eas-client: 0.11.2
+      expo-manifests: 0.13.2(expo@50.0.18)
+      expo-structured-headers: 3.7.2
+      expo-updates-interface: 0.15.3(expo@50.0.18)
+      fbemitter: 3.0.0
+      resolve-from: 5.0.0
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
     dev: false
 
   /expo@50.0.18(@babel/core@7.23.9)(@react-native/babel-preset@0.74.83):

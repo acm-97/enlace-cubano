@@ -1,4 +1,4 @@
-name: Eas build
+name: Eas build (Android - IOS)
 on:
   workflow_dispatch:
     inputs:
@@ -21,8 +21,8 @@ on:
         required: true
         default: false
 jobs:
-  name: Eas build
-  build:
+  Build:
+    name: Eas build (Android - IOS)
     runs-on: ubuntu-latest
     strategy:
       matrix:

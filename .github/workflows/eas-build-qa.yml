@@ -39,11 +39,11 @@ jobs:
 
       - name: Set environment variables based on deployment environment
         run: |
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode >> .env.production
+          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.production
 
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode >> .env.staging
+          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.staging
 
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode >> .env.development
+          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.development
 
       - name: ⏱️ EAS Build
         uses: ./.github/actions/eas-build

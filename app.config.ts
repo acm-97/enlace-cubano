@@ -37,7 +37,7 @@ export default ({config}: ConfigContext): ExpoConfig => ({
     typedRoutes: true,
   },
   android: {
-    googleServicesFile: 'google-services.json',
+    googleServicesFile: Env.GOOGLE_SERVICES_JSON,
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#2E3C4B',

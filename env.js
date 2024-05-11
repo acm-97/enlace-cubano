@@ -85,6 +85,7 @@ const client = z.object({
 const buildTime = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
+  GOOGLE_SERVICES_JSON: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
 })
 
@@ -110,6 +111,7 @@ const _clientEnv = {
 const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
+  GOOGLE_SERVICES_JSON: process.env.GOOGLE_SERVICES_JSON,
   // ADD YOUR ENV VARS HERE TOO
 }
 

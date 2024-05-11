@@ -42,13 +42,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🏗 Setup Expo and EAS
-        uses: expo/expo-github-action@v7
-        with:
-          token: ${{ secrets.EXPO_TOKEN }}
-          expo-version: latest
-          eas-version: latest
-
       - name: 📦 Setup Node + PNPM + install deps
         uses: ./.github/actions/setup-node-pnpm-install
 
@@ -70,10 +63,14 @@ jobs:
         env:
           GOOGLE_SERVICES_JSON_BASE64: ${{ secrets.GOOGLE_SERVICES_JSON_BASE64 }}
           GOOGLE_SERVICES_PLIST_BASE64: ${{ secrets.GOOGLE_SERVICES_PLIST_BASE64 }}
+        # run: |
+        #   eas build --local \
+        #     --non-interactive \
+        #     --output=./app-build \
+        #     --platform=${{ github.event.inputs.platform }} \
+        #     --profile=${{ github.event.inputs.profile }}
         run: |
-          eas build --local \
-            --non-interactive \
-            --output=./app-build \
+          eas build \
             --platform=${{ github.event.inputs.platform }} \
             --profile=${{ github.event.inputs.profile }}
 

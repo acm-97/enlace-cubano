@@ -100,9 +100,12 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: APP_ENV === 'development' ? process.env.DEV_API_URL : process.env.API_URL,
+  API_URL:
+    APP_ENV === 'development' && process.env.DEV_API_URL
+      ? process.env.DEV_API_URL
+      : process.env.API_URL,
   STRIPE_PUBLISHABLE_KEY:
-    APP_ENV === 'development'
+    APP_ENV === 'development' && process.env.DEV_STRIPE_PUBLISHABLE_KEY
       ? process.env.DEV_STRIPE_PUBLISHABLE_KEY
       : process.env.STRIPE_PUBLISHABLE_KEY,
 }

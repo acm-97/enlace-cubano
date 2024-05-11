@@ -55,8 +55,8 @@ jobs:
 
           echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.development
 
-      - name: Run eas pre install
-        run: pnpm run eas-pre-install ## for create google searvices files
+      - name: Run eas build pre install
+        run: pnpm pnpm run eas-build-pre-install ## for create google searvices files
 
       - name: Run prebuild
         run: pnpm run prebuild ## we only need to run this to generate the badged icon in `.expo` folder

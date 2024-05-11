@@ -36,10 +36,10 @@ jobs:
             echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
             exit 1
           fi
-      - name: 📦 Checkout project repo
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+    - name: 📦 Checkout project repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: 🏗 Setup Expo and EAS
       uses: expo/expo-github-action@v7
@@ -48,16 +48,19 @@ jobs:
         expo-version: latest
         eas-version: latest
 
-      - name: 📦 Setup Node + PNPM + install deps
-        uses: ./.github/actions/setup-node-pnpm-install
+    - name: 📦 Setup Node + PNPM + install deps
+      uses: ./.github/actions/setup-node-pnpm-install
 
-      - name: Set environment variables based on deployment environment
-        run: |
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.production
+    - name: Set environment variables based on deployment environment
+      run: |
+        echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.production
 
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.staging
+        echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.staging
 
-          echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.development
+        echo ${{ secrets.ENV_DEVELOPMENT }} | base64 --decode > .env.development
+
+    - name: Run eas pre install
+      run: pnpm run eas-pre-install ## for create google searvices files
 
     - name: 👷 Build app
       env:

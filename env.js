@@ -85,7 +85,6 @@ const client = z.object({
 const buildTime = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
-  GOOGLE_SERVICES_JSON: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
 })
 
@@ -101,8 +100,11 @@ const _clientEnv = {
   VERSION: packageJSON.version,
 
   // ADD YOUR ENV VARS HERE TOO
-  API_URL: process.env.API_URL,
-  STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+  API_URL: APP_ENV === 'development' ? process.env.DEV_API_URL : process.env.API_URL,
+  STRIPE_PUBLISHABLE_KEY:
+    APP_ENV === 'development'
+      ? process.env.DEV_STRIPE_PUBLISHABLE_KEY
+      : process.env.STRIPE_PUBLISHABLE_KEY,
 }
 
 /**
@@ -111,7 +113,6 @@ const _clientEnv = {
 const _buildTimeEnv = {
   EXPO_ACCOUNT_OWNER,
   EAS_PROJECT_ID,
-  GOOGLE_SERVICES_JSON: process.env.GOOGLE_SERVICES_JSON,
   // ADD YOUR ENV VARS HERE TOO
 }
 

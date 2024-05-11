@@ -1,6 +1,9 @@
 #!/bin/bash
 
+mkdir -p ./googleServices
+
 if [[ "$EAS_BUILD_PLATFORM" == "android" ]]; then
-  npm install -g pnpm@8.6.5
-  pnpm --version
+  echo $GOOGLE_SERVICES_JSON_BASE64 | base64 --decode > ./googleServices/google-services.json
+elif [[ "$EAS_BUILD_PLATFORM" == "ios" ]]; then
+  echo $GOOGLE_SERVICES_PLIST_BASE64 | base64 --decode > ./googleServices/GoogleService-Info.plist
 fi

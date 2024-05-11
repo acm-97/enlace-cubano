@@ -58,10 +58,7 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1",
-        "API_URL": "$DEV_API_RL",
-        "EXPO_PROJECT_ID": "$DEV_EXPO_PROJECT_ID",
-        "STRIPE_PUBLISHABLE_KEY": "$DEV_STRIPE_PUBLISHABLE_KEY"
+        "EXPO_NO_DOTENV": "1"
       },
 
       "prebuildCommand": "prebuild --skip-dependency-update react",
@@ -79,10 +76,7 @@
       },
       "env": {
         "APP_ENV": "development",
-        "EXPO_NO_DOTENV": "1",
-        "API_URL": "$DEV_API_RL",
-        "EXPO_PROJECT_ID": "$DEV_EXPO_PROJECT_ID",
-        "STRIPE_PUBLISHABLE_KEY": "$DEV_STRIPE_PUBLISHABLE_KEY"
+        "EXPO_NO_DOTENV": "1"
       },
       "pnpm": "8.15.4",
       "prebuildCommand": "prebuild --skip-dependency-update react",

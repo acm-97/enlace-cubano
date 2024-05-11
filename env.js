@@ -37,7 +37,7 @@ const BUNDLE_ID = 'com.enlace-cubano' // ios bundle id
 const PACKAGE = 'com.enlace_cubano' // android package name
 const NAME = 'Enlace Cubano' // app name
 const EXPO_ACCOUNT_OWNER = 'acm-97' // expo account owner
-const EAS_PROJECT_ID = process.env.EXPO_PROJECT_ID // eas project id
+const EAS_PROJECT_ID = 'df0c80c7-b30f-4200-9df4-ce2d3453174f' // eas project id
 const SCHEME = 'enlace-cubano' // app scheme
 
 /**

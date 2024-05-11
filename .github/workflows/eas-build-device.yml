@@ -28,22 +28,27 @@ jobs:
       matrix:
         node: [18.x]
     steps:
-      - name: 🏗 Setup repo
-        uses: actions/checkout@v2
-
-      - name: Check for EXPO_TOKEN
-        run: |
-          if [ -z "${{ secrets.EXPO_TOKEN }}" ]; then
-            echo "You must provide an EXPO_TOKEN secret linked to this project's Expo account in this repo's secrets. Learn more: https://docs.expo.dev/eas-update/github-actions"
-            exit 1
-          fi
       - name: 📦 Checkout project repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
-      - name: 📦 Setup Node + PNPM + install deps
-        uses: ./.github/actions/setup-node-pnpm-install
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v7
+        with:
+          token: ${{ secrets.EXPO_TOKEN }}
+          expo-version: latest
+          eas-version: latest
+
+      - name: 📦 Install Project Dependencies
+        run: pnpm install --frozen-lockfile
+        shell: bash
 
       - name: Set environment variables based on deployment environment
         run: |

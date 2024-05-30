@@ -1,15 +1,18 @@
 import {FlashList} from '@shopify/flash-list'
-import {Stack} from 'expo-router'
+import {Stack, useFocusEffect, useRouter} from 'expo-router'
 import debounce from 'lodash.debounce'
 import React, {useCallback, useEffect, useMemo, useState} from 'react'
 import {RefreshControl} from 'react-native'
 
 import type {MobileOffer} from '@/api'
 import {useMobileOffers} from '@/api'
+import CartButton from '@/components/cart-button-header'
 import {Card} from '@/components/mobile-offers/card'
+import PhoneSection from '@/components/mobile-offers/phone-section'
 import {translate} from '@/core'
 import {useRefreshByUser, useRefreshOnFocus} from '@/core/hooks/react-query'
-import {EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
+import {useAnimatedShake} from '@/hooks/use-animated-shake'
+import {Divider, EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
 
 export default function MobileOffersList() {
   const {data, isLoading, isError, refetch} = useMobileOffers()
@@ -17,12 +20,24 @@ export default function MobileOffersList() {
   const [items, setItems] = useState<MobileOffer[]>()
   const {isRefetchingByUser, refetchByUser} = useRefreshByUser(refetch)
   useRefreshOnFocus(refetch)
+  const {shake, rStyle, isShaking} = useAnimatedShake()
+  const [key, setKey] = useState(0)
+  const {} = useRouter()
 
   useEffect(() => {
     setItems(data)
   }, [data])
 
-  const renderItem = useCallback(({item}: {item: MobileOffer}) => <Card {...item} />, [])
+  const renderItem = useCallback(
+    ({item}: {item: MobileOffer}) => <Card item={item} shake={shake} />,
+    [shake],
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      setKey(Math.random())
+    }, []),
+  )
 
   const debounced = debounce(value => {
     const filter = data?.filter(
@@ -77,17 +92,24 @@ export default function MobileOffersList() {
   }
 
   return (
-    <View className="flex-1">
+    <View className="flex-1" key={key}>
       <Stack.Screen
-        options={{title: translate('offers.mobile.title'), headerBackTitleVisible: false}}
+        options={{
+          title: translate('offers.mobile.title'),
+          headerBackTitleVisible: false,
+          headerRight: CartButton,
+        }}
       />
       <FocusAwareStatusBar />
-      <Input
-        value={search}
-        onChangeText={onChange}
-        classNames={{container: 'mx-3.5 mt-8 mb-4'}}
-        placeholder={translate('offers.mobile.search')}
-      />
+      <View className="w-full px-3.5 pb-4 pt-8">
+        <PhoneSection rStyle={rStyle} />
+        <Divider className="my-6" />
+        <Input
+          value={search}
+          onChangeText={onChange}
+          placeholder={translate('offers.mobile.search')}
+        />
+      </View>
       <FlashList
         data={items}
         renderItem={renderItem}

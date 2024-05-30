@@ -64,11 +64,11 @@ export default function PlatformPayButton({
       description,
       colored_parts: colored_parts ?? [],
     }
-    mutate(_payload, {
-      onSuccess: () => {
-        replace('/mobile/')
-      },
-    })
+    // mutate(_payload, {
+    //   onSuccess: () => {
+    //     replace('/mobile/')
+    //   },
+    // })
   }
 
   // if (!isSupported) {

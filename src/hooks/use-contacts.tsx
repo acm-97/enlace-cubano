@@ -5,21 +5,25 @@ import Contacts from 'react-native-contacts'
 import {create} from 'zustand'
 
 interface ContactsState {
+  selectedPhone: string | null
   isLoading: boolean
   isError: boolean
   contacts: any[]
   setIsLoading: (isLoading: boolean) => void
   setIsError: (isError: boolean) => void
   setContacts: (contacts: Contact[]) => void
+  setSelectedPhone: (selectedPhone: string) => void
 }
 
 export const contactsState = create<ContactsState>((set, get) => ({
+  selectedPhone: null,
   isLoading: false,
   isError: false,
   contacts: [],
   setIsLoading: (isLoading: boolean) => set({isLoading}),
   setIsError: (isError: boolean) => set({isError}),
   setContacts: (contacts: Contact[]) => set({contacts}),
+  setSelectedPhone: (selectedPhone: string) => set({selectedPhone}),
 }))
 
 export function useContacts(enabled: boolean) {

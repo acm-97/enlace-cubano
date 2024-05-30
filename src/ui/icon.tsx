@@ -3,11 +3,12 @@ import AntDesign from 'react-native-vector-icons/AntDesign'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
 
 import {tw, useSelectedTheme} from '@/core'
 
 type Props = {
-  as: 'AntDesign' | 'FontAwesome' | 'MaterialIcons' | 'MaterialCommunityIcons'
+  as: 'AntDesign' | 'FontAwesome' | 'MaterialIcons' | 'MaterialCommunityIcons' | 'SimpleLineIcons'
   name: string
   size?: number
   className?: any
@@ -26,6 +27,8 @@ export default function Icon({as, size, className, ...props}: Props) {
         return <FontAwesome {...iconProps} />
       case 'MaterialCommunityIcons':
         return <MaterialCommunityIcons {...iconProps} />
+      case 'SimpleLineIcons':
+        return <SimpleLineIcons {...iconProps} />
       default:
         return <MaterialIcons {...iconProps} />
     }

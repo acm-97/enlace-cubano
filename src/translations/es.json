@@ -3,6 +3,12 @@
   "available": "Disponible",
   "back": "Volver",
   "cancel": "Cancelar",
+  "cart": {
+    "pay": "Pagar",
+    "select-method": "Seleccione un método de pago",
+    "title": "Carrito",
+    "total": "Total a pagar:"
+  },
   "currentPassword": "Contraseña Actual",
   "email": "Correo Electrónico",
   "empty-data": "Lo sentimos. No se han encontrado datos",

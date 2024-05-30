@@ -9,7 +9,7 @@ import Contacts from 'react-native-contacts'
 import {AlphabetList} from 'react-native-section-alphabet-list'
 
 import {translate, useSelectedTheme} from '@/core'
-import {contactsState} from '@/core/hooks/use-contacts'
+import {contactsState} from '@/hooks/use-contacts'
 import {
   ActivityIndicator,
   Divider,
@@ -81,7 +81,7 @@ export default function MobileContacts({}: Props) {
             options={{
               title: 'Contacts',
               presentation: 'modal',
-              headerLeft,
+              // headerLeft,
             }}
           />
         )}
@@ -100,7 +100,7 @@ export default function MobileContacts({}: Props) {
             options={{
               title: 'Contacts',
               presentation: 'modal',
-              headerLeft,
+              // headerLeft,
             }}
           />
         )}
@@ -118,7 +118,7 @@ export default function MobileContacts({}: Props) {
           options={{
             title: 'Contacts',
             presentation: 'modal',
-            headerLeft,
+            // headerLeft,
           }}
         />
       )}
@@ -160,35 +160,42 @@ export default function MobileContacts({}: Props) {
 }
 
 function ListItem({item}: any) {
-  const params = useLocalSearchParams()
+  // const params = useLocalSearchParams()
+  const {dismiss} = useRouter()
   const name = item.value
+  const setSelectedPhone = contactsState(state => state.setSelectedPhone)
+
+  const onSlect = (phone: string) => {
+    setSelectedPhone(phone.replaceAll(' ', '').replace('+53', '').replaceAll('-', '') ?? '')
+    dismiss()
+  }
 
   if (!item?.phoneNumbers || item?.phoneNumbers?.length === 0) return
 
   return item?.phoneNumbers.map(({label, number}: any, i: number) => (
-    <Link
-      key={i}
-      replace
-      href={{
-        pathname: `/mobile/[id]`,
-        // @ts-ignore
-        params: {
-          ...params,
-          phoneNumber: number.replaceAll(' ', '').replace('+53', '').replaceAll('-', '') ?? '',
-        },
-      }}
-      asChild
-    >
-      <Pressable>
-        <View className="border-b border-neutral-300 px-3.5 py-2 dark:border-neutral-700">
-          <Text className="text-base font-semibold">{name}</Text>
-          <View className="flex-row items-center">
-            <Text className="text-xs">{label}</Text>
-            {label && <Divider vertical />}
-            <Text className="text-xs">{number}</Text>
-          </View>
+    // <Link
+    //   key={i}
+    //   replace
+    //   href={{
+    //     pathname: `/mobile/[id]`,
+    //     // @ts-ignore
+    //     params: {
+    //       ...params,
+    //       phoneNumber: number.replaceAll(' ', '').replace('+53', '').replaceAll('-', '') ?? '',
+    //     },
+    //   }}
+    //   asChild
+    // >
+    <Pressable onPress={() => onSlect(number)}>
+      <View className="border-b border-neutral-300 px-3.5 py-2 dark:border-neutral-700">
+        <Text className="text-base font-semibold">{name}</Text>
+        <View className="flex-row items-center">
+          <Text className="text-xs">{label}</Text>
+          {label && <Divider vertical />}
+          <Text className="text-xs">{number}</Text>
         </View>
-      </Pressable>
-    </Link>
+      </View>
+    </Pressable>
+    // </Link>
   ))
 }

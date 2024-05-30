@@ -16,7 +16,7 @@ export type OfferType = {
   note: string
 }
 
-type Variables = Omit<OfferType, 'status, updatedAt, id, note, userId'>
+type Variables = {items: Omit<OfferType, 'status' | 'updatedAt' | 'id' | 'note' | 'userId'>[]}
 
 type Response = OfferType
 

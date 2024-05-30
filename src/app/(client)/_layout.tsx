@@ -5,9 +5,10 @@ import {Platform} from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import {useCurrentUser} from '@/api/users'
+import CartButton from '@/components/cart-button-header'
 import {translate, useAuth, useIsFirstTime} from '@/core'
-import {useContacts} from '@/core/hooks/use-contacts'
 import {useExpoNotifications} from '@/core/hooks/use-expo-notifications'
+import {useContacts} from '@/hooks/use-contacts'
 
 export default function TabLayout() {
   const status = useAuth.use.status()
@@ -55,6 +56,7 @@ export default function TabLayout() {
           paddingTop: 10,
         },
         tabBarLabelStyle: {fontSize: 14},
+        headerRight: CartButton,
       }}
     >
       <Tabs.Screen

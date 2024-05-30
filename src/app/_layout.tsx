@@ -45,10 +45,22 @@ function RootLayoutNav() {
         <Stack.Screen name="login" options={{headerShown: false}} />
         <Stack.Screen name="signup" options={{headerShown: false}} />
         <Stack.Screen name="verify" options={{headerShown: false}} />
+        <Stack.Screen
+          name="cart"
+          options={{
+            title: 'Carrito',
+            animation: 'slide_from_bottom',
+            headerBackTitleVisible: false,
+          }}
+        />
         {Platform.OS === 'ios' && (
           <Stack.Screen
             name="mobile-contacts"
-            options={{title: 'Contacts', presentation: 'modal'}}
+            options={{
+              title: 'Contacts',
+              animation: 'slide_from_bottom',
+              headerBackTitleVisible: false,
+            }}
           />
         )}
       </Stack>

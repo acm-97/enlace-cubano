@@ -3,6 +3,12 @@
   "available": "Available",
   "back": "Back",
   "cancel": "Cancel",
+  "cart": {
+    "pay": "Pay",
+    "select-method": "Select a payment method",
+    "title": "Cart",
+    "total": "Total to pay:"
+  },
   "currentPassword": "Current Password",
   "email": "Email",
   "empty-data": "Sorry! No data found",

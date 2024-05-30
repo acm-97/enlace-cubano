@@ -24,13 +24,13 @@ export default function CardPayButton({modal, ...props}: Props) {
   const {mutate} = useAddOffer()
   const {replace} = useRouter()
   const {mutate: getPaymentSheet} = usePaymentSheet()
-  const selectedItems = useCart.use.selectedItems()
+  const items = useCart.use.items()
   const resetItems = useCart.use.resetItems()
 
   const openPaymentSheet = async () => {
     // console.log('🚀 ~ openPaymentSheet ~ payload:', payload)
     setLoading(true)
-    const amount = selectedItems.reduce((acc, curr) => acc + curr.default_price.unit_amount, 0)
+    const amount = items.reduce((acc, curr) => acc + curr.default_price.unit_amount, 0)
     getPaymentSheet(
       {amount},
       {
@@ -68,7 +68,7 @@ export default function CardPayButton({modal, ...props}: Props) {
             if (error) {
               showErrorMessage(error.message)
             } else {
-              const items = selectedItems.map(({phoneNumber, id, description, colored_parts}) => ({
+              const _items = items.map(({phoneNumber, id, description, colored_parts}) => ({
                 offerId: id,
                 phoneNumber,
                 amount,
@@ -76,7 +76,7 @@ export default function CardPayButton({modal, ...props}: Props) {
                 colored_parts: colored_parts ?? [],
               }))
               mutate(
-                {items},
+                {items: _items},
                 {
                   onSuccess: () => {
                     showMessage({message: 'Your payment was confirmed!', type: 'success'})

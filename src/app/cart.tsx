@@ -1,6 +1,7 @@
 import {FlashList} from '@shopify/flash-list'
 import React, {useCallback} from 'react'
-import {useWindowDimensions} from 'react-native'
+import {Platform, useWindowDimensions} from 'react-native'
+import {twMerge} from 'tailwind-merge'
 
 import type {MobileOffer} from '@/api'
 import CardPayButton from '@/components/card-pay-button'
@@ -13,24 +14,33 @@ export type CartItem = MobileOffer & {phoneNumber: string}
 
 type Props = {}
 export default function Cart({}: Props) {
-  const selectedItems = useCart.use.selectedItems()
+  const items = useCart.use.items()
   const totals = useCart.use.totals()
   const modal = useModal()
   const {width: windowWidth, height: windowHeight} = useWindowDimensions()
   const {selectedTheme} = useSelectedTheme()
 
-  const renderItem = useCallback(({item}: {item: CartItem}) => <CartCard item={item} />, [])
+  const renderItem = useCallback(
+    ({item, index}: {item: CartItem; index: number}) => <CartCard item={item} index={index} />,
+    [],
+  )
 
   return (
     <View className="relative flex-1">
       <FlashList
-        data={selectedItems}
+        data={items}
         renderItem={renderItem}
         keyExtractor={(_, index) => `item-${index}`}
         ListEmptyComponent={<EmptyList isLoading={false} />}
         estimatedItemSize={300}
       />
-      <View className="absolute bottom-0 h-20 w-full flex-row items-center justify-between gap-2 rounded-t-xl border-t border-neutral-300 px-6 dark:border-neutral-700">
+      <View
+        className={twMerge(
+          'absolute bottom-0 h-24 w-full flex-row items-center justify-between gap-2 border-t border-x border-neutral-300/50 px-6 dark:border-neutral-700/50 bg-white',
+          selectedTheme === 'dark' && 'bg-charcoal-850',
+          Platform.OS === 'android' && 'rounded-t-2xl ',
+        )}
+      >
         <View className="flex-row items-center gap-1">
           <Text className="font-bold opacity-50">{translate('cart.total')}</Text>
           <Text className="text-xl font-bold">${totals.totalEstimated}</Text>
@@ -43,6 +53,7 @@ export default function Cart({}: Props) {
           onPress={modal.present}
         />
       </View>
+      <View className="h-24" />
       <Modal
         ref={modal.ref}
         index={0}

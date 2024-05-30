@@ -1,6 +1,7 @@
 import {useRouter} from 'expo-router'
 import React from 'react'
 import {TouchableOpacity} from 'react-native-gesture-handler'
+import {twMerge} from 'tailwind-merge'
 
 import {useCart} from '@/hooks/use-cart'
 import {Icon, Text, View} from '@/ui'
@@ -12,20 +13,21 @@ export default function CartButton({}: Props) {
 
   return (
     <View className="px-4 pt-1">
-      <View className="relative">
-        <TouchableOpacity activeOpacity={0.5} onPress={() => push('/cart')}>
+      <TouchableOpacity activeOpacity={0.5} onPress={() => push('/cart')}>
+        <View className="relative">
           <Icon as="AntDesign" size={24} name="shoppingcart" />
           {cartTotal > 0 && (
-            <TouchableOpacity
-              activeOpacity={0.5}
-              onPress={() => push('/cart')}
-              className="!px-1.5\ absolute -right-1 -top-0.5 rounded-full bg-primary-500"
+            <Text
+              className={twMerge(
+                'absolute -right-1 -top-1 rounded-full bg-primary-500 !px-1.5 text-[10px]',
+                cartTotal > 9 && '-right-2 -top-2 py-0.5',
+              )}
             >
-              <Text className="text-[10px]">{cartTotal}</Text>
-            </TouchableOpacity>
+              {cartTotal}
+            </Text>
           )}
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }

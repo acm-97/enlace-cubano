@@ -6,8 +6,8 @@ import {useCart} from '@/hooks/use-cart'
 import {contactsState} from '@/hooks/use-contacts'
 import {Icon, Text, TouchableOpacity, View} from '@/ui'
 
-type Props = {item: CartItem}
-export default function CartCard({item}: Props) {
+type Props = {item: CartItem; index: number}
+export default function CartCard({item, index}: Props) {
   const contacts = contactsState(state => state.contacts)
   const removeItem = useCart.use.removeItem()
 
@@ -32,7 +32,7 @@ export default function CartCard({item}: Props) {
       </View>
       <View className="flex-row items-center gap-2">
         <Text className="text-xl font-bold">${item.amount}</Text>
-        <TouchableOpacity activeOpacity={0.5} onPress={() => removeItem(item.id)}>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => removeItem(index)}>
           <Icon as="SimpleLineIcons" name="trash" />
         </TouchableOpacity>
       </View>

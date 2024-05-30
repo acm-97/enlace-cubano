@@ -5,7 +5,6 @@ import {createSelectors} from '@/core'
 interface CartState {
   items: any[]
   total: number
-  selectedItems: any[]
   totals: {
     // totalPrice: number
     // totalDiscount: number
@@ -19,9 +18,6 @@ interface CartState {
   addItem: (ietm: any) => void
   removeItem: (id: any) => void
   setTotal: (items: any[]) => void
-  addSelectedItem: (selectedItem: any) => void
-  removeSelectedItems: (id: any) => void
-  setSelectedItems: (selectedItems: any) => void
   resetItems: () => void
   calculateTotals: (items: any[]) => void
 }
@@ -35,7 +31,6 @@ const initialTotals = {
 
 const _useCart = create<CartState>((set, get) => ({
   items: [],
-  selectedItems: [],
   total: 0,
   totals: initialTotals,
   hasUpadtes: false,
@@ -58,34 +53,17 @@ const _useCart = create<CartState>((set, get) => ({
     _items = [..._items, item]
     set({items: _items})
     get().setTotal(_items)
-    get().addSelectedItem(item)
     get().calculateTotals(_items)
   },
-  removeItem: id => {
-    const _items = get().items.filter(f => f.id !== id)
+  removeItem: idx => {
+    const _items = [...get().items]
+    _items.splice(idx, 1)
     set({items: _items})
-    set({selectedItems: _items})
     get().setTotal(_items)
     get().calculateTotals(_items)
   },
-  addSelectedItem: item => {
-    let _selectedItems = get().selectedItems
-    _selectedItems = [..._selectedItems, item]
-    set({selectedItems: _selectedItems})
-    get().calculateTotals(_selectedItems)
-  },
-  removeSelectedItems: id => {
-    const _selectedItems = get().selectedItems.filter(f => f.id !== id)
-    set({selectedItems: _selectedItems})
-    get().calculateTotals(_selectedItems)
-  },
-  setSelectedItems: selectedItems => {
-    set({selectedItems})
-    get().calculateTotals(selectedItems)
-  },
   resetItems: () => {
     get().setItems([])
-    get().setSelectedItems([])
     get().setTotal([])
   },
   setTotal: items => {

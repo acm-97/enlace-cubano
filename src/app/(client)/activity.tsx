@@ -12,7 +12,6 @@ import {EmptyList, FocusAwareStatusBar, Input, Text, View} from '@/ui'
 
 export default function ActivityList() {
   const {data, isLoading, isError, refetch} = useGetOffers()
-  console.log('🚀 ~ ActivityList ~ data:', data)
   const {isRefetchingByUser, refetchByUser} = useRefreshByUser(refetch)
   useRefreshOnFocus(refetch)
 

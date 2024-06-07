@@ -4,7 +4,7 @@ import * as React from 'react'
 import {Item} from '@/components/item'
 import {ItemsContainer} from '@/components/items-container'
 import {useAuth} from '@/core'
-import {FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
+import {Divider, FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
 
 const menu = [
   {
@@ -42,9 +42,12 @@ export default function Offers({}: Props) {
       <ScrollView>
         <View className="flex-1 px-4">
           <ItemsContainer title="offers.recharges">
-            {menu.map(({label, path, IconComponent}) => (
-              // @ts-ignore
-              <Item key={path} text={label} icon={IconComponent} onPress={() => push(path)} />
+            {menu.map(({label, path, IconComponent}, i) => (
+              <>
+                {/* @ts-ignore */}
+                <Item key={path} text={label} icon={IconComponent} onPress={() => push(path)} />
+                {i < menu.length - 1 && <Divider className="m-0" />}
+              </>
             ))}
           </ItemsContainer>
         </View>

@@ -1,6 +1,7 @@
+import {locale} from 'expo-localization'
 import * as React from 'react'
 
-import {useSelectedLanguage} from '@/core'
+import {getLanguage, useSelectedLanguage} from '@/core'
 import {translate} from '@/core'
 import type {Language} from '@/core/i18n/resources'
 import type {Option} from '@/ui'
@@ -27,9 +28,15 @@ export const LanguageItem = () => {
     [],
   )
 
+  const _locale = getLanguage() ?? locale
+
   const selectedLanguage = React.useMemo(
-    () => langs.find(lang => lang.value === language),
-    [language, langs],
+    () =>
+      langs.find(
+        lang =>
+          lang.value === language || lang.value === _locale || lang.value === _locale.split('-')[0],
+      ),
+    [language, langs, _locale],
   )
 
   return (
@@ -46,6 +53,7 @@ export const LanguageItem = () => {
         onSelect={onSelect}
         value={selectedLanguage?.value ?? 'es'}
         title={translate('settings.language')}
+        showActive
       />
     </>
   )

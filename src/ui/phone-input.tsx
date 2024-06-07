@@ -21,7 +21,7 @@ const inputTv = tv({
     container: 'mb-2',
     label: 'text-grey-100 mb-1 text-lg dark:text-neutral-100',
     inputWrapper:
-      'mt-0  rounded-lg border-[0.5px] border-neutral-300 bg-neutral-100 p-0 py-0.5 font-inter  text-base font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white',
+      'mt-0  rounded-lg border-[0.5px] border-neutral-400 bg-neutral-100 p-0 py-0.5 font-inter  text-base font-medium leading-5 dark:border-neutral-700 dark:bg-neutral-800 dark:text-white',
     input:
       'm-0 p-0 font-inter text-base  font-medium leading-5 dark:bg-neutral-800 dark:text-white',
     code: 'font-inter text-base  font-medium leading-5 dark:bg-neutral-800 dark:text-white',
@@ -30,7 +30,7 @@ const inputTv = tv({
   variants: {
     focused: {
       true: {
-        inputWrapper: 'border-neutral-400 dark:border-neutral-300',
+        inputWrapper: 'border-neutral-400 dark:border-neutral-200',
       },
     },
     error: {
@@ -137,7 +137,7 @@ export const PhoneInput = React.forwardRef<CPhoneInput, NInputProps>((props, ref
               activeOpacity={0.5}
               onPress={() => push('/mobile-contacts')}
               className={twMerge(
-                'border-border border-y border-r border-neutral-300 p-2.5 dark:border-neutral-700 rounded-tr-lg rounded-br-lg',
+                'border-border border-y border-r border-neutral-200 p-2.5 dark:border-neutral-700 rounded-tr-lg rounded-br-lg',
               )}
             >
               <Icon as="AntDesign" name="contacts" size={Platform.OS === 'ios' ? 23 : 28} />

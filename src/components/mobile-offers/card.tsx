@@ -25,7 +25,7 @@ export const Card = ({item, shake}: Props) => {
     // <Link replace href={{pathname: `/mobile/${id}`}} asChild>
     // <Pressable>
     <>
-      <View className="m-3 overflow-hidden rounded-lg border border-neutral-300  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900">
+      <View className="m-3 overflow-hidden rounded-lg border border-neutral-200  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900">
         <View className="flex-row flex-wrap gap-1 px-2">
           {item.description_parts.map((part, i) => (
             <Text

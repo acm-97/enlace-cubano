@@ -150,7 +150,7 @@ export default function MobileContacts({}: Props) {
         renderCustomSectionHeader={section => (
           <View
             // className="py-1 px-6 bg-warmGray-200 dark:bg-warmGray-700`}
-            className="border-b border-neutral-300 px-6  pb-1 pt-4 dark:border-neutral-700 "
+            className="border-b border-neutral-200 px-6  pb-1 pt-4 dark:border-neutral-700 "
           >
             <Text className="font-semibold">{section?.title}</Text>
           </View>
@@ -188,7 +188,7 @@ function ListItem({item}: any) {
     //   asChild
     // >
     <Pressable onPress={() => onSlect(number)}>
-      <View className="border-b border-neutral-300 px-3.5 py-2 dark:border-neutral-700">
+      <View className="border-b border-neutral-200 px-3.5 py-2 dark:border-neutral-700">
         <Text className="text-base font-semibold">{name}</Text>
         <View className="flex-row items-center">
           <Text className="text-xs">{label}</Text>

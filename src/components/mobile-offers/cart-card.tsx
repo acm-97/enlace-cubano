@@ -18,7 +18,7 @@ export default function CartCard({item, index}: Props) {
   }, [contacts, item.phoneNumber])
 
   return (
-    <View className="flex-row items-center justify-between gap-3 border-b border-neutral-300 p-4 dark:border-neutral-700">
+    <View className="flex-row items-center justify-between gap-3 border-b border-neutral-200 p-4 dark:border-neutral-700">
       <View>
         {name && <Text className="text-lg font-bold">{name}</Text>}
         <Text className="font-bold">+53 {item.phoneNumber}</Text>

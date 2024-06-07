@@ -121,7 +121,6 @@ const CustomBackdrop = ({style}: BottomSheetBackdropProps) => {
       onPress={() => close()}
       entering={FadeIn.duration(50)}
       exiting={FadeOut.duration(20)}
-      // eslint-disable-next-line react-native/no-inline-styles
       style={[style, {backgroundColor: 'rgba(0, 0, 0, 0.4)'}]}
     />
   )
@@ -157,7 +156,7 @@ const ModalHeader = React.memo(({title, dismiss, showCloseButton}: ModalHeaderPr
   return (
     <>
       {title && (
-        <View className="flex-row border-b border-neutral-300 px-2 py-4 dark:border-neutral-700">
+        <View className="flex-row border-b border-neutral-200 px-2 py-4 dark:border-neutral-700">
           {/* <View className="h-[24px] w-[24px]" /> */}
           <View className="flex-1">
             <Text className="text-center text-[16px] font-bold text-[#26313D] dark:text-white">

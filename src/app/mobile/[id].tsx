@@ -59,7 +59,7 @@ export default function MobileOffer({}: Props) {
       <Stack.Screen options={{title: 'Pagar Oferta', headerLeft}} />
       <FocusAwareStatusBar />
 
-      <View className="mb-10 overflow-hidden rounded-lg border border-neutral-300  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900">
+      <View className="mb-10 overflow-hidden rounded-lg border border-neutral-200  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900">
         <View className="flex-row flex-wrap gap-1">
           {data.description_parts.map((part, i) => (
             <Text

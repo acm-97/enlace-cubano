@@ -11,7 +11,7 @@ import {Divider, Image, Pressable, Text, View} from '@/ui'
 const card = tv({
   slots: {
     container:
-      'm-3 overflow-hidden rounded-lg border border-neutral-300  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900',
+      'm-3 overflow-hidden rounded-lg border border-neutral-200  bg-white p-4 dark:border-neutral-700  dark:bg-neutral-900',
     statusLabel: 'font-semibold capitalize',
     itemContainer: 'flex-row justify-around',
   },

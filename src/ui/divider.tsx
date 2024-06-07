@@ -5,7 +5,7 @@ import {tv} from 'tailwind-variants'
 
 const divider = tv({
   slots: {
-    base: ' border-neutral-300 dark:border-neutral-700',
+    base: ' border-neutral-200 dark:border-neutral-700',
   },
 
   variants: {

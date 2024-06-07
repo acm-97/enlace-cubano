@@ -26,7 +26,7 @@ export default function Account({}: Props) {
               <Text className="!text-4xl font-semibold">{user?.lastName}</Text>
             </View>
             <Image
-              className="h-20 w-20 rounded-full border border-neutral-300 bg-neutral-300 dark:border-neutral-700"
+              className="h-20 w-20 rounded-full border border-neutral-200 bg-neutral-300 dark:border-neutral-700"
               contentFit="contain"
               alt="user"
               source={{

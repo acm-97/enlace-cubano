@@ -85,7 +85,6 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: translate('settings.title'),
-          headerShown: false,
           tabBarIcon: ({color, size}) => (
             <MaterialIcons color={color} size={size} name="settings" />
           ),

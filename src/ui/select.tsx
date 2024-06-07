@@ -13,6 +13,7 @@ import {tv} from 'tailwind-variants'
 import colors from '@/ui/colors'
 import {CaretDown} from '@/ui/icons'
 
+import {RadioIcon} from './checkbox'
 import type {InputControllerType} from './input'
 import {useModal} from './modal'
 import {Modal} from './modal'
@@ -63,6 +64,7 @@ type OptionsProps = {
   testID?: string
   title?: string
   showCloseButton?: boolean
+  showActive?: boolean
 }
 
 function keyExtractor(item: Option) {
@@ -70,7 +72,7 @@ function keyExtractor(item: Option) {
 }
 
 export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
-  ({options, onSelect, value, testID, ...props}, ref) => {
+  ({options, onSelect, value, testID, showActive, ...props}, ref) => {
     const height = options.length * 70 + 100
     const snapPoints = React.useMemo(() => [height], [height])
     const {colorScheme} = useColorScheme()
@@ -84,9 +86,10 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
           selected={value === item.value}
           onPress={() => onSelect(item)}
           testID={testID ? `${testID}-item-${item.value}` : undefined}
+          showActive={showActive}
         />
       ),
-      [onSelect, value, testID],
+      [onSelect, value, testID, showActive],
     )
 
     return (
@@ -94,6 +97,9 @@ export const Options = React.forwardRef<BottomSheetModal, OptionsProps>(
         ref={ref}
         index={0}
         snapPoints={snapPoints}
+        style={{
+          paddingHorizontal: 15,
+        }}
         backgroundStyle={{
           backgroundColor: isDark ? colors.neutral[800] : colors.white,
         }}
@@ -115,18 +121,21 @@ const Option = React.memo(
   ({
     label,
     selected = false,
+    showActive,
     ...props
   }: PressableProps & {
     selected?: boolean
+    showActive?: boolean
     label: string
   }) => {
     return (
       <Pressable
-        className="flex-row items-center border-b-DEFAULT border-neutral-300 bg-white p-3 dark:border-neutral-700 dark:bg-neutral-800"
+        // className="flex-row items-center border-b border-neutral-300 bg-white p-3 dark:border-neutral-700 dark:bg-neutral-800"
+        className="mb-2 flex-row items-center rounded-md border border-neutral-300 bg-white p-3"
         {...props}
       >
         <Text className="flex-1 dark:text-neutral-100 ">{label}</Text>
-        {selected && <Check />}
+        {showActive && <RadioIcon checked={selected} />}
       </Pressable>
     )
   },

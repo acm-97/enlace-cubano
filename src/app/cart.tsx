@@ -37,7 +37,7 @@ export default function Cart({}: Props) {
       />
       <View
         className={twMerge(
-          'absolute bottom-0 h-24 w-full flex-row items-center justify-between gap-2 border-t border-x border-neutral-300/50 px-6 dark:border-neutral-700/50 bg-white',
+          'absolute bottom-0 h-24 w-full flex-row items-center justify-between gap-2 border-t border-x border-neutral-200/50 px-6 dark:border-neutral-700/50 bg-white',
           colorScheme === 'dark' && 'bg-charcoal-850',
           Platform.OS === 'android' && 'rounded-t-2xl ',
         )}

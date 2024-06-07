@@ -6,7 +6,7 @@ import {ItemsContainer} from '@/components/items-container'
 import {LanguageItem} from '@/components/settings/language-item'
 import {ThemeItem} from '@/components/settings/theme-item'
 import {translate, useAuth} from '@/core'
-import {colors, FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
+import {colors, Divider, FocusAwareStatusBar, Icon, ScrollView, Text, View} from '@/ui'
 // import {Github, Rate, Share, Support, Website} from '@/ui/icons'
 
 export default function SettingsPage() {
@@ -19,21 +19,28 @@ export default function SettingsPage() {
       <FocusAwareStatusBar />
 
       <ScrollView>
-        <View className="flex-1 px-4 pt-16 ">
-          <Text className="text-xl font-bold">{translate('settings.title')}</Text>
-          <ItemsContainer title="settings.generale">
+        <View className="flex-1 gap-8 px-4 pt-8">
+          {/* <Text className="text-xl font-bold">{translate('settings.title')}</Text> */}
+          <ItemsContainer
+          // title="settings.generale"
+          >
             <Item
               text="settings.account.title"
               value={user?.email}
               icon={<Icon as="MaterialCommunityIcons" name="account-cog-outline" size={22} />}
               onPress={() => push('/account/')}
             />
+            <Divider className="m-0" />
             <LanguageItem />
+            <Divider className="m-0" />
             <ThemeItem />
           </ItemsContainer>
 
-          <ItemsContainer title="settings.about">
+          <ItemsContainer
+          // title="settings.about"
+          >
             <Item text="settings.app_name" value={Env.NAME} />
+            <Divider className="m-0" />
             <Item text="settings.version" value={Env.VERSION} />
           </ItemsContainer>
 
@@ -50,15 +57,13 @@ export default function SettingsPage() {
             <Item text="settings.website" icon={<Website color={iconColor} />} onPress={() => {}} />
           </ItemsContainer> */}
 
-          <View className="my-8">
-            <ItemsContainer>
-              <Item
-                text="settings.logout"
-                icon={<Icon as="MaterialCommunityIcons" name="logout" size={20} />}
-                onPress={signOut}
-              />
-            </ItemsContainer>
-          </View>
+          <ItemsContainer>
+            <Item
+              text="settings.logout"
+              icon={<Icon as="MaterialCommunityIcons" name="logout" size={20} />}
+              onPress={signOut}
+            />
+          </ItemsContainer>
         </View>
       </ScrollView>
     </>

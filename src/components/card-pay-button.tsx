@@ -68,11 +68,11 @@ export default function CardPayButton({modal, ...props}: Props) {
             if (error) {
               showErrorMessage(error.message)
             } else {
-              const _items = items.map(({phoneNumber, id, description, colored_parts}) => ({
+              const _items = items.map(({phoneNumber, id, description_parts, colored_parts}) => ({
                 offerId: id,
                 phoneNumber,
                 amount,
-                description,
+                description: description_parts,
                 colored_parts: colored_parts ?? [],
               }))
               mutate(

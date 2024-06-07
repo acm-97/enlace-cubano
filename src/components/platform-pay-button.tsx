@@ -4,13 +4,12 @@ import {
   usePlatformPay,
 } from '@stripe/stripe-react-native'
 import {useRouter} from 'expo-router'
+import {useColorScheme} from 'nativewind'
 import {useEffect, useState} from 'react'
 import type {SubmitHandler} from 'react-hook-form'
 
-import {useAddPaymentIntent} from '@/api/mobile-offers/use-add-payment-intent'
 import type {OfferType} from '@/api/offers'
 import {useAddOffer} from '@/api/offers'
-import {useSelectedTheme} from '@/core'
 import {colors, showErrorMessage} from '@/ui'
 
 type Props = any
@@ -25,7 +24,7 @@ export default function PlatformPayButton({
 }: Props) {
   const {isPlatformPaySupported, confirmPlatformPayPayment} = usePlatformPay()
   const [isSupported, setIsSupported] = useState(false)
-  const {selectedTheme} = useSelectedTheme()
+  const {colorScheme} = useColorScheme()
   const {mutate} = useAddOffer()
   const {replace} = useRouter()
 
@@ -78,7 +77,7 @@ export default function PlatformPayButton({
   return (
     <PlatformPayButtonN
       type={PlatformPay.ButtonType.Pay}
-      appearance={selectedTheme === 'dark' ? 0 : 2}
+      appearance={colorScheme === 'dark' ? 0 : 2}
       onPress={handleSubmit(pay)}
       style={{
         width: '100%',

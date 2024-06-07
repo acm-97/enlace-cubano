@@ -2,13 +2,14 @@ import {HeaderBackButton} from '@react-navigation/elements'
 import {TransitionPresets} from '@react-navigation/stack'
 import {Link, Stack, useLocalSearchParams, useRouter} from 'expo-router'
 import debounce from 'lodash.debounce'
+import {useColorScheme} from 'nativewind'
 import React, {useEffect, useState} from 'react'
 import {PermissionsAndroid, Platform, Pressable} from 'react-native'
 import type {Contact} from 'react-native-contacts'
 import Contacts from 'react-native-contacts'
 import {AlphabetList} from 'react-native-section-alphabet-list'
 
-import {translate, useSelectedTheme} from '@/core'
+import {translate} from '@/core'
 import {contactsState} from '@/hooks/use-contacts'
 import {
   ActivityIndicator,
@@ -25,7 +26,7 @@ type Props = {}
 export default function MobileContacts({}: Props) {
   const [search, setSearch] = useState<string>()
   const [items, setItems] = useState<any[]>([])
-  const {selectedTheme: theme} = useSelectedTheme()
+  const {colorScheme} = useColorScheme()
   const isLoading = contactsState(state => state.isLoading)
   const isError = contactsState(state => state.isError)
   const contacts = contactsState(state => state.contacts)
@@ -141,7 +142,7 @@ export default function MobileContacts({}: Props) {
           fontSize: 12,
         }}
         indexContainerStyle={{
-          backgroundColor: theme === 'dark' ? '#121212' : 'white',
+          backgroundColor: colorScheme === 'dark' ? '#121212' : 'white',
           width: 20,
           paddingLeft: 10,
         }}

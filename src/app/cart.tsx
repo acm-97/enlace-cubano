@@ -1,4 +1,5 @@
 import {FlashList} from '@shopify/flash-list'
+import {useColorScheme} from 'nativewind'
 import React, {useCallback} from 'react'
 import {Platform, useWindowDimensions} from 'react-native'
 import {twMerge} from 'tailwind-merge'
@@ -6,7 +7,7 @@ import {twMerge} from 'tailwind-merge'
 import type {MobileOffer} from '@/api'
 import CardPayButton from '@/components/card-pay-button'
 import CartCard from '@/components/mobile-offers/cart-card'
-import {translate, useSelectedTheme} from '@/core'
+import {translate} from '@/core'
 import {useCart} from '@/hooks/use-cart'
 import {Button, colors, EmptyList, FocusAwareStatusBar, Modal, Text, useModal, View} from '@/ui'
 
@@ -18,7 +19,7 @@ export default function Cart({}: Props) {
   const totals = useCart.use.totals()
   const modal = useModal()
   const {width: windowWidth, height: windowHeight} = useWindowDimensions()
-  const {selectedTheme} = useSelectedTheme()
+  const {colorScheme} = useColorScheme()
 
   const renderItem = useCallback(
     ({item, index}: {item: CartItem; index: number}) => <CartCard item={item} index={index} />,
@@ -37,7 +38,7 @@ export default function Cart({}: Props) {
       <View
         className={twMerge(
           'absolute bottom-0 h-24 w-full flex-row items-center justify-between gap-2 border-t border-x border-neutral-300/50 px-6 dark:border-neutral-700/50 bg-white',
-          selectedTheme === 'dark' && 'bg-charcoal-850',
+          colorScheme === 'dark' && 'bg-charcoal-850',
           Platform.OS === 'android' && 'rounded-t-2xl ',
         )}
       >
@@ -58,10 +59,6 @@ export default function Cart({}: Props) {
         ref={modal.ref}
         index={0}
         snapPoints={[windowHeight * 0.3]}
-        style={{zIndex: 9999}}
-        backgroundStyle={{
-          backgroundColor: selectedTheme === 'light' ? '#fff' : colors.charcoal[850],
-        }}
         title={translate('cart.select-method')}
       >
         <View className="p-4">

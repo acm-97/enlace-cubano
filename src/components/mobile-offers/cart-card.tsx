@@ -14,7 +14,7 @@ export default function CartCard({item, index}: Props) {
   const name = useMemo(() => {
     return contacts.find(contact =>
       contact.phoneNumbers.some((phone: any) => phone?.number?.includes(item.phoneNumber)),
-    )
+    )?.label
   }, [contacts, item.phoneNumber])
 
   return (

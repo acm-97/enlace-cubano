@@ -30,11 +30,13 @@
 
 import type {BottomSheetBackdropProps, BottomSheetModalProps} from '@gorhom/bottom-sheet'
 import {BottomSheetModal, useBottomSheet} from '@gorhom/bottom-sheet'
+import {useColorScheme} from 'nativewind'
 import * as React from 'react'
 import {Pressable, View} from 'react-native'
 import Animated, {FadeIn, FadeOut} from 'react-native-reanimated'
 import {Path, Svg} from 'react-native-svg'
 
+import colors from './colors'
 import {Text} from './text'
 
 type ModalProps = BottomSheetModalProps & {
@@ -75,6 +77,7 @@ export const Modal = React.forwardRef(
     const detachedProps = React.useMemo(() => getDetachedProps(detached), [detached])
     const modal = useModal()
     const snapPoints = React.useMemo(() => _snapPoints, [_snapPoints])
+    const {colorScheme} = useColorScheme()
 
     React.useImperativeHandle(ref, () => (modal.ref.current as BottomSheetModal) || null)
 
@@ -90,13 +93,16 @@ export const Modal = React.forwardRef(
 
     return (
       <BottomSheetModal
-        {...props}
-        {...detachedProps}
-        ref={modal.ref}
         index={0}
         snapPoints={snapPoints}
         backdropComponent={props.backdropComponent || renderBackdrop}
         handleComponent={renderHandleComponent}
+        backgroundStyle={{
+          backgroundColor: colorScheme === 'dark' ? colors.charcoal[850] : '#fff',
+        }}
+        {...props}
+        {...detachedProps}
+        ref={modal.ref}
       />
     )
   },

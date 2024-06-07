@@ -1,4 +1,5 @@
 import {useRouter} from 'expo-router'
+import {useColorScheme} from 'nativewind'
 import * as React from 'react'
 import type {Control, FieldValues, Path, RegisterOptions} from 'react-hook-form'
 import {useController} from 'react-hook-form'
@@ -9,7 +10,7 @@ import CPhoneInput from 'react-native-phone-number-input'
 import {twMerge} from 'tailwind-merge'
 import {tv} from 'tailwind-variants'
 
-import {tw, useSelectedTheme} from '@/core'
+import {tw} from '@/core'
 
 import colors from './colors'
 import Icon from './icon'
@@ -79,7 +80,7 @@ interface ControlledInputProps<T extends FieldValues> extends NInputProps, Input
 
 export const PhoneInput = React.forwardRef<CPhoneInput, NInputProps>((props, ref) => {
   const {label, error, classNames, onBlur: _onBlur, showContactsIcon, ...inputProps} = props
-  const {selectedTheme} = useSelectedTheme()
+  const {colorScheme} = useColorScheme()
   const [isFocussed, setIsFocussed] = React.useState(false)
   const onBlur = React.useCallback(() => {
     setIsFocussed(false)
@@ -128,7 +129,7 @@ export const PhoneInput = React.forwardRef<CPhoneInput, NInputProps>((props, ref
               onFocus: onFocus,
               returnKeyType: 'done',
             }}
-            countryPickerProps={{theme: selectedTheme === 'dark' && DARK_THEME}}
+            countryPickerProps={{theme: colorScheme === 'dark' && DARK_THEME}}
             {...inputProps}
           />
           {showContactsIcon && (

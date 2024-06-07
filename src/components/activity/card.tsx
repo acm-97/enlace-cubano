@@ -51,12 +51,12 @@ export const ActivityCard = ({
   return (
     <View className={styles.container()}>
       <View className="flex-row flex-wrap gap-1">
-        {description.map((part: string, i: number) => (
+        {description?.map((part: string, i: number) => (
           <Text
             key={`description-${i}`}
             className={twMerge(
               'text-lg',
-              colored_parts.includes(i.toString()) && 'text-primary-300',
+              colored_parts?.includes(i.toString()) && 'text-primary-300',
             )}
           >
             {part}

@@ -11,31 +11,31 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		41EB0EFE65124B419CF0511D /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BF54FE9E9C74818A1877FA5 /* Inter.ttf */; };
+		5FBBDE2C8DC44E539B10F061 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8BF054F9D364E618B6FB5FE /* GoogleService-Info.plist */; };
 		96905EF65AED1B983A6B3ABC /* libPods-EnlaceCubano.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-EnlaceCubano.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
-		B39C4632260E4388951D8303 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 143F0C3B45AA43009218E6B1 /* GoogleService-Info.plist */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		ED4A6C2EB74B491A800CF307 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CC9B1631EA4B10AE4798D4 /* noop-file.swift */; };
+		D867189377EB49CC83E5A54F /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669B124B556541D09C213C06 /* noop-file.swift */; };
+		DEDD768FEF5C4E6E9BCB31F6 /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D52C868D425545BB88D1759E /* Inter.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BF54FE9E9C74818A1877FA5 /* Inter.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter.ttf; path = ../assets/fonts/Inter.ttf; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* EnlaceCubano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnlaceCubano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = EnlaceCubano/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = EnlaceCubano/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = EnlaceCubano/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = EnlaceCubano/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = EnlaceCubano/main.m; sourceTree = "<group>"; };
-		143F0C3B45AA43009218E6B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "EnlaceCubano/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1ABD93B9BAE14F9DA38CBDD4 /* EnlaceCubano-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "EnlaceCubano-Bridging-Header.h"; path = "EnlaceCubano/EnlaceCubano-Bridging-Header.h"; sourceTree = "<group>"; };
 		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-EnlaceCubano.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EnlaceCubano.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		669B124B556541D09C213C06 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "EnlaceCubano/noop-file.swift"; sourceTree = "<group>"; };
 		6C2E3173556A471DD304B334 /* Pods-EnlaceCubano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnlaceCubano.debug.xcconfig"; path = "Target Support Files/Pods-EnlaceCubano/Pods-EnlaceCubano.debug.xcconfig"; sourceTree = "<group>"; };
 		7A4D352CD337FB3A3BF06240 /* Pods-EnlaceCubano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnlaceCubano.release.xcconfig"; path = "Target Support Files/Pods-EnlaceCubano/Pods-EnlaceCubano.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = EnlaceCubano/SplashScreen.storyboard; sourceTree = "<group>"; };
+		AD0632A1430F426BB29FB9F5 /* EnlaceCubano-Bridging-Header.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "EnlaceCubano-Bridging-Header.h"; path = "EnlaceCubano/EnlaceCubano-Bridging-Header.h"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		E2CC9B1631EA4B10AE4798D4 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "EnlaceCubano/noop-file.swift"; sourceTree = "<group>"; };
+		D52C868D425545BB88D1759E /* Inter.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = Inter.ttf; path = ../assets/fonts/Inter.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F8BF054F9D364E618B6FB5FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "EnlaceCubano/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-EnlaceCubano/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,11 +61,20 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				143F0C3B45AA43009218E6B1 /* GoogleService-Info.plist */,
-				E2CC9B1631EA4B10AE4798D4 /* noop-file.swift */,
-				1ABD93B9BAE14F9DA38CBDD4 /* EnlaceCubano-Bridging-Header.h */,
+				F8BF054F9D364E618B6FB5FE /* GoogleService-Info.plist */,
+				669B124B556541D09C213C06 /* noop-file.swift */,
+				AD0632A1430F426BB29FB9F5 /* EnlaceCubano-Bridging-Header.h */,
 			);
 			name = EnlaceCubano;
+			sourceTree = "<group>";
+		};
+		26BC27FC16A541D0AC433A46 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D52C868D425545BB88D1759E /* Inter.ttf */,
+			);
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -75,15 +84,6 @@
 				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-EnlaceCubano.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		62E886AA435C49C2A22850E2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0BF54FE9E9C74818A1877FA5 /* Inter.ttf */,
-			);
-			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -102,7 +102,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				62E886AA435C49C2A22850E2 /* Resources */,
+				26BC27FC16A541D0AC433A46 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -159,13 +159,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "EnlaceCubano" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				61CD6EF0D2323E65C08F1F50 /* [Expo] Configure project */,
+				534C198B2C1E2B6AC81B42E8 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				D3204616ABB56A4A1EBBA91C /* [CP] Embed Pods Frameworks */,
+				CA7F175C8A2C3AD3B0A52937 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,8 +215,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				B39C4632260E4388951D8303 /* GoogleService-Info.plist in Resources */,
-				41EB0EFE65124B419CF0511D /* Inter.ttf in Resources */,
+				5FBBDE2C8DC44E539B10F061 /* GoogleService-Info.plist in Resources */,
+				DEDD768FEF5C4E6E9BCB31F6 /* Inter.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +260,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		61CD6EF0D2323E65C08F1F50 /* [Expo] Configure project */ = {
+		534C198B2C1E2B6AC81B42E8 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -375,7 +375,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EnlaceCubano/Pods-EnlaceCubano-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D3204616ABB56A4A1EBBA91C /* [CP] Embed Pods Frameworks */ = {
+		CA7F175C8A2C3AD3B0A52937 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -403,7 +403,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				ED4A6C2EB74B491A800CF307 /* noop-file.swift in Sources */,
+				D867189377EB49CC83E5A54F /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

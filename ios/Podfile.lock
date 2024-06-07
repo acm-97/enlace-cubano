@@ -14,17 +14,17 @@ PODS:
     - ExpoModulesCore
   - EXNotifications (0.27.7):
     - ExpoModulesCore
-  - Expo (50.0.18):
+  - Expo (50.0.19):
     - ExpoModulesCore
-  - expo-dev-client (3.3.11):
+  - expo-dev-client (3.3.12):
     - EXManifests
     - expo-dev-launcher
     - expo-dev-menu
     - expo-dev-menu-interface
     - EXUpdatesInterface
-  - expo-dev-launcher (3.6.9):
+  - expo-dev-launcher (3.6.10):
     - EXManifests
-    - expo-dev-launcher/Main (= 3.6.9)
+    - expo-dev-launcher/Main (= 3.6.10)
     - expo-dev-menu
     - expo-dev-menu-interface
     - ExpoModulesCore
@@ -33,7 +33,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTAppDelegate
-  - expo-dev-launcher/Main (3.6.9):
+  - expo-dev-launcher/Main (3.6.10):
     - EXManifests
     - expo-dev-launcher/Unsafe
     - expo-dev-menu
@@ -44,7 +44,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
     - React-RCTAppDelegate
-  - expo-dev-launcher/Unsafe (3.6.9):
+  - expo-dev-launcher/Unsafe (3.6.10):
     - EXManifests
     - expo-dev-menu
     - expo-dev-menu-interface
@@ -116,7 +116,7 @@ PODS:
     - RCT-Folly (= 2022.05.16.00)
     - React-Core
   - EXStructuredHeaders (3.7.2)
-  - EXUpdates (0.24.12):
+  - EXUpdates (0.24.13):
     - EASClient
     - EXManifests
     - ExpoModulesCore
@@ -1601,9 +1601,9 @@ SPEC CHECKSUMS:
   EXJSONUtils: 5c42959e87be238b045ef37cc5268b16a6c0ad4a
   EXManifests: 5e8c29f36c716af768a4ea47ec05e1b89ab93091
   EXNotifications: 1c117bf042bd05a5b1a1ffd06f4c36ff9921ed2b
-  Expo: 09bd48f31bb7f1a3c97fd5a6cb28feae89cb4e40
-  expo-dev-client: 29a32387346fe7b6d2a57918fae985bc48bfe9a2
-  expo-dev-launcher: f45e0f751addcc5ff891e0446e4762508b9030f2
+  Expo: ad8bce0c0fc557cae703cc8dbce73d61a90ab5c5
+  expo-dev-client: f22fdebdb8760bc22f660b7c0cb1dd58d80005c0
+  expo-dev-launcher: 40aecc17b686338535356df9f2c727a42c88466b
   expo-dev-menu: 0e07e86ed397e431ee1171bb26caf7dc69cb494d
   expo-dev-menu-interface: 7ba029c9d1a82ac22b9b584c00514860b060553e
   ExpoDevice: 97307196d8cab694e245752b8a7afacc35c14e03
@@ -1617,7 +1617,7 @@ SPEC CHECKSUMS:
   ExpoSystemUI: 735278045c1a28de0018a300bb5abb3f9090652b
   EXSplashScreen: fb4d80520d2348d57879e7a272415438bbcdffd3
   EXStructuredHeaders: 5b0f47259db047dc1fdfa84752e292c2bfa68ecd
-  EXUpdates: 17e26679a93e626b0ae3ebbff966cd7021413a0a
+  EXUpdates: 4aa99ef9610e0d6fbf80d7f2b3f169b527f24a1d
   EXUpdatesInterface: 3e444e2093e25b7ca0999a7d8c16e8392dee70c3
   FBLazyVector: f64d1e2ea739b4d8f7e4740cde18089cd97fe864
   FBReactNativeSpec: 9f2b8b243131565335437dba74923a8d3015e780

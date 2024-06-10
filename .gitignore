@@ -25,3 +25,4 @@ expo-env.d.ts
 # /ios
 # /android
 /googleServices
+/android/app/release

@@ -6,7 +6,7 @@ import {StripeProvider} from '@stripe/stripe-react-native'
 import Constants from 'expo-constants'
 import * as Linking from 'expo-linking'
 import {SplashScreen, Stack, useNavigationContainerRef} from 'expo-router'
-import {StyleSheet} from 'react-native'
+import {KeyboardAvoidingView, StyleSheet} from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
 
@@ -82,7 +82,12 @@ function Providers({children}: {children: React.ReactNode}) {
             merchantIdentifier="merchant.com.{{YOUR_APP_NAME}}" // required for Apple Pay
           >
             <BottomSheetModalProvider>
-              {children}
+              <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={{flex: 1}}
+              >
+                {children}
+              </KeyboardAvoidingView>
               <FlashMessage position="top" />
             </BottomSheetModalProvider>
           </StripeProvider>

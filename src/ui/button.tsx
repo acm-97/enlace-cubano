@@ -40,8 +40,8 @@ const button = tv({
       },
       link: {
         container: 'bg-transparent',
-        label: 'text-black',
-        indicator: 'text-black',
+        label: 'text-black dark:text-white',
+        indicator: 'text-black dark:text-white',
       },
     },
     size: {

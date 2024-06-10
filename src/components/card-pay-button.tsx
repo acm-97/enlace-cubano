@@ -22,7 +22,7 @@ export default function CardPayButton({modal, ...props}: Props) {
   const {initPaymentSheet, presentPaymentSheet} = useStripe()
   const [loading, setLoading] = useState(false)
   const {mutate} = useAddOffer()
-  const {replace} = useRouter()
+  const {replace, dismiss} = useRouter()
   const {mutate: getPaymentSheet} = usePaymentSheet()
   const items = useCart.use.items()
   const resetItems = useCart.use.resetItems()
@@ -80,7 +80,8 @@ export default function CardPayButton({modal, ...props}: Props) {
                 {
                   onSuccess: () => {
                     showMessage({message: 'Your payment was confirmed!', type: 'success'})
-                    replace('/mobile/')
+                    // replace('/mobile/')
+                    dismiss()
                     resetItems()
                   },
                   onError: e => showErrorMessage(e.message ?? e),
